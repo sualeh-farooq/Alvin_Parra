@@ -10,13 +10,14 @@ const checkbox = ref(false);
 const valid = ref(false);
 const show1 = ref(false);
 //const logform = ref();
-const password = ref('admin123');
-const username = ref('info@codedthemes.com');
+const password = ref('admin');
+const username = ref('admin');
 const passwordRules = ref([
   (v: string) => !!v || 'Password is required',
   (v: string) => (v && v.length <= 10) || 'Password must be less than 10 characters'
 ]);
-const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
+const emailRules = ref([(v: string) => !!v || 'E-mail is required']);
+// const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
 
 function validate(values: any, { setErrors }: any) {
   const authStore = useAuthStore();
@@ -25,23 +26,14 @@ function validate(values: any, { setErrors }: any) {
 </script>
 
 <template>
-  <v-btn block color="primary" variant="outlined" class="text-lightText googleBtn">
-    <img :src="Google" alt="google" />
-    <span class="ml-2">Sign in with Google</span></v-btn
-  >
+ 
   <v-row>
-    <v-col class="d-flex align-center">
-      <v-divider class="custom-devider" />
-      <v-btn variant="outlined" class="orbtn" rounded="md" size="small">OR</v-btn>
-      <v-divider class="custom-devider" />
-    </v-col>
+    
   </v-row>
-  <h5 class="text-h5 text-center my-4 mb-8">Sign in with Email address</h5>
-  <Form @submit="validate" class="mt-7 loginForm" v-slot="{ errors, isSubmitting }">
+  <Form @submit="validate" class="mt-14 loginForm" v-slot="{ errors, isSubmitting }">
     <v-text-field
-      v-model="username"
       :rules="emailRules"
-      label="Email Address / Username"
+      label="Email Address "
       class="mt-4 mb-8"
       required
       density="comfortable"
@@ -50,7 +42,6 @@ function validate(values: any, { setErrors }: any) {
       color="primary"
     ></v-text-field>
     <v-text-field
-      v-model="password"
       :rules="passwordRules"
       label="Password"
       required
@@ -78,7 +69,7 @@ function validate(values: any, { setErrors }: any) {
         <a href="javascript:void(0)" class="text-primary text-decoration-none">Forgot password?</a>
       </div>
     </div>
-    <v-btn color="secondary" :loading="isSubmitting" block class="mt-2" variant="flat" size="large" :disabled="valid" type="submit">
+    <v-btn color="primary" :loading="isSubmitting" block class="mt-2" variant="flat" size="large" :disabled="valid" type="submit">
       Sign In</v-btn
     >
     <div v-if="errors.apiError" class="mt-2">

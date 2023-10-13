@@ -470,6 +470,11 @@ const MainRoutes = {
       path: '/admin/marketing/',
       component: () => import('@/views/admin/marketing/index.vue')
     },
+    {
+      name: 'Add Opportunity' ,
+      path: '/admin/addOpportunity',
+      component: () => import('@/views/admin/addOpportunity.vue')
+    }
     
     
   ]

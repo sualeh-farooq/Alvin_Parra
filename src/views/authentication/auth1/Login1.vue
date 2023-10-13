@@ -12,13 +12,20 @@ import TextSlider from './TextSlider.vue';
         <div class="pa-0 pa-sm-12">
           <v-row justify="center">
             <v-col cols="12" lg="10" xl="6" md="7">
+
+            <div elevation="0" class="loginBox  d-flex justify-center">
+            <img src="../../../assets/images/logos/logo.png" class="w-75" />
+             </div>
+            
+</v-col>
+            <v-col cols="12" lg="10" xl="6" md="7">
               <v-card elevation="0" class="loginBox">
                 <v-card variant="outlined">
                   <v-card-text class="pa-9">
                     <!---Left Part Logo -->
                     <v-row>
                       <v-col cols="12" md="7" sm="7" order-sm="first" order="last" class="text-sm-start text-center">
-                        <h2 class="text-secondary text-h2">Hi, Welcome Back</h2>
+                        <h2 class="text-primary text-h2">Hi, Welcome Back</h2>
                         <h4 class="text-disabled text-h4">Login in to your account</h4>
                       </v-col>
                       <v-col class="text-sm-end text-center" sm="5" cols="12"><Logo /></v-col>
@@ -44,7 +51,6 @@ import TextSlider from './TextSlider.vue';
           <v-row justify="center">
             <v-col cols="12" xl="11">
               <div class="cardAnimation"></div>
-              <TextSlider />
             </v-col>
           </v-row>
         </div>

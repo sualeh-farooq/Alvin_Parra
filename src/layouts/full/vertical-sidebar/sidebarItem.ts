@@ -40,7 +40,13 @@ import {
   ShieldLockIcon,
   BrandChromeIcon,
   HelpIcon,
-  SitemapIcon
+  SitemapIcon , 
+  FilterIcon,
+  UsersIcon,
+  NotesIcon , 
+  CheckboxIcon,
+  WorldIcon
+  
 } from 'vue-tabler-icons';
 
 export interface menu {
@@ -72,33 +78,33 @@ const sidebarItem: menu[] = [
   },
   {
     title: 'Pipleine',
-    icon: DashboardIcon,
+    icon: FilterIcon,
     to: '/admin/pipeline'
   },
   {
     title: 'Accounts',
-    icon: DashboardIcon,
+    icon: UsersIcon,
     to: '/admin/accounts'
   },
   {
     title: 'Notes & Tasks',
-    icon: DashboardIcon,
+    icon: NotesIcon,
     to: '/admin/notes'
   },
   {
     title: 'Agents',
-    icon: DashboardIcon,
+    icon: UsersIcon,
     to: '/admin/agents'
   },
   {
       title: 'Accounts Approvals',
-      icon: DashboardIcon ,
+      icon: CheckboxIcon ,
       to : '/admin/approvals'
   },
 
   {
     title: 'Marketing',
-    icon: BasketIcon,
+    icon: WorldIcon,
     to: '/admin/marketing',
     // children: [
     //   {
