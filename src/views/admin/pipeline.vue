@@ -216,9 +216,16 @@ export default {
             themeColor,
             pendingDialog,
             acceptedDialog,
+            editName: 'John Doe',
+            editContact: 'John Smith',
+            editPipeline: 'Life Insurance',
+            editLeadStatus: 'Lead One',
+            editStage: 'Prospect - Quote',
+            editTempLevel: 'Cold',
+            editType: 'Individual',
             drawer: false,
             followUpDate: false,
-            closingTarget: false,rejectedDialog ,
+            closingTarget: false, rejectedDialog,
             opportunitySources: [
                 'Exisiting',
                 'Lead',
@@ -248,6 +255,32 @@ export default {
                 'Product One',
                 'Product Two',
                 'Product Three'
+            ],
+            pipeline: [
+                'Life Insurance',
+                'AUM',
+                'Medicare',
+            ],
+            leadStatus: [
+                'Lead One',
+                'Lead Two',
+                'Lead Three',
+            ],
+            stage: [
+                'Lead - Interested',
+                'Prospect - Quote',
+                'Prospect - Presentation',
+                'Prospect - Review',
+                'Client - Won',
+                'Lost',
+            ],
+            level: [
+                'Cold',
+                'Hot'
+            ],
+            type: [
+                'Individual',
+                'Business'
             ]
 
         };
@@ -346,7 +379,7 @@ export default {
 
                     <v-dialog width="600" v-model="rejectedDialog">
                         <template v-slot:activator="{ props }">
-                            <v-btn  color="primary" v-bind="props" >
+                            <v-btn color="primary" v-bind="props">
                                 <EditIcon size="20" /> Edit
                             </v-btn>
                         </template>
@@ -362,86 +395,49 @@ export default {
                                 <v-container>
                                     <v-row>
                                         <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">First
-                                                Name</v-lable>
-                                            <p>John</p>
+                                            <v-text-field v-model="editName" type="text" label="Name" variant="outlined"
+                                                class="text-input"></v-text-field>
                                         </v-col>
                                         <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Last
-                                                Name</v-lable>
-                                            <p>Doe</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Phone
-                                                Number</v-lable>
-                                            <p>+1-42-4025-294</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Email</v-lable>
-                                            <p>johndoe@gmail.com</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Social Security
-                                                Number</v-lable>
-                                            <p>HSDK-9201</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">License
-                                                Number</v-lable>
-                                            <p>LNUS-7920</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Generation</v-lable>
-                                            <p>04</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Code
-                                                Number</v-lable>
-                                            <p>1201</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Base
-                                                Number</v-lable>
-                                            <p>09</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">Added by
-                                                Agent</v-lable>
-                                            <p>Flex Hawk</p>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-lable class="font-weight-bold">% Level</v-lable>
-                                            <p>Reg Dir (90%)</p>
+                                            <v-text-field v-model="editContact" type="text" label="Contact"
+                                                variant="outlined" class="text-input"></v-text-field>
                                         </v-col>
 
-                                    </v-row>
-                                    <v-row class="mt-3">
-                                        <v-col cols="12">
-                                            <v-lable class="font-weight-bold">License
-                                                Image</v-lable>
-
-                                            <div class=" w-100 py-3 my-2">
-                                                <img src="../../assets/images/license.jpg" class="w-25"
-                                                    alt="license_image" />
-
-                                            </div>
+                                        <v-col md="6" sm="12" cols="12">
+                                            <v-autocomplete label="Pipeline" v-model="editPipeline" :items="pipeline"
+                                                color="primary" variant="outlined" hide-details></v-autocomplete>
                                         </v-col>
-                                    </v-row>
-                                    <v-row class="mt-1">
-                                        <v-col cols="12">
-                                            <!-- <div class=" d-flex justify-start gap-2">
-                                                                            <v-btn color="error" text> Reject </v-btn>
-                                                                            <v-btn color="success" text> Approved </v-btn>
-                                                                        </div> -->
+
+                                        <v-col md="6" sm="12" cols="12">
+                                            <v-autocomplete label="Lead Status" :items="leadStatus" v-model="editLeadStatus"
+                                                color="primary" variant="outlined" hide-details></v-autocomplete>
                                         </v-col>
+
+                                        <v-col md="6" sm="12" cols="12">
+                                            <v-autocomplete label="Stage" :items="stage" v-model="editStage" color="primary"
+                                                variant="outlined" hide-details></v-autocomplete>
+                                        </v-col>
+
+                                        <v-col md="6" sm="12" cols="12">
+                                            <v-autocomplete label="Level" :items="level" v-model="editTempLevel"
+                                                color="primary" variant="outlined" hide-details></v-autocomplete>
+                                        </v-col>
+
+                                        <v-col md="6" sm="12" cols="12">
+                                            <v-autocomplete label="Type" :items="type" v-model="editType" color="primary"
+                                                variant="outlined" hide-details></v-autocomplete>
+                                        </v-col>
+
+
                                     </v-row>
+
                                 </v-container>
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
                                 <v-btn color="error" text @click="rejectedDialog = false"> Close
                                 </v-btn>
-                                <!-- <v-btn color="success" text @click="pendingDialog = false"> Save </v-btn> -->
+                                <v-btn color="success" text @click="pendingDialog = false"> Update </v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -485,7 +481,6 @@ export default {
 
 
             <v-row>
-
                 <v-col cols="12" md="6" lg="4">
                     <div @click="followUpDate = true" v-if="!followUpDate">
                         <v-text-field type="text" label="Next Follow up" variant="outlined"
@@ -546,7 +541,7 @@ export default {
                 </v-col>
                 <v-col cols="12" md="6" lg="4">
                     <v-autocomplete label="Agent 2 Split" :items="agent2Split" color="primary" variant="outlined"
-                        hide-details></v-autocomplete>``
+                        hide-details></v-autocomplete>
                 </v-col>
                 <v-col cols="12" md="6" lg="4">
                     <v-autocomplete label="Exist Source of Opportunity" v-model="opportunitySourceVal"
@@ -557,6 +552,75 @@ export default {
                     <v-text-field type="text" label="Reffered By" variant="outlined" class="text-input"></v-text-field>
                 </v-col>
 
+            </v-row>
+
+
+            <v-row>
+                <v-col cols="12">
+
+                    <div class="d-flex align-center justify-space-between">
+                        <card-title>Notes</card-title>
+                        <v-btn color="primary">Add Note</v-btn>
+
+                    </div>
+
+                    <div class="border my-2">
+                        <ul>
+
+                            <li>Note 1</li>
+                            <li>Note 2</li>
+                            <li>Note 3</li>
+                        </ul>
+                    </div>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col cols="12">
+
+                    <div class="d-flex align-center justify-space-between">
+                        <card-title>Tasks</card-title>
+                        <v-btn color="primary">Add Task</v-btn>
+
+                    </div>
+
+                    <div class="border my-2">
+                        <ul>
+
+                            <li>Task 1</li>
+                            <li>Task 2</li>
+                            <li>Task 3</li>
+                        </ul>
+                    </div>
+                    
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col cols="12">
+
+                    <div class="d-flex align-center justify-space-between">
+                        <card-title>Files</card-title>
+                        <v-btn color="primary">Add File</v-btn>
+
+                    </div>
+
+                    <div class="border my-2">
+                        <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th class="text-left">
+            Name
+          </th>
+          <th class="text-left">
+            Calories
+          </th>
+        </tr>
+      </thead>
+      </template>
+      </v-simple-table>
+                    </div>
+                    
+                </v-col>
             </v-row>
 
         </div>
