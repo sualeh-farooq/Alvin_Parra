@@ -13,39 +13,15 @@ const authStore = useAuthStore();
   <!-- profile DD -->
   <!-- ---------------------------------------------- -->
   <div class="pa-4">
-    <h4 class="mb-n1">Good Morning, <span class="font-weight-regular">John Doe</span></h4>
-    <span class="text-subtitle-2 text-medium-emphasis">Project admin</span>
+    <h4 class="mb-n1">Good Morning, <span class="font-weight-regular">Alvin</span></h4>
+    <span class="text-subtitle-2 text-medium-emphasis">Strategic Financial Admin</span>
 
-    <v-text-field persistent-placeholder placeholder="Search" class="my-3" color="primary" variant="outlined" hide-details>
-      <template v-slot:prepend-inner>
-        <SearchIcon stroke-width="1.5" size="20" class="text-lightText SearchIcon" />
-      </template>
-    </v-text-field>
+ 
 
-    <v-divider></v-divider>
-    <perfect-scrollbar style="height: calc(100vh - 300px); max-height: 515px">
-      <div class="bg-lightwarning rounded-md pa-5 my-3 circle sm-circle lg-circle">
-        <h4>Upgrade your plan</h4>
-        <h6 class="text-subtitle-2 text-medium-emphasis mr-11 pr-11 mb-3 mt-2">70% discount for 1 years subscriptions.</h6>
-        <v-btn color="warning" variant="flat"> Go Premium </v-btn>
-      </div>
+    <!-- <perfect-scrollbar style="height: calc(100vh - 300px); max-height: 515px"> -->
+    <perfect-scrollbar >
+     
 
-      <v-divider></v-divider>
-
-      <div class="bg-lightprimary rounded-md px-5 py-3 my-3">
-        <div class="d-flex align-center justify-space-between">
-          <h5 class="text-h5">Start DND Mode</h5>
-          <div>
-            <v-switch v-model="swt1" color="primary" hide-details></v-switch>
-          </div>
-        </div>
-        <div class="d-flex align-center justify-space-between">
-          <h5 class="text-h5">Allow Notifications</h5>
-          <div>
-            <v-switch v-model="swt2" color="primary" hide-details></v-switch>
-          </div>
-        </div>
-      </div>
 
       <v-divider></v-divider>
 
@@ -58,7 +34,7 @@ const authStore = useAuthStore();
           <v-list-item-title class="text-subtitle-2"> Account Settings</v-list-item-title>
         </v-list-item>
 
-        <v-list-item to="/profie" active-color="secondary" rounded="md">
+        <!-- <v-list-item to="/profie" active-color="secondary" rounded="md">
           <template v-slot:prepend>
             <UserIcon size="20" class="mr-2" />
           </template>
@@ -68,7 +44,7 @@ const authStore = useAuthStore();
           <template v-slot:append>
             <v-chip color="warning" class="text-white" text="02" variant="flat" size="small" />
           </template>
-        </v-list-item>
+        </v-list-item> -->
 
         <v-list-item @click="authStore.logout()" active-color="secondary" rounded="md">
           <template v-slot:prepend>

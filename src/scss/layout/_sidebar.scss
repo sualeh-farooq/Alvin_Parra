@@ -123,3 +123,17 @@
     }
   }
 }
+
+
+
+
+.text-input {
+  margin: 0 !important;
+  .v-input__details {
+    display: none !important;
+  }
+}
+
+.v-input__details {
+  display: none !important;
+}

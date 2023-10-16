@@ -1,15 +1,22 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { useCustomizerStore } from '../../../stores/customizer';
+import { ref, watch } from "vue";
+import { useCustomizerStore } from "../../../stores/customizer";
 // Icon Imports
-import { AccessPointIcon, BellIcon, SettingsIcon, LanguageIcon, SearchIcon, Menu2Icon } from 'vue-tabler-icons';
+import {
+  AccessPointIcon,
+  BellIcon,
+  SettingsIcon,
+  LanguageIcon,
+  SearchIcon,
+  Menu2Icon,
+} from "vue-tabler-icons";
 
 // dropdown imports
-import LanguageDD from './LanguageDD.vue';
-import NotificationDD from './NotificationDD.vue';
-import ProfileDD from './ProfileDD.vue';
-import MegaMenuDD from './MegaMenuDD.vue';
-import Searchbar from './Searchbar.vue';
+import LanguageDD from "./LanguageDD.vue";
+import NotificationDD from "./NotificationDD.vue";
+import ProfileDD from "./ProfileDD.vue";
+import MegaMenuDD from "./MegaMenuDD.vue";
+import Searchbar from "./Searchbar.vue";
 
 const customizer = useCustomizerStore();
 const showSearch = ref(false);
@@ -95,7 +102,6 @@ watch(priority, (newPriority) => {
       </v-sheet>
     </v-menu> -->
 
-
     <!-- <v-menu :close-on-content-click="false" location="bottom">
       <template v-slot:activator="{ props }">
         <v-btn icon class="text-primary ml-3" color="lightprimary" rounded="sm" size="small" variant="flat" v-bind="props">
@@ -112,7 +118,15 @@ watch(priority, (newPriority) => {
     <!-- ---------------------------------------------- -->
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
-        <v-btn icon class="text-secondary mx-3" color="lightsecondary" rounded="sm" size="small" variant="flat" v-bind="props">
+        <v-btn
+          icon
+          class="text-secondary mx-3"
+          color="lightsecondary"
+          rounded="sm"
+          size="small"
+          variant="flat"
+          v-bind="props"
+        >
           <BellIcon stroke-width="1.5" size="22" />
         </v-btn>
       </template>
@@ -126,7 +140,13 @@ watch(priority, (newPriority) => {
     <!-- ---------------------------------------------- -->
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
-        <v-btn class="profileBtn text-primary" color="lightprimary" variant="flat" rounded="pill" v-bind="props">
+        <v-btn
+          class="profileBtn text-primary"
+          color="lightprimary"
+          variant="flat"
+          rounded="pill"
+          v-bind="props"
+        >
           <v-avatar size="30" class="mr-2 py-2">
             <img src="@/assets/images/profile/user-round.svg" alt="Julia" />
           </v-avatar>

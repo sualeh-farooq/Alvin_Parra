@@ -5,7 +5,7 @@ import type { Header, Item } from 'vue3-easy-data-table';
 import 'vue3-easy-data-table/dist/style.css';
 
 
-const searchField = ref('name');
+const searchField = ref(['fName', 'lName', 'email', 'phone', 'addedBy']);
 const searchValue = ref('');
 
 const headers: Header[] = [
@@ -250,6 +250,9 @@ const tab2 = ref(null)
 
                             <v-window v-model="tab">
                                 <v-window-item value="pending">
+                                    <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
+                                        placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
+                                        prepend-inner-icon="mdi-magnify" />
                                     <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
@@ -364,6 +367,9 @@ const tab2 = ref(null)
 
 
                                 <v-window-item value="approved">
+                                    <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
+                                        placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
+                                        prepend-inner-icon="mdi-magnify" />
                                     <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
@@ -486,6 +492,10 @@ const tab2 = ref(null)
 
 
                                 <v-window-item value="rejected">
+                                    <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
+                                        placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
+                                        prepend-inner-icon="mdi-magnify" />
+
                                     <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
