@@ -474,6 +474,11 @@ const MainRoutes = {
       name: 'Add Opportunity' ,
       path: '/admin/addOpportunity',
       component: () => import('@/views/admin/addOpportunity.vue')
+    },
+    {
+      name: 'Settings' , 
+      path: '/admin/settings' ,
+      component: () => import('@/views/admin/settings.vue')
     }
     
     

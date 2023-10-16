@@ -50,7 +50,7 @@ const authStore = useAuthStore();
       <v-divider></v-divider>
 
       <v-list class="mt-3">
-        <v-list-item to="/profie" active-color="secondary" rounded="md">
+        <v-list-item to="/admin/settings" active-color="secondary" rounded="md">
           <template v-slot:prepend>
             <SettingsIcon size="20" class="mr-2" />
           </template>

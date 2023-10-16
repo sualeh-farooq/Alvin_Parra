@@ -96,7 +96,7 @@ watch(priority, (newPriority) => {
     </v-menu> -->
 
 
-    <v-menu :close-on-content-click="false" location="bottom">
+    <!-- <v-menu :close-on-content-click="false" location="bottom">
       <template v-slot:activator="{ props }">
         <v-btn icon class="text-primary ml-3" color="lightprimary" rounded="sm" size="small" variant="flat" v-bind="props">
           <LanguageIcon stroke-width="1.5" size="22" />
@@ -105,7 +105,7 @@ watch(priority, (newPriority) => {
       <v-sheet rounded="md" width="200" elevation="12">
         <LanguageDD />
       </v-sheet>
-    </v-menu>
+    </v-menu> -->
 
     <!-- ---------------------------------------------- -->
     <!-- Notification -->

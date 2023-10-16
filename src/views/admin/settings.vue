@@ -6,13 +6,10 @@ import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
 // tabs import
 import UserProfileTab from './UserProfileTab.vue';
 import ChangePasswordTab from './ChangePasswordTab.vue';
-import BillingTab from './BillingTab.vue';
-import PaymentTab from './PaymentTab.vue';
 
 // icons
 // import { UserCircleIcon, FileDescriptionIcon, IdIcon, LockIcon, MailIcon } from "vue-tabler-icons";
 
-// theme breadcrumb
 const page = ref({ title: 'Profile 02' });
 const breadcrumbs = ref([
   {
@@ -32,7 +29,6 @@ const tab = ref('tab-profile');
 </script>
 
 <template>
-  <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
   <v-row>
     <v-col cols="12">
       <v-card variant="flat">
@@ -53,20 +49,7 @@ const tab = ref('tab-profile');
                         <span class="text-subtitle-2 text-disabled font-weight-medium d-block">Profile Settings</span>
                       </div>
                     </v-tab>
-                    <v-tab value="tab-billing" rounded="md" class="text-left overflow-hidden" height="70">
-                      <FileDescriptionIcon stroke-width="1.5" width="20" class="v-icon--start" />
-                      <div>
-                        <div>Billing</div>
-                        <span class="text-subtitle-2 text-disabled font-weight-medium d-block">Billing Information</span>
-                      </div>
-                    </v-tab>
-                    <v-tab value="tab-payment" rounded="md" class="text-left overflow-hidden" height="70">
-                      <CreditCardIcon stroke-width="1.5" width="20" class="v-icon--start" />
-                      <div>
-                        <div>Payment</div>
-                        <span class="text-subtitle-2 text-disabled font-weight-medium d-block">Add & Update Card</span>
-                      </div>
-                    </v-tab>
+                  
                     <v-tab value="tab-change-password" rounded="md" class="mb-3 text-left overflow-hidden" height="70">
                       <KeyIcon stroke-width="1.5" width="20" class="v-icon--start" />
                       <div>
@@ -99,9 +82,7 @@ const tab = ref('tab-profile');
           </div>
 
           <v-divider></v-divider>
-          <div class="pa-6 text-right">
-            <v-btn color="primary">Continue</v-btn>
-          </div>
+       
         </v-card>
       </v-card>
     </v-col>

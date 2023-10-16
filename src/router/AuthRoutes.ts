@@ -32,8 +32,8 @@ const AuthRoutes = {
     },
     {
       name: 'Register',
-      path: '/auth/register1',
-      component: () => import('@/views/authentication/auth1/Register1.vue')
+      path: '/register',
+      component: () => import('@/views/authentication/auth1/register.vue')
     },
     {
       name: 'Forgot Password',

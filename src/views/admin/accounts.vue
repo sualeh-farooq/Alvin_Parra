@@ -1,118 +1,396 @@
-<script>
-export default {
-    name: 'Account Page',
-    data: () => ({
-        search: '',
-        headers: [
-          {
-            align: 'start',
-            key: 'name',
-            sortable: false,
-            title: 'Dessert (100g serving)',
-          },
-          { key: 'calories', title: 'Calories' },
-          { key: 'fat', title: 'Fat (g)' },
-          { key: 'carbs', title: 'Carbs (g)' },
-          { key: 'protein', title: 'Protein (g)' },
-          { key: 'iron', title: 'Iron (%)' },
-        ],
-        desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: 1,
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: 1,
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: 7,
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: 8,
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: 16,
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: 0,
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: 2,
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: 45,
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: 22,
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: 6,
-          },
-        ]
-    }),
+<script setup lang="ts">
+import { ref } from 'vue';
 
-}
+const desserts = ref([
+  {
+    name: 'Frozen Opportunity 1-life-121212rt',
+    contact: 'John Doe',
+    type: 'Individual',
+    pipeline: 'Life',
+    status: 'Lead',
+    stage: 'Stage 1 - Interest',
+    estIncome: '$100',
+    estCloseDate: '12/12/2023',
+    wrtAgentSplit: 'John Doe (100%)',
+  },
+  {
+    name: 'Ice Opportunity 1-life-121212am sandwich',
+    contact: 'John Doe',
+    type: 'Individual',
+    pipeline: 'Life',
+    status: 'Lead',
+    stage: 'Stage 1 - Interest',
+    estIncome: '$100',
+    estCloseDate: '12/12/2023',
+    wrtAgentSplit: 'John Doe (100%)',
+  },
+  {
+    name: 'Opportunity 1-life-121212',
+    contact: 'John Doe',
+    type: 'Individual',
+    pipeline: 'Life',
+    status: 'Lead',
+    stage: 'Stage 1 - Interest',
+    estIncome: '$100',
+    estCloseDate: '12/12/2023',
+    wrtAgentSplit: 'John Doe (100%)',
+  },
+  {
+    name: 'Opportunity 1-life-121212',
+    contact: 'John Doe',
+    type: 'Individual',
+    pipeline: 'Life',
+    status: 'Lead',
+    stage: 'Stage 1 - Interest',
+    estIncome: '$100',
+    estCloseDate: '12/12/2023',
+    wrtAgentSplit: 'John Doe (100%)',
+  },
+  {
+    name: 'Opportunity 1-life-121212',
+    contact: 'John Doe',
+    type: 'Individual',
+    pipeline: 'Life',
+    status: 'Lead',
+    stage: 'Stage 1 - Interest',
+    estIncome: '$100',
+    estCloseDate: '12/12/2023',
+    wrtAgentSplit: 'John Doe (100%)',
+  }
+]);
+
+const page = ref({ title: 'Tabs' });
+const tab = ref(null);
+const tab2 = ref(null);
+const tab3 = ref(null);
+const tab4 = ref(null);
+const tab5 = ref(null);
+const tab6 = ref(null);
+const tab7 = ref(null);
+
+import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
 </script>
 
 
-<template>
-    <h1>Accounts Page</h1>
 
-    <v-card>
-        <v-card-title>
-            Nutrition
-            <v-spacer></v-spacer>
-            <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
-        </v-card-title>
-        <v-data-table :headers="headers" :items="desserts" :search="search"></v-data-table>
-    </v-card>
+
+
+<template>
+  <v-row>
+    <v-col col="12">
+      <v-card variant="outlined" elevation="0" class="withbg">
+        <v-card-item>
+          <div class="d-sm-flex align-center justify-space-between">
+            <h3 class="text-h3">Accounts</h3>
+
+          </div>
+        </v-card-item>
+        <v-divider></v-divider>
+        <v-card-text>
+
+          <!-- Content Goes Here -->
+          <v-row>
+            <v-col>
+              <v-tabs v-model="tab2" color="primary">
+                <v-tab value="11">
+                  <UserIcon stroke-width="1.5" width="20" class="v-icon--start" /> Individual
+                </v-tab>
+                <v-tab value="22">
+                  <BriefcaseIcon stroke-width="1.5" width="20" class="v-icon--start" /> Business
+                </v-tab>
+
+              </v-tabs>
+
+              <v-window v-model="tab2">
+                <v-window-item value="11">
+                  <v-tabs v-model="tab3" class="mt-4" color="primary">
+                    <v-tab value="12">
+                      <UsersIcon stroke-width="1.5" width="20" class="v-icon--start" /> Lead
+                    </v-tab>
+                    <v-tab value="13">
+                      <SearchIcon stroke-width="1.5" width="20" class="v-icon--start" /> Prospect
+                    </v-tab>
+                    <v-tab value="14">
+                      <HeartHandshakeIcon stroke-width="1.5" width="20" class="v-icon--start" /> Clients
+                    </v-tab>
+                    <v-tab value="15">
+                      <XIcon stroke-width="1.5" width="20" class="v-icon--start" /> Lost
+                    </v-tab>
+                  </v-tabs>
+
+
+                  <v-window v-model="tab3">
+                    <v-window-item value="12">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                    <v-window-item value="13">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                    <v-window-item value="14">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                    <v-window-item value="15">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                  </v-window>
+
+
+                </v-window-item>
+
+                <v-window-item value="22">
+                  <v-tabs v-model="tab4" class="mt-4" color="primary">
+                    <v-tab value="23">
+                      <UsersIcon stroke-width="1.5" width="20" class="v-icon--start" /> Lead
+                    </v-tab>
+                    <v-tab value="24">
+                      <SearchIcon stroke-width="1.5" width="20" class="v-icon--start" /> Prospect
+                    </v-tab>
+                    <v-tab value="25">
+                      <HeartHandshakeIcon stroke-width="1.5" width="20" class="v-icon--start" /> Clients
+                    </v-tab>
+                    <v-tab value="26">
+                      <XIcon stroke-width="1.5" width="20" class="v-icon--start" /> Lost
+                    </v-tab>
+                  </v-tabs>
+                  <v-window v-model="tab4">
+                    <v-window-item value="23">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                    <v-window-item value="24">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                    <v-window-item value="25">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                    <v-window-item value="26">
+                      <v-table>
+                        <thead>
+                          <tr>
+                            <th class="text-left text-subtitle-1">Opportunity Name</th>
+                            <th class="text-left text-subtitle-1">Contact</th>
+                            <th class="text-left text-subtitle-1">Contact Type</th>
+                            <th class="text-left text-subtitle-1">Pipeline</th>
+                            <th class="text-left text-subtitle-1">Status</th>
+                            <th class="text-left text-subtitle-1">Stage</th>
+                            <th class="text-left text-subtitle-1">Est Income</th>
+                            <th class="text-left text-subtitle-1">Est Close Date</th>
+                            <th class="text-left text-subtitle-1">Writing Agent Split</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in desserts" :key="item.name" class="text-lighttext">
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.name }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.contact }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.type }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.pipeline }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.status }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.stage }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estIncome }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.estCloseDate }}</td>
+                            <td class="text-subtitle-1 font-weight-regular">{{ item.wrtAgentSplit }}</td>
+                          </tr>
+                        </tbody>
+                      </v-table>
+                    </v-window-item>
+                  </v-window>
+
+                </v-window-item>
+              </v-window>
+            </v-col>
+          </v-row>
+
+        </v-card-text>
+      </v-card>
+    </v-col>
+
+  </v-row>
 </template>
