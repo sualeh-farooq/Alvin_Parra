@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getSecondary } from './UpdateColors';
+import { getPrimary } from './UpdateColors';
 
 const chartOptions = computed(() => {
   return {
@@ -10,7 +10,7 @@ const chartOptions = computed(() => {
       fontFamily: `inherit`,
       foreColor: '#a1aab2'
     },
-    colors: [getSecondary.value],
+    colors: [getPrimary.value],
 
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']

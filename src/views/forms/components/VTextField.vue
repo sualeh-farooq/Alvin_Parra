@@ -162,8 +162,6 @@ const breadcrumbs = ref([
                 filled
                 auto-grow
                 label="Multiline Placeholder"
-                rows="1"
-                row-height="20"
                 color="primary"
                 variant="outlined"
               ></v-textarea>

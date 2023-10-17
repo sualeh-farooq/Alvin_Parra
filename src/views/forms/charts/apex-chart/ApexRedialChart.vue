@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getPrimary, getSecondary } from './UpdateColors';
+import { getPrimary } from './UpdateColors';
 import { computed } from 'vue';
 
 const chartOptions = computed(() => {
@@ -10,7 +10,7 @@ const chartOptions = computed(() => {
       fontFamily: `inherit`,
       foreColor: '#a1aab2'
     },
-    colors: [getPrimary.value, getSecondary.value, '#00c853'],
+    colors: [getPrimary.value, '#00c853'],
     plotOptions: {
       radialBar: {
         offsetY: 0,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useTheme } from 'vuetify';
-import { getPrimary, getSecondary } from './UpdateColors';
+import { getPrimary } from './UpdateColors';
 
 const theme = useTheme();
 const successColor = theme.current.value.colors.success;
@@ -17,7 +17,7 @@ const chartOptions = computed(() => {
       foreColor: '#a1aab2'
     },
     labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-    colors: [getPrimary.value, getSecondary.value, successColor, errorColor, warningColor],
+    colors: [getPrimary.value, successColor, errorColor, warningColor],
     legend: {
       show: true,
       offsetX: 10,

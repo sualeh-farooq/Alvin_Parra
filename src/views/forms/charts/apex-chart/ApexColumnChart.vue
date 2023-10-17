@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useTheme } from 'vuetify';
-import { getPrimary, getSecondary } from './UpdateColors';
+import { getPrimary } from './UpdateColors';
 
 const theme = useTheme();
 const successColor = theme.current.value.colors.success;
@@ -14,7 +14,7 @@ const chartOptions = computed(() => {
       fontFamily: `inherit`,
       foreColor: '#a1aab2'
     },
-    colors: [getSecondary.value, getPrimary.value, successColor],
+    colors: [ getPrimary.value, successColor],
     plotOptions: {
       bar: {
         horizontal: false,
