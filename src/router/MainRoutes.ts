@@ -476,9 +476,19 @@ const MainRoutes = {
       component: () => import('@/views/admin/addOpportunity.vue')
     },
     {
+      name: 'Add Contact' ,
+      path: '/admin/addContact',
+      component: () => import('@/views/admin/addContact.vue')
+    },
+    {
       name: 'Settings' , 
       path: '/admin/settings' ,
       component: () => import('@/views/admin/settings.vue')
+    },
+    {
+      name: 'Accounts View' ,
+      path: '/admin/accountView' ,
+      component: () => import('@/views/admin/accountView.vue')
     }
     
     

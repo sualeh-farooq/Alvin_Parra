@@ -12,21 +12,21 @@ export default {
       taskDialog: null,
       notesList: [
         {
-          id: 1, date: '10-05-2023', time: '05:35pm', note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+          id: 1, date: '10-05-2023', time: '05:35pm', editText: 'Edit' ,deleteText: 'Delete' ,  note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
             '\n'
         },
         {
-          id: 2, date: '15-05-2023', time: '05:35pm', note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+          id: 2, date: '15-05-2023', time: '05:35pm', editText: 'Edit' ,deleteText: 'Delete' , note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
             '\n'
         }
       ],
       taskList: [
         {
-          id: 1, createdDate: '10-05-2023', dueDate: '12-07-2023', assignTo: 'John Doe', taskTitle: 'Task Title 01', taskDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+          id: 1, createdDate: '10-05-2023', dueDate: '12-07-2023', editText: 'Edit' ,deleteText: 'Delete' ,  assignTo: 'John Doe', taskTitle: 'Task Title 01', taskDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
             '\n'
         },
         {
-          id: 2, createdDate: '10-05-2023', dueDate: '12-07-2023', assignTo: 'John Doe', taskTitle: 'Task Title 01', taskDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+          id: 2, createdDate: '10-05-2023', dueDate: '12-07-2023', editText: 'Edit' ,deleteText: 'Delete' ,  assignTo: 'John Doe', taskTitle: 'Task Title 01', taskDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
             '\n'
         },
       ],
@@ -173,7 +173,7 @@ export default {
                 <v-window-item value="notes">
                   <v-row class="mt-1">
                     <v-col v-for="item in notesList" class="p-0" :key="item.id" cols="12 ">
-                      <NotesCard :time="item.time" :edit-note="editNote" :date="item.date"
+                      <NotesCard :editText="item.editText"  :deleteText="item.deleteText" :time="item.time" :edit-note="editNote" :date="item.date"
                         :note-description="item.note" />
                     </v-col>
                   </v-row>
@@ -182,7 +182,7 @@ export default {
                   <v-row class="mt-1">
                     <v-col>
                       <v-col v-for="item in taskList" class="p-0" :key="item.id" cols="12 ">
-                        <TaskCard :assign-to="item.assignTo" :created-at="item.createdDate" :due-date="item.dueDate"
+                        <TaskCard :editText="item.editText" :deleteText="item.deleteText" :assign-to="item.assignTo" :created-at="item.createdDate" :due-date="item.dueDate"
                           :task-title="item.taskTitle" :task-description="item.taskDescription" />
                       </v-col>
                     </v-col>

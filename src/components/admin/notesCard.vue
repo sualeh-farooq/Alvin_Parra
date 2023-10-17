@@ -8,6 +8,8 @@ export default {
     time: String,
     editNote: Function,
     deleteNote: Function,
+    editText: String ,
+    deleteText: String ,
 
 
   },
@@ -47,8 +49,9 @@ export default {
         <div class="d-flex align-start justify-end gap-2">
           <v-dialog width="600" v-model="rejectedDialog">
             <template v-slot:activator="{ props }">
-              <v-btn v-bind="props" color="primary">Edit
+              <v-btn v-bind="props" color="primary">
                 <EditIcon size="18" class="mx-1" />
+                {{ editText }}
               </v-btn>
             </template>
             <v-card class="overflow-auto w-100">
@@ -90,7 +93,7 @@ export default {
           </v-dialog>
 
 
-          <v-btn @click="deleteNote" color="error">Delete
+          <v-btn @click="deleteNote" color="error"> {{ deleteText }}
             <TrashIcon size="18" class="mx-1" />
           </v-btn>
         </div>

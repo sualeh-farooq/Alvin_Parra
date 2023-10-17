@@ -10,6 +10,9 @@ export default {
     taskDescription:String,
     editTask: Function ,
     deleteTask: Function,
+    editText: String ,
+    deleteText: String ,
+
   },
   data() {
     return {
@@ -64,7 +67,7 @@ export default {
               <div class="d-flex align-start justify-end gap-2">
                 <v-dialog width="600" v-model="rejectedDialog">
                   <template v-slot:activator="{ props }">
-                    <v-btn v-bind="props" color="primary">Edit
+                    <v-btn v-bind="props" color="primary">{{editText}}
                       <EditIcon size="18" class="mx-1" />
                     </v-btn>
                   </template>
@@ -112,7 +115,7 @@ export default {
                   </v-card>
                 </v-dialog>
 
-                <v-btn @click="deleteTask" color="error">Delete
+                <v-btn @click="deleteTask" color="error">{{deleteText}}
                   <TrashIcon size="18" class="mx-1" />
                 </v-btn>
               </div>

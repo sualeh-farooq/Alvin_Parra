@@ -1,6 +1,8 @@
 <script>
 import { ref } from 'vue';
 import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
+import NotesCard from "@/components/admin/notesCard.vue";
+import TaskCard from "@/components/admin/taskCard.vue";
 
 export default {
     data() {
@@ -222,7 +224,11 @@ export default {
             editLeadStatus: 'Lead One',
             editStage: 'Prospect - Quote',
             editTempLevel: 'Cold',
-            editType: 'Individual',
+          notesDialog: null ,
+          taskDialog: null,
+          selectedFile: null ,
+
+          editType: 'Individual',
             drawer: false,
             followUpDate: false,
             closingTarget: false, rejectedDialog,
@@ -281,13 +287,88 @@ export default {
             type: [
                 'Individual',
                 'Business'
-            ]
+            ],
+          notesList: [
+            {
+              id: 1, date: '10-05-2023', time: '05:35pm', editText: 'Edit' ,deleteText: 'Delete' ,  note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+                  '\n'
+            },
+            {
+              id: 2, date: '15-05-2023', time: '05:35pm', editText: 'Edit' ,deleteText: 'Delete' , note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+                  '\n'
+            }
+          ],
+          taskList: [
+            {
+              id: 1, createdDate: '10-05-2023', dueDate: '12-07-2023', editText: 'Edit' ,deleteText: 'Delete' ,  assignTo: 'John Doe', taskTitle: 'Task Title 01', taskDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+                  '\n'
+            },
+            {
+              id: 2, createdDate: '10-05-2023', dueDate: '12-07-2023', editText: 'Edit' ,deleteText: 'Delete' ,  assignTo: 'John Doe', taskTitle: 'Task Title 01', taskDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+                  '\n'
+            },
+          ],
+          desserts: [
+            {
+              name: 'Frozen Yogurt',
+              calories: 159,
+            },
+            {
+              name: 'Ice cream sandwich',
+              calories: 237,
+            },
+            {
+              name: 'Eclair',
+              calories: 262,
+            },
+            {
+              name: 'Cupcake',
+              calories: 305,
+            },
+            {
+              name: 'Gingerbread',
+              calories: 356,
+            },
+            {
+              name: 'Jelly bean',
+              calories: 375,
+            },
+            {
+              name: 'Lollipop',
+              calories: 392,
+            },
+            {
+              name: 'Honeycomb',
+              calories: 408,
+            },
+            {
+              name: 'Donut',
+              calories: 452,
+            },
+            {
+              name: 'KitKat',
+              calories: 518,
+            },
+          ],
 
         };
     },
     components: {
         KanbanListVue,
+      NotesCard ,
+      TaskCard
     },
+  methods: {
+    openFileInput() {
+      // Trigger a click event on the hidden file input
+      this.$refs.fileInput.click();
+    },
+    handleFileChange() {
+      // Do something with the selected file
+      console.log("Selected file:", this.selectedFile);
+      // You can perform any additional logic here, such as uploading the file to a server.
+    }
+  }
 };
 </script>
 
@@ -364,10 +445,7 @@ export default {
 
     <!--- Opportunity View Drawer on Action Button Click in Table -->
     <v-navigation-drawer color="surface" :width="700" location="right" v-model="drawer" temporary>
-
-
         <div class="ma-3">
-
 
             <div class="d-flex align-center justify-space-between ">
                 <h3>Opportunity Details</h3>
@@ -560,17 +638,54 @@ export default {
 
                     <div class="d-flex align-center justify-space-between">
                         <card-title>Notes</card-title>
-                        <v-btn color="primary">Add Note</v-btn>
+<!--                        <v-btn color="primary">Add Note</v-btn>-->
+
+                      <v-dialog width="600" v-model="notesDialog">
+                        <template v-slot:activator="{ props }">
+                          <v-btn v-bind="props" color="primary" class="mx-1">Add Note </v-btn>
+                        </template>
+                        <v-card class="overflow-auto w-100">
+                          <div class="d-flex border w-100">
+                            <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                              Add Note
+                            </v-card-title>
+
+                          </div>
+                          <v-card-text>
+                            <v-container>
+                              <v-row>
+                                <v-col cols="12" md="6">
+                                  <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
+                                </v-col>
+                                <v-col md="6" cols="12">
+                                  <v-text-field type="time" label="Note Time" variant="outlined"
+                                                class="text-input"></v-text-field>
+                                </v-col>
+                                <v-col cols="12">
+                                  <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
+                                              variant="outlined"></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="error" text @click="notesDialog = false"> Close
+                            </v-btn>
+                            <v-btn color="success" text @click="notesDialog = false"> Save </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
 
                     </div>
 
-                    <div class="border my-2">
-                        <ul>
-
-                            <li>Note 1</li>
-                            <li>Note 2</li>
-                            <li>Note 3</li>
-                        </ul>
+                    <div class=" my-2">
+                      <v-row class="mt-1">
+                        <v-col v-for="item in notesList" class="p-0" :key="item.id" cols="12 ">
+                          <NotesCard  :time="item.time" :edit-note="editNote" :date="item.date"
+                                     :note-description="item.note" />
+                        </v-col>
+                      </v-row>
                     </div>
                 </v-col>
             </v-row>
@@ -579,19 +694,70 @@ export default {
 
                     <div class="d-flex align-center justify-space-between">
                         <card-title>Tasks</card-title>
-                        <v-btn color="primary">Add Task</v-btn>
+
+
+                      <v-dialog width="600" v-model="taskDialog">
+                        <template v-slot:activator="{ props }">
+                          <v-btn v-bind="props" color="primary" class="mx-1">Add Task </v-btn>
+                        </template>
+                        <v-card class="overflow-auto w-100">
+                          <div class="d-flex border w-100">
+                            <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                              Add Task
+                            </v-card-title>
+
+                          </div>
+
+                          <v-card-text>
+                            <v-container>
+                              <v-row>
+                                <v-col cols="12">
+                                  <v-text-field v-model="taskTitle" label="Task Title" variant="outlined"
+                                                class="mb-3"></v-text-field>
+                                </v-col>
+
+                                <v-col cols="12">
+                                  <v-textarea v-model="taskDescription" filled auto-grow label="Task Description" rows="4"
+                                              row-height="20" color="primary" variant="outlined"></v-textarea>
+                                </v-col>
+
+                                <v-col cols="12" md="6">
+                                  <v-autocomplete label="Select Agent to Assign Task" v-model="agent" :items="agentsList"
+                                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+                                </v-col>
+
+                                <v-col md="6" cols="12">
+                                  <v-text-field v-model="taskDueDate" type="date" label="Task Due Date" variant="outlined"
+                                                class="text-input"></v-text-field>
+                                </v-col>
+
+                              </v-row>
+
+                            </v-container>
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="error" text @click="taskDialog = false"> Close
+                            </v-btn>
+                            <v-btn color="success" text @click="taskDialog = false"> Save </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+
 
                     </div>
 
-                    <div class="border my-2">
-                        <ul>
-
-                            <li>Task 1</li>
-                            <li>Task 2</li>
-                            <li>Task 3</li>
-                        </ul>
+                    <div class=" my-2">
+                      <v-row class="mt-1">
+                        <v-col>
+                          <v-col v-for="item in taskList" class="p-0" :key="item.id" cols="12 ">
+                            <TaskCard :assign-to="item.assignTo" :created-at="item.createdDate" :due-date="item.dueDate"
+                                      :task-title="item.taskTitle" :task-description="item.taskDescription" />
+                          </v-col>
+                        </v-col>
+                      </v-row>
                     </div>
-                    
+
                 </v-col>
             </v-row>
             <v-row>
@@ -599,27 +765,17 @@ export default {
 
                     <div class="d-flex align-center justify-space-between">
                         <card-title>Files</card-title>
-                        <v-btn color="primary">Add File</v-btn>
-
+                      <v-btn color="primary" @click="openFileInput">Add File</v-btn>
+                      <v-file-input
+                          ref="fileInput"
+                          v-model="selectedFile"
+                          accept="image/*"
+                      @change="handleFileChange"
+                      style="display: none"
+                      ></v-file-input>
                     </div>
 
-                    <div class="border my-2">
-                        <v-simple-table>
-    <template v-slot:default>
-      <thead>
-        <tr>
-          <th class="text-left">
-            Name
-          </th>
-          <th class="text-left">
-            Calories
-          </th>
-        </tr>
-      </thead>
-      </template>
-      </v-simple-table>
-                    </div>
-                    
+
                 </v-col>
             </v-row>
 

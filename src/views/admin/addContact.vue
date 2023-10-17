@@ -80,13 +80,21 @@ export default {
       opportunityDate: false,
       followUpDate: false,
       closingTarget: false,
+      dobDate: false,
 
-      leadStatus: [
-        'Lead Status One',
-        'Lead Status Two',
-        'Lead Status Three',
-        'Lead Status Four',
-        'Lead Status Five',
+      existingContacts: [
+        'Contact One',
+        'Contact Two',
+        'Contact Three',
+        'Contact Four',
+        'Contact Five',
+      ],
+      googleContacts: [
+        'Google Contact One',
+        'Google Contact Two',
+        'Google Contact Three',
+        'Google Contact Four',
+        'Google Contact Five',
       ],
       Pipelines: [
         'Pipeline One',
@@ -136,7 +144,13 @@ export default {
         'Product One',
         'Product Two',
         'Product Three'
+      ],
+      drinks: [
+        { id: 1, name: 'None' },
+        { id: 2, name: 'Tea' },
+        { id: 3, name: 'Coffee' }
       ]
+
     }
   }
 }
@@ -152,67 +166,66 @@ const opportunitySourceVal = ref(['Existing'])
       <v-card variant="outlined" elevation="0" class="withbg">
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
-            <h3 class="text-h3">Add Opportunity</h3>
+            <h3 class="text-h3">Add Contact</h3>
           </div>
         </v-card-item>
         <v-divider></v-divider>
         <v-card-text>
           <Form>
 
-            <v-row>
+            <v-row class="mb-3" >
               <v-col cols="12" md="6">
-                <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
+                <v-autocomplete label="Find Existing from CRM"  :items="existingContacts"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
+                <v-btn class="mt-3" color="primary" >Use / Edit this Contact  <ArrowUpIcon size="20" class="mx-2" /> </v-btn>
 
               </v-col>
               <v-col cols="12" md="6">
-                <div class="mt-6">
-                                    <span>Contact not found ? <RouterLink to="/admin/addContact">Create New Contact
-                                        </RouterLink>
-                                    </span>
-
-                </div>
+                <v-autocomplete label="Search Google Contacts"  :items="googleContacts"
+                                color="primary" variant="outlined" hide-details></v-autocomplete>
+                <v-btn class="mt-3" color="primary" >Import this Google Contact  <ArrowUpIcon size="20" class="mx-2" /> </v-btn>
 
               </v-col>
 
-
-              <v-col cols="12" md="6">
-                <div @click="opportunityDate = true" v-if="!opportunityDate">
-                  <v-text-field type="text" label="Opportunity Created Date" variant="outlined"
-                                class="mb-3"></v-text-field>
-
-                </div>
-                <div v-else>
-                  <v-text-field type="date" label="Opportunity Created Date" variant="outlined"
-                                class="mb-3"></v-text-field>
-                </div>
-              </v-col>
-
-              <v-col cols="12" md="6">
-                <v-text-field type="text" label="Opportunity Name"
-                              placeholder="<lastname> <pipeline> <date>" variant="outlined"
-                              class="mb-3"></v-text-field>
-              </v-col>
             </v-row>
+
             <v-divider></v-divider>
 
             <v-row>
               <v-col cols="12">
                 <div class="mt-3">
-                  <h2 class="text-h3 text-disabled">Pipeline Details</h2>
+                  <h2 class="text-h3 text-disabled">Contact Details</h2>
                 </div>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Select Pipeline Stage" v-model="pipelineStage"
-                                :items="pipelineStages" color="primary" variant="outlined"
-                                hide-details></v-autocomplete>
+
+
+              <v-col cols="12" >
+                <div>
+                  <v-radio-group inline>
+                    <v-radio label="Individual" value="individual"></v-radio>
+                    <v-radio label="Business" value="business"></v-radio>
+                  </v-radio-group>
+                  <!-- <p class="mt-3">Selected: {{ selectedRadioValues }}</p> -->
+                </div>
 
               </v-col>
 
               <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
+                <v-text-field type="text" label="First Name" variant="outlined"
+                              class="mb-3"></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6" lg="4">
+                <v-text-field type="text" label="Last Name" variant="outlined"
+                              class="mb-3"></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6" lg="4">
+                <v-text-field type="email" label="Email" variant="outlined"
+                              class="mb-3"></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6" lg="4">
+                <v-text-field type="number" label="Phone Number" variant="outlined"
+                              class="mb-3"></v-text-field>
               </v-col>
 
               <v-col cols="12" md="6" lg="4">
@@ -226,29 +239,42 @@ const opportunitySourceVal = ref(['Existing'])
                                 class="mb-3"></v-text-field>
                 </div>
               </v-col>
-
               <v-col cols="12" md="6" lg="4">
-                <div @click="closingTarget = true" v-if="!closingTarget">
-                  <v-text-field type="text" label="Est Closing Target" variant="outlined"
+                <div @click="dobDate = true" v-if="!dobDate">
+                  <v-text-field type="text" label="Date of Birth" variant="outlined"
                                 class="mb-3"></v-text-field>
 
                 </div>
                 <div v-else>
-                  <v-text-field type="date" label="Est Closing Target" variant="outlined"
+                  <v-text-field type="date" label="Date of Birth" variant="outlined"
                                 class="mb-3"></v-text-field>
                 </div>
               </v-col>
 
-
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Tempera" v-model="tempVal"
-                                :items="Temprature" color="primary" variant="outlined"
-                                hide-details></v-autocomplete>
-
+              <v-col cols="12">
+                <v-textarea  filled auto-grow label="Street Address" rows="2"
+                            row-height="20" color="primary" variant="outlined"></v-textarea>
               </v-col>
 
               <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Existing Source of Opportunity" v-model="opportunitySourceVal"
+                <v-text-field type="text" label="City" variant="outlined"
+                              class="mb-3"></v-text-field>
+              </v-col>
+
+
+              <v-col cols="12" md="6" lg="4">
+                <v-text-field type="text" label="State" variant="outlined"
+                              class="mb-3"></v-text-field>
+              </v-col>
+
+
+              <v-col cols="12" md="6" lg="4">
+                <v-text-field type="text" label="Zipcode" variant="outlined"
+                              class="mb-3"></v-text-field>
+              </v-col>
+
+              <v-col cols="12" md="6" lg="4">
+                <v-autocomplete label="Source for Contact" v-model="opportunitySourceVal"
                                 :items="opportunitySources"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
@@ -259,68 +285,26 @@ const opportunitySourceVal = ref(['Existing'])
               </v-col>
 
 
+
+
+
+
+
+
+
             </v-row>
 
             <v-divider></v-divider>
 
-            <v-row>
-              <v-col cols="12">
-                <div class="mt-3">
-                  <h2 class="text-h3 text-disabled">Agent Details</h2>
-                </div>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-text-field type="text" label="Writing Agent" variant="outlined"
-                              class="mb-3"></v-text-field>
-              </v-col>
+            <v-col cols="12" >
 
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Writing Agent Split"
-                                :items="writingAgentSplit"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-              </v-col>
+              <v-btn  color="primary">Save Contact
+              </v-btn>
 
-              <v-col cols="12" md="6" lg="4">
-                <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Agent 2 Split"
-                                :items="agent2Split"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Service Type"
-                                :items="serviceType"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Carrier"
-                                :items="carrier"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-autocomplete label="Product"
-                                :items="product"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-text-field type="text" label="Est Annual Premium" color="primary" variant="outlined"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="6" lg="4">
-                <v-text-field type="select" :items="agent2Split" label="Opportunity Income" color="primary" variant="outlined"></v-text-field>
-              </v-col>
 
-              <v-col cols="12" md="6">
 
-                <v-btn class="mx-1" color="primary">Save & Close
-                </v-btn>
+            </v-col>
 
-                <v-btn class="mx-1" color="primary">Save + Add Opportunity
-                </v-btn>
-
-              </v-col>
-
-            </v-row>
           </Form>
 
         </v-card-text>
