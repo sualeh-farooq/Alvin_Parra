@@ -1,39 +1,32 @@
-<script>
+<script lang="ts">
+import AgentsTable from "@/components/admin/agentsTable.vue";
+import TestTable from "@/components/admin/testComponent.vue"
 export default {
-    name: 'Agents Page',
-    drawer: null
+  name: 'Agents-Page',
+  components: {
+    TestTable,
+    AgentsTable
+  }
 }
+
+
 </script>
 
 <template>
- <v-card>
-    <v-layout>
-      <v-navigation-drawer
-        v-model="drawer"
-        app
-      >
-        <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
-          title="John Leider"
-        ></v-list-item>
-
+  <v-row>
+    <v-col col="12">
+      <v-card variant="outlined" elevation="0" class="withbg">
+        <v-card-item>
+          <div class="d-sm-flex align-center justify-space-between">
+            <h3 class="text-h3">Agents</h3>
+          </div>
+        </v-card-item>
         <v-divider></v-divider>
+        <v-card-text>
+          <AgentsTable/>
 
-        <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
-          <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-      <v-main style="height: 250px">
-        <div class="d-flex justify-center align-center h-100">
-          <v-btn
-            color="primary"
-            @click.stop="drawer = !drawer"
-          >
-            Toggle
-          </v-btn>
-        </div>
-      </v-main>
-    </v-layout>
-  </v-card>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
