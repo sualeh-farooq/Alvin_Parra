@@ -14,9 +14,11 @@ export const useKanbanStore = defineStore({
       try {
         const response = await axios.get('/api/data/kanban');
         this.kanbanItems = response.data;
+        console.log(response.data)
       } catch (error) {
         alert(error);
         console.log(error);
+
       }
     },
     addTask(itemID: number, item: string) {

@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       rejectedDialog: null,
-      editNoteTime: '05:35',2023
+      editNoteTime: '05:35',
       editNoteDate: '2023-02-10',  // Format as 'YYYY-MM-DD'
       editNoteDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas incidunt praesentium illo modi saepe. Reiciendis sequi illum facere tenetur deleniti quo nisi numquam, culpa earum tempora veniam autem iure quas!\n' +
         '                        '

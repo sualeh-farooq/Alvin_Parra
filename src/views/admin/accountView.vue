@@ -260,7 +260,7 @@ export default {
                   </v-row>
                 </v-window-item>
 
-                <v-col class="p-0 mt-3" cols="12" md="6">
+                <v-col style="padding: 0px;" class=" mt-2" cols="12" md="6">
                   <v-btn  color="primary">Update Settings
                   </v-btn>
                 </v-col>

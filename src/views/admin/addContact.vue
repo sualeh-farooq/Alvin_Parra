@@ -294,9 +294,8 @@ const opportunitySourceVal = ref(['Existing'])
 
             </v-row>
 
-            <v-divider></v-divider>
 
-            <v-col cols="12" >
+            <v-col style="padding: 0px" cols="12" >
 <div class="d-flex gap-2" >
               <v-btn  color="primary">Save & Close
               </v-btn>

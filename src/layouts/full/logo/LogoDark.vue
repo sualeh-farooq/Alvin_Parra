@@ -1,8 +1,8 @@
 <template>
   <div class="logo">
-    <RouterLink to="/">
+<!--    <RouterLink to="">-->
         <img class="w-100" alt="Logo" src="../../../assets/images/logos/logo3.png" />
-    </RouterLink>
+<!--    </RouterLink>-->
   </div>
 </template>
 <script setup lang="ts">

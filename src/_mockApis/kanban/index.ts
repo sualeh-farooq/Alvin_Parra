@@ -9,14 +9,17 @@ import back4 from '@/assets/images/profile/profile-back-4.png';
 
 const chance = new Chance();
 type taskType = {
-  description: String;
-  dueDate: Date;
   id: Number;
-  userStory: String;
-  image?: String;
-  priority: String;
-  title: String;
-};
+  opportunityName: String;
+  name: String;
+  followUp: Date;
+  estCloseDate: Date;
+  daysOpen: Number;
+  agent:String,
+  split: String,
+  estIncome: String;
+  temp: String;
+ };
 
 type KanbanItem = {
   title: String;
@@ -26,120 +29,194 @@ type KanbanItem = {
 
 const KanbanData: KanbanItem[] = [
   {
-    title: 'New',
+    title: 'Lead In - Interested',
+    color: '#158CCF ',
     id: 1,
     tasks: [
       {
-        description: 'Content of item 1',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: sub(new Date(), { days: 12 }),
-        id: 1,
-        image: back1,
-        priority: 'low',
-        title: 'Online fees payment & instant announcements'
+        id: 1 ,
+        opportunityName: 'Opportunity 1',
+        name: 'John Doe',
+        followUp: '2023-09-20',
+        estCloseDate: '2023-10-05',
+        daysOpen: 4,
+        agent: 'Micheal Jordan',
+        split: '90%',
+        estIncome: '$1850',
+        temp: 'Cold',
       },
       {
-        description: 'Content of item 8',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: add(new Date(), { days: 17 }),
-        id: 8,
-
-        priority: 'low',
-        title: 'Attendance checking & homework details'
+        id: 2 ,
+        opportunityName: 'Opportunity 2',
+        name: 'Oliver Lee',
+        followUp: '2023-01-03',
+        estCloseDate: '2023-05-20',
+        daysOpen: 4,
+        agent: 'Liam Noah',
+        split: '100%',
+        estIncome: '$3050',
+        temp: 'Warm',
       },
       {
-        description: 'Content of item 9',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: add(new Date(), { days: 8 }),
-        id: 9,
-
-        priority: 'high',
-        title: 'Admission, Staff & Schedule management'
-      }
-    ]
-  },
-  {
-    title: 'Active',
-    id: 2,
-    tasks: [
-      {
-        description: 'Content of item 3',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: sub(new Date(), { days: 8 }),
         id: 3,
-
-        priority: 'low',
-        title: 'Update React & TypeScript version'
+        opportunityName: 'Opportunity 3',
+        name: 'Sophia Smith',
+        followUp: '2023-10-22',
+        estCloseDate: '2023-03-05',
+        daysOpen: 7,
+        agent: 'Emma Johnson',
+        split: '85%',
+        estIncome: '$2500',
+        temp: 'Warm',
       },
+    ]
+  },
+  {
+    title: 'Prospect - Quote',
+    id: 2,
+    color: '#eb7d35 ',
+    tasks: [
       {
-        description: 'Content of item 4',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: sub(new Date(), { days: 6 }),
         id: 4,
-        image: back2,
-        priority: 'low',
-        title: 'Set allowing rules for trusted applications.'
+        opportunityName: 'Opportunity 4',
+        name: 'Liam Wilson',
+        followUp: '2023-12-05',
+        estCloseDate: '2023-20-06',
+        daysOpen: 5,
+        agent: 'Oliver Davis',
+        split: '95%',
+        estIncome: '$1700',
+        temp: 'Hot',
       },
       {
-        description: 'Content of item 5',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: sub(new Date(), { days: 9 }),
         id: 5,
-        image: back3,
-        priority: 'medium',
-        title: 'Managing Applications Launch Control'
-      }
-    ]
-  },
-  {
-    title: 'Resolved',
-    id: 3,
-    tasks: [
+        opportunityName: 'Opportunity 5',
+        name: 'Olivia Brown',
+        followUp: '2023-10-22',
+        estCloseDate: '2023-03-05',
+        daysOpen: 9,
+        agent: 'Ava Evans',
+        split: '90%',
+        estIncome: '$3000',
+        temp: 'Cold',
+      },
       {
-        description: 'Content of item 2',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: sub(new Date(), { days: 18 }),
-        id: 2,
-
-        priority: 'high',
-        title: 'Creation and Maintenance of Inventory Objects'
-      }
-    ]
-  },
-  {
-    title: 'Closed',
-    id: 4,
-    tasks: [
-      {
-        description: 'Content of item 6',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: set(new Date(), { hours: 10, minutes: 30 }),
         id: 6,
-
-        priority: 'medium',
-        title: 'Run codemods'
+        opportunityName: 'Opportunity 6',
+        name: 'Noah Lee',
+        followUp: '2023-04-25',
+        estCloseDate: '2023-05-05',
+        daysOpen: 8,
+        agent: 'Sophia White',
+        split: '80%',
+        estIncome: '$2200',
+        temp: 'Hot',
       },
+    ]
+  },
+  {
+    title: 'Prospect - App Signed',
+    id: 3,
+    color: '#eb7d35 ',
+    tasks: [
       {
-        description: 'Content of item 7',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: add(new Date(), { days: 5 }),
         id: 7,
-        image: back4,
-        priority: 'low',
-        title: 'Purchase Requisitions, Adjustments, and Transfers.'
+        opportunityName: 'Opportunity 7',
+        name: 'Lucas Garcia',
+        followUp: '2023-04-25',
+        estCloseDate: '2023-05-05',
+        daysOpen: 7,
+        agent: 'Liam Martin',
+        split: '100%',
+        estIncome: '$2800',
+        temp: 'Warm',
+      },
+    ]
+  },
+  {
+    title: 'Prospect - Underwriting',
+    id: 4,
+    color: '#eb7d35 ',
+    tasks: [
+      {
+        id: 8,
+        opportunityName: 'Opportunity 8',
+        name: 'Ava Lopez',
+        followUp: '2023-01-03',
+        estCloseDate: '2023-05-20',
+        daysOpen: 5,
+        agent: 'Mia Rodriguez',
+        split: '85%',
+        estIncome: '$1950',
+        temp: 'Cold',
+      },
+      {
+        id: 9,
+        opportunityName: 'Opportunity 9',
+        name: 'Mia Hernandez',
+        followUp: '2023-04-25',
+        estCloseDate: '2023-05-05',
+        daysOpen: 3,
+        agent: 'Lucas Wilson',
+        split: '95%',
+        estIncome: '$3200',
+        temp: 'Hot',
       },
 
       {
-        description: 'Content of item 10',
-        userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
-        dueDate: add(new Date(), { days: 12 }),
         id: 10,
-
-        priority: 'low',
-        title: 'Handling breaking changes'
+        opportunityName: 'Opportunity 10',
+        name: 'Oliver Clark',
+        followUp: '2023-09-20',
+        estCloseDate: '2023-10-05',
+        daysOpen: 5,
+        agent: 'Noah Martinez',
+        split: '90%',
+        estIncome: '$2400',
+        temp: 'Warm',
+      },
+    ]
+  },
+  {
+    title: 'Client Won - In Force' ,
+    id: 5,
+    color:'#70ad47 ',
+    tasks: [
+      {
+        id: 11,
+        opportunityName: 'Opportunity 11',
+        name: 'Charlotte Adams',
+        followUp: '2023-01-03',
+        estCloseDate: '2023-01-10',
+        daysOpen: 10,
+        agent: 'Olivia Baker',
+        split: '80%',
+        estIncome: '$1800',
+        temp: 'Cold',
+      },
+    ]
+  },
+  {
+    title: 'Lost' ,
+    id:6 ,
+    color:'#dc3545',
+    tasks: [
+      {
+        id: 12,
+        opportunityName: 'Opportunity 12',
+        name: 'William Turner',
+        followUp: '2023-04-25',
+        estCloseDate: '2023-05-05',
+        daysOpen: 8,
+        agent: 'Aiden King',
+        split: '100%',
+        estIncome: '$3100',
+        temp: 'Hot',
       }
     ]
   }
+
+
 ];
 
 mock.onGet('/api/data/kanban').reply(() => {

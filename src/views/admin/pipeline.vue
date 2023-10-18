@@ -350,7 +350,8 @@ export default {
               calories: 518,
             },
           ],
-
+          sortByPipeline: ['AUM' , 'Annuity' , 'Life' , 'Medicare' , 'Health', 'Trust' , 'LTC/DI' , 'Supplement' , 'Group Plans','Other'],
+          selectedPipeline: ['Annuity']
         };
     },
     components: {
@@ -377,7 +378,11 @@ export default {
 
 
 <template>
-    <v-row>
+
+
+
+
+  <v-row>
         <v-col col="12">
             <v-card variant="outlined" elevation="0" class="withbg">
                 <v-card-item>
@@ -398,19 +403,29 @@ export default {
                 <v-card-text>
                     <v-row>
                         <v-col>
-                            <v-tabs v-model="tab2" color="primary">
+                          <div class="d-flex align-center w-100 justify-space-between" >
+                            <div>
+                              <v-tabs v-model="tab2" color="primary">
                                 <v-tab value="11">
-                                    <CardsIcon stroke-width="1.5" width="20" class="v-icon--start" /> Cards View
+                                  <CardsIcon stroke-width="1.5" width="20" class="v-icon--start" /> Cards View
                                 </v-tab>
                                 <v-tab value="22">
-                                    <ListIcon stroke-width="1.5" width="20" class="v-icon--start" /> List View
+                                  <ListIcon stroke-width="1.5" width="20" class="v-icon--start" /> List View
                                 </v-tab>
 
-                            </v-tabs>
+                              </v-tabs>
+
+                            </div>
+                            <div class="w-25" >
+
+                              <v-select label="Select Pipeline" :items="sortByPipeline" color="primary" variant="outlined" hide-details density="compact" v-model="selectedPipeline"></v-select>
+                            </div>
+
+                          </div>
 
                             <v-window v-model="tab2">
                                 <v-window-item value="11">
-                                    <KanbanListVue />
+                                    <KanbanListVue class="mt-2" />
                                 </v-window-item>
 
                                 <v-window-item value="22">

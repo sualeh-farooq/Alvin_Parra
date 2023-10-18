@@ -16,7 +16,7 @@ import widget2 from '@/assets/images/landing/widget-2.png';
           Berry is Vue3 based admin template which helps you to build faster and beautiful web applications.
         </p>
         <div data-aos="fade-up" data-aos-duration="1000">
-          <v-btn color="secondary" size="large" class="mr-2" to="/dashboard/default">Live Preview</v-btn>
+          <v-btn color="secondary" size="large" class="mr-2" to="/login">Live Preview</v-btn>
           <v-btn color="primary" size="large" variant="text" target="_" href="https://store.vuetifyjs.com/products/berry-vuetify-admin-template"
             >Purchase Now</v-btn
           >
