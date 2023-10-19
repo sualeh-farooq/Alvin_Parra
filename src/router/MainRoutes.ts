@@ -559,6 +559,56 @@ const MainRoutes = {
       path: '/agency/settings',
       component: () =>import('@/views/agency/settings.vue')
     },
+
+
+    /// Agent App Routes
+
+    {
+      name: 'Agent Dashboard',
+      path: '/agent/dashboard',
+      component: () =>import('@/views/agent/index.vue')
+    },
+    {
+      name: 'Agent Add Opportunity',
+      path: '/agent/addOpportunity',
+      component: () =>import('@/views/agent/addOpportunity.vue')
+    },
+    {
+      name: 'Agent Pipeline',
+      path: '/agent/pipeline',
+      component: () =>import('@/views/agent/pipeline.vue')
+    },
+    {
+      name: 'Agent Add Contact',
+      path: '/agent/addContact',
+      component: () =>import('@/views/agent/addContact.vue')
+    },
+    {
+      name: 'Agent Add Pipeline',
+      path: '/agent/addPipeline',
+      component: () =>import('@/views/agent/addPipeline.vue')
+    },
+    {
+      name: 'Agents',
+      path: '/agent/agents',
+      component: () =>import('@/views/agent/agents.vue')
+    },
+
+    {
+      name: 'Agents View',
+      path: '/agent/agentView',
+      component: () =>import('@/views/agent/agentView.vue')
+    },
+    {
+      name: 'Agents Settings',
+      path: '/agent/settings',
+      component: () =>import('@/views/agent/settings.vue')
+    },
+
+
+
+
+
   ]
 };
 

@@ -7,11 +7,12 @@ import NavGroup from './NavGroup/index.vue';
 import NavItem from './NavItem/index.vue';
 import NavCollapse from './NavCollapse/NavCollapse.vue';
 import Logo from '../logo/Logo.vue';
+import agentSidebar from './agentSidebar';
 
 const customizer = useCustomizerStore();
 const sidebarMenu = shallowRef(sidebarItems);
 const agencySidebarMenu = shallowRef(agencySidebar)
-
+const agentSidebarMenu = shallowRef(agentSidebar)
 
 </script>
 
@@ -29,7 +30,7 @@ const agencySidebarMenu = shallowRef(agencySidebar)
     <perfect-scrollbar class="scrollnavbar">
       <v-list class="pa-4">
         <!---Menu Loop -->
-        <template v-for="(item, i) in agencySidebarMenu">
+        <template v-for="(item, i) in agentSidebarMenu">
           <!---Item Sub Header -->
           <NavGroup :item="item" v-if="item.header" :key="item.title" />
           <!---Item Divider -->
