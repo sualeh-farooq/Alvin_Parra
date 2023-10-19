@@ -174,7 +174,7 @@ export default {
           <div class="operation-wrapper">
 
 
-            <RouterLink to="/admin/agentView">
+            <RouterLink to="/agency/agentView">
 
             <v-btn icon color="primary" variant="text">
               <EyeIcon size="20" />

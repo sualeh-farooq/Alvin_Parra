@@ -308,48 +308,7 @@ export default {
                   '\n'
             },
           ],
-          desserts: [
-            {
-              name: 'Frozen Yogurt',
-              calories: 159,
-            },
-            {
-              name: 'Ice cream sandwich',
-              calories: 237,
-            },
-            {
-              name: 'Eclair',
-              calories: 262,
-            },
-            {
-              name: 'Cupcake',
-              calories: 305,
-            },
-            {
-              name: 'Gingerbread',
-              calories: 356,
-            },
-            {
-              name: 'Jelly bean',
-              calories: 375,
-            },
-            {
-              name: 'Lollipop',
-              calories: 392,
-            },
-            {
-              name: 'Honeycomb',
-              calories: 408,
-            },
-            {
-              name: 'Donut',
-              calories: 452,
-            },
-            {
-              name: 'KitKat',
-              calories: 518,
-            },
-          ],
+
           sortByPipeline: ['AUM' , 'Annuity' , 'Life' , 'Medicare' , 'Health', 'Trust' , 'LTC/DI' , 'Supplement' , 'Group Plans','Other'],
           selectedPipeline: ['Annuity']
         };
@@ -389,11 +348,11 @@ export default {
                     <div class="d-sm-flex align-center justify-space-between">
                         <h3 class="text-h3">Pipelines</h3>
                         <div class="d-flex  justify-end ">
-                          <RouterLink to="/admin/addPipeline" >
+                          <RouterLink to="/agency/addPipeline" >
                             <v-btn color="primary" class="mx-1">Add Pipeline +</v-btn>
 
                           </RouterLink>
-                            <RouterLink to="/admin/addOpportunity">
+                            <RouterLink to="/agency/addOpportunity">
 
                                 <v-btn color="primary" class="mx-1">
                                     Add Opportunity +

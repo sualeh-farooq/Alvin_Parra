@@ -38,11 +38,22 @@ const chartOptions1 = computed(() => {
     legend: {
       show: true
     },
+
+
+    xaxis: {
+      labels: {
+        show: true
+      }
+    },
+
     yaxis: {
       min: 1,
       max: 100,
       labels: {
-        show: true
+        show: true, formatter: function (value) {
+          return value + " Y-axis Label"; // Change the label text as needed
+        }
+
       }
     },
     tooltip: {
@@ -58,14 +69,7 @@ const lineChart1 = {
       name: 'Youtube',
       data: [10, 90, 65, 85, 40, 80, 30]
     },
-    {
-      name: 'Facebook',
-      data: [50, 30, 25, 15, 60, 10, 25]
-    },
-    {
-      name: 'Twitter',
-      data: [5, 50, 40, 55, 20, 40, 20]
-    }
+
   ]
 };
 </script>
@@ -74,10 +78,10 @@ const lineChart1 = {
   <v-card elevation="0" class="mb-6">
     <v-card variant="outlined">
       <v-card-text>
-        <div class="d-sm-flex align-center">
+        <div class="d-sm-flex align-center justify-space-between">
           <div>
-            <h3 class="text-h3 mb-1">Market Share</h3>
-            <span class="text-subtitle-1 text-medium-emphasis mb-5">Department wise monthly sales report</span>
+            <h3 class="text-h3 mb-1">Agents Added</h3>
+            <span class="text-subtitle-1 text-medium-emphasis mb-5">Agents Stats Added by Agency</span>
           </div>
           <v-col cols="12" sm="3">
             <v-select
@@ -96,26 +100,7 @@ const lineChart1 = {
           </v-col>
         </div>
 
-        <v-row class="mt-5">
-          <v-col cols="12" sm="3" class="d-flex align-center">
-            <v-btn color="lightsecondary" icon class="text-secondary" rounded="md" variant="flat">
-              <BrandFacebookIcon stroke-width="1.5" width="20" />
-            </v-btn>
-            <h4 class="text-h4 ml-3">+45.36%</h4>
-          </v-col>
-          <v-col cols="12" sm="3" class="d-flex align-center">
-            <v-btn color="lightprimary" icon class="text-primary" rounded="md" variant="flat">
-              <BrandTwitterIcon stroke-width="1.5" width="20" />
-            </v-btn>
-            <h4 class="text-h4 ml-3">- 50.69%</h4>
-          </v-col>
-          <v-col cols="12" sm="3" class="d-flex align-center">
-            <v-btn color="lighterror" icon class="text-error" rounded="md" variant="flat">
-              <BrandYoutubeIcon stroke-width="1.5" width="20" />
-            </v-btn>
-            <h4 class="text-h4 ml-3">+ 16.85%</h4>
-          </v-col>
-        </v-row>
+
       </v-card-text>
       <apexchart type="area" height="200" :options="chartOptions1" :series="lineChart1.series"> </apexchart>
     </v-card>

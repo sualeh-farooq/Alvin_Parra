@@ -74,98 +74,60 @@ const sidebarItem: menu[] = [
   {
     title: 'Dashboard',
     icon: DashboardIcon,
-    to: '/admin/dashboard'
+    to: '/agency/dashboard'
   },
   {
     title: 'Pipleine',
     icon: FilterIcon,
-    to: '/admin/pipeline'
+    to: '/agency/pipeline'
   },
   {
-    title: 'Accounts',
+    title: 'Contacts',
     icon: UsersIcon,
-    to: '/admin/accounts'
+    to: '/agency/contacts'
   },
   {
     title: 'Notes & Tasks',
     icon: NotesIcon,
-    to: '/admin/notes'
+    to: '/agency/notes'
   },
   {
     title: 'Agents',
     icon: UsersIcon,
-    to: '/admin/agents'
-  },
-  {
-      title: 'Accounts Approvals',
-      icon: CheckboxIcon ,
-      to : '/admin/approvals'
+    to: '/agency/agents'
   },
 
-  {
-    title: 'Marketing',
-    icon: WorldIcon,
-    to: '/admin/marketing',
-    children: [
-      {
-        title: 'Campaigns',
-        icon: CircleIcon,
-        to: '/admin/campaigns/'
-      },
-      {
-        title: 'Forms',
-        icon: CircleIcon,
-        to: '/admin/campaigns/'
-      },
-      {
-        title: 'Templates',
-        icon: CircleIcon,
-        to: '/admin/template/'
-      },
-      {
-        title: 'Send Sms',
-        icon: CircleIcon,
-        to: '/admin/sms/'
-      },
-      {
-        title: 'Marketing Forms',
-        icon: CircleIcon,
-        to: '/admin/forms/'
-      }
-    ]
-  },
-
-
-
-  {
-    title: 'Default',
-    icon: DashboardIcon,
-    to: '/dashboard/default'
-  },
- 
- 
-  {
-    title: 'Analytics',
-    icon: DeviceAnalyticsIcon,
-    to: '/dashboard/analytics'
-  },
-
-  // { header: 'Widget' },
-  {
-    title: 'Statistics',
-    icon: ChartArcsIcon,
-    to: '/widget/statistics'
-  },
-  {
-    title: 'Data',
-    icon: ClipboardIcon,
-    to: '/widget/data'
-  },
-  {
-    title: 'Chart',
-    icon: ChartInfographicIcon,
-    to: '/widget/chart'
-  },
+  //
+  //
+  // {
+  //   title: 'Default',
+  //   icon: DashboardIcon,
+  //   to: '/dashboard/default'
+  // },
+  //
+  //
+  // {
+  //   title: 'Analytics',
+  //   icon: DeviceAnalyticsIcon,
+  //   to: '/dashboard/analytics'
+  // },
+  //
+  // // { header: 'Widget' },
+  // {
+  //   title: 'Statistics',
+  //   icon: ChartArcsIcon,
+  //   to: '/widget/statistics'
+  // },
+  // {
+  //   title: 'Data',
+  //   icon: ClipboardIcon,
+  //   to: '/widget/data'
+  // },
+  // {
+  //   title: 'Chart',
+  //   icon: ChartInfographicIcon,
+  //   to: '/widget/chart'
+  // },
 
   // {
   //   title: 'Users',

@@ -433,7 +433,7 @@ const MainRoutes = {
     },
 
 
-    /// Main App Routes
+    /// Main Admin App Routes
 
     {
       name: 'Dashboard',
@@ -494,9 +494,71 @@ const MainRoutes = {
       name: 'Add Pipeline Page' ,
       path: '/admin/addPipeline',
       component: () =>import('@/views/admin/addPipeline.vue')
-    }
-    
-    
+    },
+    {
+      name: 'Agent View Page' ,
+      path: '/admin/agentView',
+      component: () =>import('@/views/admin/agentView.vue')
+    },
+
+    /// Agency App Routes
+    {
+      name: 'Agency Dashboard',
+      path: '/agency/dashboard',
+      component: () =>import('@/views/agency/index.vue')
+    },
+    {
+      name: 'Agency Pipeline',
+      path: '/agency/pipeline',
+      component: () =>import('@/views/agency/pipeline.vue')
+    },
+
+    {
+      name: 'Agency Add Oppportunity',
+      path: '/agency/addOpportunity',
+      component: () =>import('@/views/agency/addOpportunity.vue')
+    },
+    {
+      name: 'Agency Contacts',
+      path:'/agency/contacts',
+      component: () => import('@/views/agency/contacts.vue')
+    },
+    {
+      name: 'Agency Add Contact',
+      path: '/agency/addContact',
+      component: () =>import('@/views/agency/addContact.vue')
+    },
+
+    {
+      name: 'Agency View Contact',
+      path: '/agency/contactView',
+      component: () =>import('@/views/agency/contactView.vue')
+    },
+    {
+      name: 'Agency Add Pipeline',
+      path: '/agency/addPipeline',
+      component: () =>import('@/views/agency/addPipeline.vue')
+    },
+    {
+      name: 'Agency Notes ',
+      path: '/agency/notes',
+      component: () =>import('@/views/agency/notes.vue')
+    },
+    {
+      name: 'Agency Agents ',
+      path: '/agency/agents',
+      component: () =>import('@/views/agency/agents.vue')
+    },
+    {
+      name: 'Agency Agents View ',
+      path: '/agency/agentView',
+      component: () =>import('@/views/agency/agentView.vue')
+    },
+    {
+      name: 'Agency Settings Page ',
+      path: '/agency/settings',
+      component: () =>import('@/views/agency/settings.vue')
+    },
   ]
 };
 
