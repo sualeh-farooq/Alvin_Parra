@@ -489,6 +489,11 @@ const MainRoutes = {
       name: 'Accounts View' ,
       path: '/admin/accountView' ,
       component: () => import('@/views/admin/accountView.vue')
+    },
+    {
+      name: 'Add Pipeline Page' ,
+      path: '/admin/addPipeline',
+      component: () =>import('@/views/admin/addPipeline.vue')
     }
     
     

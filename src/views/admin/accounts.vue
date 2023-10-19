@@ -7,7 +7,7 @@ const searchField = ref(['fName', 'email', 'source', 'phone', 'date']);
 const searchValue = ref('');
 
 const headers = [
-  { text: 'Name', value: 'fName', sortable: true },
+  { text: 'Name', value: 'fName', sortable: true , colspan: 3 },
   { text: 'Email', value: 'email', sortable: true },
   { text: 'Source', value: 'source', sortable: true },
   { text: 'Phone', value: 'phone', sortable: true },
@@ -323,6 +323,11 @@ import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Accounts</h3>
+
+              <RouterLink to="/admin/addContact" >
+                <v-btn color="primary" >Add Account + </v-btn>
+
+              </RouterLink>
 
           </div>
         </v-card-item>

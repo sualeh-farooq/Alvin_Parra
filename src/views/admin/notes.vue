@@ -66,53 +66,53 @@ export default {
 
 
 
-                <v-dialog width="600" v-model="taskDialog">
-                <template v-slot:activator="{ props }">
-                  <v-btn v-bind="props" color="primary" class="mx-1">Add Task +</v-btn>
-                </template>
-                <v-card class="overflow-auto w-100">
-                  <div class="d-flex border w-100">
-                    <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-                      Add Task
-                    </v-card-title>
+                  <v-dialog width="600" v-model="taskDialog">
+                  <template v-slot:activator="{ props }">
+                    <v-btn v-bind="props" color="primary" class="mx-1">Add Task +</v-btn>
+                  </template>
+                  <v-card class="overflow-auto w-100">
+                    <div class="d-flex border w-100">
+                      <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                        Add Task
+                      </v-card-title>
 
-                  </div>
+                    </div>
 
-                  <v-card-text>
-                    <v-container>
-                      <v-row>
-                        <v-col cols="12">
-                          <v-text-field v-model="taskTitle" label="Task Title" variant="outlined"
-                            class="mb-3"></v-text-field>
-                        </v-col>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols="12">
+                            <v-text-field v-model="taskTitle" label="Task Title" variant="outlined"
+                              class="mb-3"></v-text-field>
+                          </v-col>
 
-                        <v-col cols="12">
-                          <v-textarea v-model="taskDescription" filled auto-grow label="Task Description" rows="4"
-                            row-height="20" color="primary" variant="outlined"></v-textarea>
-                        </v-col>
+                          <v-col cols="12">
+                            <v-textarea v-model="taskDescription" filled auto-grow label="Task Description" rows="4"
+                              row-height="20" color="primary" variant="outlined"></v-textarea>
+                          </v-col>
 
-                        <v-col cols="12" md="6">
-                          <v-autocomplete label="Select Agent to Assign Task" v-model="agent" :items="agentsList"
-                            color="primary" variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
+                          <v-col cols="12" md="6">
+                            <v-autocomplete label="Select Agent to Assign Task" v-model="agent" :items="agentsList"
+                              color="primary" variant="outlined" hide-details></v-autocomplete>
+                          </v-col>
 
-                        <v-col md="6" cols="12">
-                          <v-text-field v-model="taskDueDate" type="date" label="Task Due Date" variant="outlined"
-                            class="text-input"></v-text-field>
-                        </v-col>
+                          <v-col md="6" cols="12">
+                            <v-text-field v-model="taskDueDate" type="date" label="Task Due Date" variant="outlined"
+                              class="text-input"></v-text-field>
+                          </v-col>
 
-                      </v-row>
+                        </v-row>
 
-                    </v-container>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="error" text @click="taskDialog = false"> Close
-                    </v-btn>
-                    <v-btn color="success" text @click="taskDialog = false"> Save </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
+                      </v-container>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="error" text @click="taskDialog = false"> Close
+                      </v-btn>
+                      <v-btn color="success" text @click="taskDialog = false"> Save </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
 
 
 

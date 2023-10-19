@@ -389,7 +389,10 @@ export default {
                     <div class="d-sm-flex align-center justify-space-between">
                         <h3 class="text-h3">Pipelines</h3>
                         <div class="d-flex  justify-end ">
+                          <RouterLink to="/admin/addPipeline" >
                             <v-btn color="primary" class="mx-1">Add Pipeline +</v-btn>
+
+                          </RouterLink>
                             <RouterLink to="/admin/addOpportunity">
 
                                 <v-btn color="primary" class="mx-1">
