@@ -1,9 +1,11 @@
 .customize-table {
   border-radius: $border-radius-root;
+
   .vue3-easy-data-table__main,
   .vue3-easy-data-table__footer {
     border-radius: $border-radius-root;
   }
+
   white-space: nowrap;
   --easy-table-border: 1px solid rgb(var(--v-theme-inputBorder), 0.1);
   --easy-table-row-border: 1px solid rgb(var(--v-theme-inputBorder), 0.1);
@@ -44,9 +46,121 @@
 
   --easy-table-loading-mask-background-color: #;
 }
+
 @media (max-width: 800px) {
   .vue3-easy-data-table__footer {
     overflow: auto;
     justify-content: start !important;
+  }
+}
+
+
+.ant-table-cell {
+  max-width: 10px !important;
+  min-width: 10px !important;
+
+}
+
+.stageHeadTable {
+  div {
+    .ant-spin-container {
+      .ant-pagination {
+        display: none !important;
+      }
+
+      .ant-table {
+        .ant-table-container {
+          .ant-table-content {
+            table {
+              tbody {
+                display: none !important;
+              }
+
+              thead {
+                tr {
+                  th {
+                    background: transparent !important;
+                    text-align: center;
+                    font-weight: bold;
+                    text-transform: uppercase !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pipelineDetailTable {
+  div {
+    .ant-spin-container {
+      .ant-pagination {
+        display: none !important;
+      }
+
+      .ant-table {
+        .ant-table-container {
+          .ant-table-content {
+            table {
+              tbody {
+                //tr {
+                //  td:nth-child(2) {
+                //    background: rgb(21, 140, 207) !important;
+                //    color: black !important;
+                //  }
+                //
+                //
+                //td:nth-child(3) ,  td:nth-child(4) ,  td:nth-child(5) {
+                //  background: rgba(235, 125, 53,0.5) !important;
+                //  color: white !important;
+                //  font-weight: bold;
+                //  }
+                //  td:nth-child(6){
+                //    background: rgba(112, 173, 71,0.5) !important;
+                //    color: white !important;
+                //  }
+                //  td:nth-child(7){
+                //    background-color: rgba(220, 53, 69,0.5) !important;
+                //    color: white;
+                //  }
+                //}
+              }
+              thead {
+                tr {
+                  th:nth-child(2) {
+                    background: rgb(21, 140, 207) !important;
+                    text-align: center;
+                    color: white !important;
+                  }
+
+
+                th:nth-child(3)  {
+                  background: rgb(235, 125, 53) !important;
+                  color: white !important;
+                  font-weight: bold;
+
+                  text-align: center;
+                }
+                  th:nth-child(4){
+                    background: rgb(112, 173, 71) !important;
+                    color: white !important;
+
+                    text-align: center;
+                  }
+                  th:nth-child(5){
+                    background-color: rgb(220, 53, 69) !important;
+                    color: white;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

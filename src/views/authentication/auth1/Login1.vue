@@ -11,14 +11,14 @@ import TextSlider from './TextSlider.vue';
       <v-container>
         <div class="pa-0 pa-sm-12">
           <v-row justify="center">
-            <v-col cols="12" lg="10" xl="6" md="7">
+            <v-col cols="12" lg="10" md="7">
 
             <div elevation="0" class="loginBox  d-flex justify-center">
             <img src="../../../assets/images/logos/logo.png" class="w-75" />
              </div>
             
 </v-col>
-            <v-col cols="12" lg="10" xl="6" md="7">
+            <v-col cols="12" lg="10" md="7">
               <v-card elevation="0" class="loginBox">
                 <v-card variant="outlined">
                   <v-card-text class="pa-9">

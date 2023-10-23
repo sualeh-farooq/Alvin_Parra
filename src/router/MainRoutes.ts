@@ -435,10 +435,16 @@ const MainRoutes = {
 
     /// Main Admin App Routes
 
+
     {
       name: 'Dashboard',
       path: '/admin/dashboard',
       component: () => import('@/views/admin/index.vue')
+    },
+    {
+      name: 'Agents ',
+      path: '/admin/agents',
+      component: () => import('@/views/admin/agents.vue')
     },
     {
       name: 'Pipeline',
@@ -455,11 +461,7 @@ const MainRoutes = {
       path: '/admin/notes',
       component: () => import('@/views/admin/notes.vue')
     },
-    {
-      name: 'Agents',
-      path: '/admin/agents',
-      component: () => import('@/views/admin/agents.vue')
-    },
+
     {
       name: 'Approvals',
       path: '/admin/approvals',
@@ -499,6 +501,33 @@ const MainRoutes = {
       name: 'Agent View Page' ,
       path: '/admin/agentView',
       component: () =>import('@/views/admin/agentView.vue')
+    },
+    {
+      name: 'Campaigns Page' ,
+      path: '/admin/campaigns',
+      component: () =>import('@/views/admin/campaigns.vue')
+    },
+
+    {
+      name: 'Forms Page' ,
+      path: '/admin/forms',
+      component: () =>import('@/views/admin/forms.vue')
+    },
+
+    {
+      name: 'Templates Page' ,
+      path: '/admin/template',
+      component: () =>import('@/views/admin/template.vue')
+    },
+    {
+      name: 'SMS Page' ,
+      path: '/admin/sms',
+      component: () =>import('@/views/admin/sms.vue')
+    },
+    {
+      name: 'Email Page' ,
+      path: '/admin/email',
+      component: () =>import('@/views/admin/email.vue')
     },
 
     /// Agency App Routes

@@ -12,8 +12,8 @@ type taskType = {
   id: Number;
   opportunityName: String;
   name: String;
-  followUp: Date;
-  estCloseDate: Date;
+  followUp: String;
+  estCloseDate: String;
   daysOpen: Number;
   agent:String,
   split: String,
@@ -24,6 +24,7 @@ type taskType = {
 type KanbanItem = {
   title: String;
   id: Number;
+  color: String,
   tasks: taskType[];
 };
 

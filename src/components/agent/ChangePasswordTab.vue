@@ -11,7 +11,7 @@ const textcmpass = ref('12345');
 
 <template>
   <div>
-    <v-row >
+    <v-row class="mt-1" >
       <v-col cols="12">
         <v-text-field type="password"  label="Current Password" variant="outlined" hide-details>
         </v-text-field>

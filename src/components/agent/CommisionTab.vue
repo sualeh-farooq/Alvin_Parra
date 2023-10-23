@@ -23,7 +23,12 @@ export default {
       email: 'strategicAlgeria@gmail.com',
       phone: 1432423232,
       license: 'HSDK-3628',
-      socialSecurity : 'US-E02-185'
+      socialSecurity : 'US-E02-185',
+      levelAnn: '90%',
+      levelLife: '80%',
+      levelHealth: '100%',
+      mediCare: '80%',
+      percentage: ['100%', '90%', '80%', '70', '60%', '50%'],
     };
   },
   methods: {
@@ -61,23 +66,23 @@ export default {
   <div>
 
 
-    <v-row class="mt-2">
+    <v-row class="mt-1">
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete :items="percentage"   label="Level-ANN" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete  v-model="levelAnn" :items="percentage"   label="Level-ANN" variant="outlined" class="mb-3"></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete :items="percentage"   label="Level-Life" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="levelLife" :items="percentage"   label="Level-Life" variant="outlined" class="mb-3"></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete :items="percentage"   label="Level-Health" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="levelHealth" :items="percentage"   label="Level-Health" variant="outlined" class="mb-3"></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete :items="percentage"   label="Medicare" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="mediCare" :items="percentage"   label="Medicare" variant="outlined" class="mb-3"></v-autocomplete>
       </v-col>
     </v-row>
 
-    <div class="py-4  mt-2 text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-4">Update Settings</v-btn>
+    <div class="py-4  text-left">
+      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update Commision Settings</v-btn>
     </div>
   </div>
 </template>

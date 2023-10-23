@@ -7,9 +7,9 @@ const tableData = [
     key: '1',
     name: 'Annuity',
     lead: 'Interested',
-    stage2: '0571-22098909',
-    stage4: 'New York No. 1 Lake Park',
-    stage3: 18889898989,
+    stage2: 'Presentation',
+    stage4: 'Funded',
+    stage3: 'Acc Opening',
     stage5: 'Won' ,
     stage6: 'Lost'
   },
@@ -17,20 +17,20 @@ const tableData = [
 
     name: 'Life',
     key: '2',
-    stage2: '0571-22098333',
-    stage3: 18889898888,
+    stage2: 'Quote',
+    stage3: 'Signed App',
     lead: 'Interested',
-    stage4: 'London No. 1 Lake Park',
+    stage4: 'Underwriting',
     stage5: 'Won' ,
     stage6: 'Lost'
   },
   {
     key: '3',
     name: 'Health',
-    stage2: '0571-22098333',
-    stage3: 18889898888,
+    stage2: 'Illustration',
+    stage3: 'Signed App',
     lead: 'Interested',
-    stage4: 'London No. 1 Lake Park',
+    stage4: 'Transfer',
     text: 'dummy text',
     stage5: 'Won' ,
     stage6: 'Lost'
@@ -39,9 +39,9 @@ const tableData = [
     key: '4',
     name: 'Supplemental',
     lead: 'Interested',
-    stage2: '0575-22098909',
-    stage3: 18900010002,
-    stage4: 'London No. 2 Lake Park',
+    stage2: 'SOA Signed',
+    stage3: 'Presentation',
+    stage4: 'Application',
     text: 'dummy text',
     stage5: 'Won' ,
     stage6: 'Lost'
@@ -50,9 +50,9 @@ const tableData = [
     key: '5',
     name: 'Estate Plans',
     lead: 'Interested',
-    stage2: '0575-22098909',
-    stage3: 18900010002,
-    stage4: 'London No. 2 Lake Park',
+    stage2: 'Quote',
+    stage3: 'Presentation',
+    stage4: 'Application',
     text: 'dummy text',
     stage5: 'Won' ,
     stage6: 'Lost'
@@ -61,9 +61,9 @@ const tableData = [
     key: '6',
     name: 'Real Estate',
     lead: 'Interested',
-    stage2: '0575-22098909',
-    stage3: 18900010002,
-    stage4: 'London No. 2 Lake Park',
+    stage2: 'Form Completed',
+    stage3: 'Binding',
+    stage4: 'Ship / Pickup',
     text: 'dummy text',
     stage5: 'Won' ,
     stage6: 'Lost'
@@ -72,9 +72,9 @@ const tableData = [
     key: '7',
     name: 'AUM ',
     lead: 'Interested',
-    stage2: '0575-22098909',
-    stage3: 18900010002,
-    stage4: 'London No. 2 Lake Park',
+    stage2: 'Prequalify',
+    stage3: 'Application',
+    stage4: 'Review',
     text: 'dummy text',
     stage5: 'Won' ,
     stage6: 'Lost'
@@ -83,9 +83,9 @@ const tableData = [
     key: '8',
     name: 'Estate Plans',
     lead: 'Interested',
-    stage2: '0575-22098909',
-    stage3: 18900010002,
-    stage4: 'London No. 2 Lake Park',
+    stage2: 'Quote',
+    stage3: 'Presentation',
+    stage4: 'Review',
     stage5: 'Won' ,
     stage6: 'Lost'
   },
@@ -93,15 +93,26 @@ const tableData = [
     key: '9',
     name: 'Others',
     lead: 'Interested',
-    stage2: '0575-22098909',
-    stage3: 18900010002,
-    stage4: 'London No. 2 Lake Park',
+    stage2: 'Quote',
+    stage3: 'Presentation',
+    stage4: 'Review',
     stage5: 'Won' ,
     stage6: 'Lost'
   },
 
 ];
-
+const tableDataTwo = [
+  {
+    key: '1',
+    name: 'Annuity',
+    lead: 'Interested',
+    stage2: 'Presentation',
+    stage4: 'Funded',
+    stage3: 'Acc Opening',
+    stage5: 'Won' ,
+    stage6: 'Lost'
+  },
+]
 const columns = [
   {
     title: '',
@@ -144,7 +155,36 @@ const columns = [
 
 
 ];
+const columnsTwo = [
+  {
+    title: '',
+    dataIndex: 'action'
 
+  },
+  {
+    title: 'Stage 01',
+  },
+  {
+    title: 'Stage 02',
+
+  },
+  {
+    title: 'Stage 03',
+  },
+  {
+    title: 'Stage 04',
+  },
+  {
+    title: 'Stage 05' ,
+  },
+  {
+    title: 'Stage 06' ,
+  },
+  {
+    title: '' ,
+  },
+
+]
 
 
 export default {
@@ -160,8 +200,17 @@ export default {
     return {
       tableData ,
       columns,
+      tableDataTwo,
+      columnsTwo,
       newPipelineDialog: null,
-      editPipelineDialog: null
+      editPipelineDialog: null,
+      pipelineName: 'Annuity',
+      pipelineStage1: 'Interested',
+      pipelineStage2: 'Presentaion',
+      pipelineStage3: 'Signed App',
+      pipelineStage4: 'Binding',
+      pipelineStage5: 'Won',
+      pipelineStage6: 'Lost',
 
     }
   }
@@ -179,81 +228,81 @@ export default {
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Add Pipeline</h3>
-          <div class="d-flex gap-2 align-center" >
+            <div class="d-flex gap-2 align-center" >
 
-            <v-btn color="darkText" >Reset Pipelines - </v-btn>
-
-
-
-            <v-dialog width="800" v-model="newPipelineDialog">
-              <template v-slot:activator="{ props }">
-                <v-btn v-bind="props" color="primary" >Create New Pipeline + </v-btn>
+              <v-btn color="darkText" >Reset Pipelines - </v-btn>
 
 
-              </template>
-              <v-card class="overflow-auto w-100">
-                <div class="d-flex border w-100">
-                  <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-                    Add Pipeline
-                  </v-card-title>
 
-                </div>
+              <v-dialog width="800" v-model="newPipelineDialog">
+                <template v-slot:activator="{ props }">
+                  <v-btn v-bind="props" color="primary" >Create New Pipeline + </v-btn>
 
-                <v-card-text>
-                  <v-container>
-                    <v-row>
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Pipeline Name" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
+                </template>
+                <v-card class="overflow-auto w-100">
+                  <div class="d-flex border w-100">
+                    <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                      Add Pipeline
+                    </v-card-title>
+
+                  </div>
+
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col cols="12" md="6" lg="6" sm="12">
+                          <v-text-field  label="Pipeline Name" variant="outlined"
+                                         class="mb-3"></v-text-field>
+                        </v-col>
+
+                        <v-col cols="12" md="6" lg="6" sm="12">
                           <v-text-field  label="Stage 1 - Lead" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
+                                         class="mb-3"></v-text-field>
+                        </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Stage 2 - Prospect" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
+                        <v-col cols="12" md="6" lg="6" sm="12">
+                          <v-text-field  label="Stage 2 - Prospect" variant="outlined"
+                                         class="mb-3"></v-text-field>
+                        </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Stage 3 - Prospect" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
+                        <v-col cols="12" md="6" lg="6" sm="12">
+                          <v-text-field  label="Stage 3 - Prospect" variant="outlined"
+                                         class="mb-3"></v-text-field>
+                        </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field label="Stage 4 - Prospect" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
+                        <v-col cols="12" md="6" lg="6" sm="12">
+                          <v-text-field label="Stage 4 - Prospect" variant="outlined"
+                                        class="mb-3"></v-text-field>
+                        </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Stage 5 - Won" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
+                        <v-col cols="12" md="6" lg="6" sm="12">
+                          <v-text-field  label="Stage 5 - Won" variant="outlined"
+                                         class="mb-3"></v-text-field>
+                        </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field label="Stage 6 - Lost" variant="outlined"
-                                      class="mb-3"></v-text-field>
-                      </v-col>
-
-
-                    </v-row>
-
-                  </v-container>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="error" text @click="newPipelineDialog = false"> Close
-                  </v-btn>
-                  <v-btn color="primary" text @click="newPipelineDialog = false"> Save </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
+                        <v-col cols="12" md="6" lg="6" sm="12">
+                          <v-text-field label="Stage 6 - Lost" variant="outlined"
+                                        class="mb-3"></v-text-field>
+                        </v-col>
 
 
+                      </v-row>
 
-          </div>
+                    </v-container>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="error" text @click="newPipelineDialog = false"> Close
+                    </v-btn>
+                    <v-btn color="primary" text @click="newPipelineDialog = false"> Save </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
+
+
+            </div>
 
 
 
@@ -262,12 +311,14 @@ export default {
         <v-divider></v-divider>
         <v-card-text>
 
+          <a-table class="stageHeadTable"  :data-source="tableDataTwo"  :columns="columnsTwo" >
+          </a-table>
 
-          <a-table  :columns="columns" :data-source="tableData" bordered>
+          <a-table  class="pipelineDetailTable" :columns="columns" :data-source="tableData" bordered>
             <template #bodyCell="{ column, text }">
               <template v-if="column.dataIndex === 'name'">
 
-                  <h3 >{{ text }}</h3>
+                <h3 >{{ text }}</h3>
 
               </template>
 
@@ -276,9 +327,78 @@ export default {
               <template v-if="column.dataIndex === 'action'">
                 <div class="operation-wrapper">
 
-                  <v-btn icon color="primary" variant="text">
-                    <EditIcon size="20" />
-                  </v-btn>
+
+
+
+
+                  <v-dialog width="800" v-model="editPipelineDialog">
+                    <template v-slot:activator="{ props }">
+                      <!--                      <v-btn v-bind="props" color="primary" >Create New Pipeline + </v-btn>-->
+                      <v-btn v-bind="props" icon color="primary" variant="text">
+                        <EditIcon size="20" />
+                      </v-btn>
+
+                    </template>
+                    <v-card class="overflow-auto w-100">
+                      <div class="d-flex border w-100">
+                        <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                          Edit Pipeline
+                        </v-card-title>
+
+                      </div>
+
+                      <v-card-text>
+                        <v-container>
+                          <v-row>
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field v-model="pipelineName"  label="Pipeline Name" variant="outlined"
+                                            class="mb-3"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field  v-model="pipelineStage1" label="Stage 1 - Lead" variant="outlined"
+                                             class="mb-3"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field v-model="pipelineStage2" label="Stage 2 - Prospect" variant="outlined"
+                                            class="mb-3"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field v-model="pipelineStage3"  label="Stage 3 - Prospect" variant="outlined"
+                                            class="mb-3"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field v-model="pipelineStage4" label="Stage 4 - Prospect" variant="outlined"
+                                            class="mb-3"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field v-model="pipelineStage5" label="Stage 5 - Won" variant="outlined"
+                                            class="mb-3"></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" md="6" lg="6" sm="12">
+                              <v-text-field v-model="pipelineStage6" label="Stage 6 - Lost" variant="outlined"
+                                            class="mb-3"></v-text-field>
+                            </v-col>
+
+
+                          </v-row>
+
+                        </v-container>
+                      </v-card-text>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="error" text @click="editPipelineDialog = false"> Close
+                        </v-btn>
+                        <v-btn color="primary" text @click="editPipelineDialog = false"> Save </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+
 
 
 

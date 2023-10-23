@@ -1,4 +1,4 @@
-<script  lang="ts">
+<script >
 import {CoinIcon, UserCircleIcon} from 'vue-tabler-icons'
   export default {
     data(){

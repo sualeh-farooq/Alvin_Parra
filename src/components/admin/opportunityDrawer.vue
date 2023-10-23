@@ -1,4 +1,4 @@
-<script  lang="ts">
+<script  >
 
 export default {
   name: 'OpportunityDrawer' ,
@@ -78,6 +78,8 @@ export default {
     }
   }
 }
+
+
 </script>
 
 <template>

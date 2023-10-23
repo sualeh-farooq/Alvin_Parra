@@ -27,5 +27,9 @@ const textcmpass = ref('12345');
         </v-text-field>
       </v-col>
     </v-row>
-    <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-4">Change Password</v-btn>
+    <v-row>
+      <v-col cols="12" >
+        <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-4">Change Password</v-btn>
+      </v-col>
+    </v-row>
   </div></template>

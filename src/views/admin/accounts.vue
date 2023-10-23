@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue';
 import 'vue3-easy-data-table/dist/style.css';
 
@@ -309,7 +309,6 @@ const tab5 = ref(null);
 const tab6 = ref(null);
 const tab7 = ref(null);
 
-import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
 </script>
 
 

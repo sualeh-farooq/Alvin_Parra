@@ -42,6 +42,7 @@ import {
   HelpIcon,
   SitemapIcon , 
   FilterIcon,
+  BrandGmailIcon,
   UsersIcon,
   NotesIcon , 
   CheckboxIcon,
@@ -110,62 +111,65 @@ const sidebarItem: menu[] = [
       {
         title: 'Campaigns',
         icon: CircleIcon,
-        to: '/admin/campaigns/'
+        to: '/admin/campaigns'
       },
       {
         title: 'Forms',
         icon: CircleIcon,
-        to: '/admin/campaigns/'
+        to: '/admin/forms'
       },
       {
         title: 'Templates',
         icon: CircleIcon,
-        to: '/admin/template/'
+        to: '/admin/template'
       },
       {
         title: 'Send Sms',
         icon: CircleIcon,
-        to: '/admin/sms/'
+        to: '/admin/sms'
       },
-      {
-        title: 'Marketing Forms',
-        icon: CircleIcon,
-        to: '/admin/forms/'
-      }
-    ]
+
+
+    ],
+
   },
-
-
-
   {
-    title: 'Default',
-    icon: DashboardIcon,
-    to: '/dashboard/default'
-  },
- 
- 
-  {
-    title: 'Analytics',
-    icon: DeviceAnalyticsIcon,
-    to: '/dashboard/analytics'
-  },
+    title: 'Email',
+    icon: MailIcon,
+    to: '/admin/email'
+  }
+
+
+
+  // {
+  //   title: 'Default',
+  //   icon: DashboardIcon,
+  //   to: '/dashboard/default'
+  // },
+  //
+  //
+  // {
+  //   title: 'Analytics',
+  //   icon: DeviceAnalyticsIcon,
+  //   to: '/dashboard/analytics'
+  // },
 
   // { header: 'Widget' },
-  {
-    title: 'Statistics',
-    icon: ChartArcsIcon,
-    to: '/widget/statistics'
-  },
-  {
-    title: 'Data',
-    icon: ClipboardIcon,
-    to: '/widget/data'
-  },
-  {
-    title: 'Chart',
-    icon: ChartInfographicIcon,
-    to: '/widget/chart'
-  },
+  // {
+  //   title: 'Statistics',
+  //   icon: ChartArcsIcon,
+  //   to: '/widget/statistics'
+  // },
+  // {
+  //   title: 'Data',
+  //   icon: ClipboardIcon,
+  //   to: '/widget/data'
+  // },
+  // {
+  //   title: 'Chart',
+  //   icon: ChartInfographicIcon,
+  //   to: '/widget/chart'
+  // },
 
   // {
   //   title: 'Users',

@@ -4,6 +4,8 @@ export default {
   data() {
     return {
       contactTab: null,
+      children: ['Henry Clark'],
+
       radios: 'one',
       martialStatus: 'married',
       employment: 'employed',
@@ -39,7 +41,15 @@ export default {
 
 
   }
-  }
+  },
+  methods: {
+    addChild() {
+      this.children.push('');
+    },
+    getChildLabel(index) {
+      return `Child ${index + 1} - Full Name`;
+    },
+  },
 }
 
 
@@ -208,13 +218,12 @@ export default {
                       <v-text-field type="text" v-model="child1" label="Child 1 - Full Name" variant="outlined"
                                     class="mb-3"></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
-                      <v-text-field type="text" v-model="child2" label="Child 2 - Full Name" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                    <v-col v-for="(child, index) in children" :key="index" cols="12" md="6" lg="4">
+                      <v-text-field type="text" v-model="children[index]" :label="getChildLabel(index)" variant="outlined" class="mb-3"></v-text-field>
                     </v-col>
 
                     <v-col cols="12">
-                      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1">Add Child +</v-btn>
+                      <v-btn color="primary" variant="outlined" @click="addChild">Add Child +</v-btn>
                     </v-col>
                   </v-row>
                 </v-window-item>

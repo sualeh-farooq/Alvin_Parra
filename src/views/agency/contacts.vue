@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import {ref} from 'vue';
 import 'vue3-easy-data-table/dist/style.css';
 
@@ -309,7 +309,6 @@ const tab5 = ref(null);
 const tab6 = ref(null);
 const tab7 = ref(null);
 
-import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
 </script>
 
 
@@ -336,19 +335,19 @@ import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
             <v-col>
               <v-tabs v-model="contacts" color="primary">
                 <v-tab value="main">
-                  <UserIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  <AddressBookIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Main Contacts
                 </v-tab>
                 <v-tab value="google">
-                  <BriefcaseIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  <BrandGoogleIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Google Contacts
                 </v-tab>
                 <v-tab value="lead">
-                  <BriefcaseIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  <ArchiveIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Lead Buckets
                 </v-tab>
                 <v-tab value="ref">
-                  <BriefcaseIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  <HeartHandshakeIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Referral Partners
                 </v-tab>
 

@@ -17,7 +17,7 @@ const fourcards = ref([
           <v-row>
             <v-col cols="4" :class="'d-flex align-center justify-center pr-0 bg-' + card4.color">
               <div class="d-flex align-center justify-center py-7">
-                <component :is="card4.icon" stroke-width="1.5" size="60" class="flex-shrink-0 text-darkText" />
+                <component :is="card4.icon" stroke-width="1.5" size="60" class="flex-shrink-0 text-white" />
               </div>
             </v-col>
             <v-col cols="8">

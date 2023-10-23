@@ -106,8 +106,8 @@ export default {
       </v-col>
     </v-row>
 
-    <div class="py-4  mt-2 text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-4">Update Settings</v-btn>
+    <div class="py-4   text-left">
+      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update License Settings</v-btn>
     </div>
   </div>
 </template>

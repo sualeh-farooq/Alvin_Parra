@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { getPrimary } from '@/views/forms/charts/apex-chart/updateColors';
+import { getPrimary } from '@/views/forms/charts/apex-chart/UpdateColors';
 
 const select = ref({ state: 'This Month', abbr: 'FL' });
 const items = [

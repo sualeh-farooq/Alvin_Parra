@@ -50,8 +50,8 @@ const chartOptions1 = computed(() => {
       min: 1,
       max: 100,
       labels: {
-        show: true, formatter: function (value) {
-          return value + " Y-axis Label"; // Change the label text as needed
+        show: true, formatter: function () {
+          return  " Y-axis Label"; // Change the label text as needed
         }
 
       }

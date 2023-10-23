@@ -21,13 +21,7 @@ const emailRules = ref([
 function validate() {
   Regform.value.validate();
 }
-data: () => ({
-  rules: [
-    value => {
-      return !value || !value.length || value[0].size < 2000000 || 'Avatar size should be less than 2 MB!'
-    },
-  ],
-})
+
 </script>
 
 <template>
@@ -71,7 +65,7 @@ data: () => ({
           label="Confirm Password"></v-text-field>
       </v-col>
       <v-col cols="12" sm="12">
-        <v-file-input :rules="rules" accept="image/png, image/jpeg, image/bmp" placeholder="Upload License Image"
+        <v-file-input  accept="image/png, image/jpeg, image/bmp" placeholder="Upload License Image"
           prepend-icon="mdi-camera" label="Upload License Image"></v-file-input>
       </v-col>
     </v-row>
