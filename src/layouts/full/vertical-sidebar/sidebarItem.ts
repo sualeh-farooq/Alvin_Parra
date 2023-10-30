@@ -88,7 +88,12 @@ const sidebarItem: menu[] = [
     to: '/admin/accounts'
   },
   {
-    title: 'Notes & Tasks',
+    title: 'Contacts',
+    icon: UsersIcon,
+    to: '/admin/contacts'
+  },
+  {
+    title: 'Tasks',
     icon: NotesIcon,
     to: '/admin/notes'
   },
@@ -98,7 +103,7 @@ const sidebarItem: menu[] = [
     to: '/admin/agents'
   },
   {
-      title: 'Accounts Approvals',
+      title: 'Agents Approvals',
       icon: CheckboxIcon ,
       to : '/admin/approvals'
   },

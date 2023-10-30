@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import 'vue3-easy-data-table/dist/style.css';
 
 
@@ -7,12 +7,12 @@ const searchField = ref(['fName', 'email', 'source', 'phone', 'date']);
 const searchValue = ref('');
 
 const headers = [
-  { text: 'Name', value: 'fName', sortable: true , colspan: 3 },
-  { text: 'Email', value: 'email', sortable: true },
-  { text: 'Source', value: 'source', sortable: true },
-  { text: 'Phone', value: 'phone', sortable: true },
-  { text: 'DOB', value: 'date', sortable: true },
-  { text: 'Action', value: 'action' }
+  {text: 'Name', value: 'fName', sortable: true, colspan: 3},
+  {text: 'Email', value: 'email', sortable: true},
+  {text: 'Source', value: 'source', sortable: true},
+  {text: 'Phone', value: 'phone', sortable: true},
+  {text: 'DOB', value: 'date', sortable: true},
+  {text: 'Action', value: 'action'}
 ];
 
 const themeColor = ref('rgb(var(--v-theme-secondary))');
@@ -300,7 +300,7 @@ const desserts = ref([
   }
 ]);
 
-const page = ref({ title: 'Tabs' });
+const page = ref({title: 'Tabs'});
 const tab = ref(null);
 const tab2 = ref(null);
 const tab3 = ref(null);
@@ -312,9 +312,6 @@ const tab7 = ref(null);
 </script>
 
 
-
-
-
 <template>
   <v-row>
     <v-col col="12">
@@ -323,10 +320,10 @@ const tab7 = ref(null);
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Accounts</h3>
 
-              <RouterLink to="/admin/addContact" >
-                <v-btn color="primary" >Add Account + </v-btn>
+            <RouterLink to="/admin/addAccount">
+              <v-btn color="primary">Add Account +</v-btn>
 
-              </RouterLink>
+            </RouterLink>
 
           </div>
         </v-card-item>
@@ -338,108 +335,116 @@ const tab7 = ref(null);
             <v-col>
               <v-tabs v-model="tab2" color="primary">
                 <v-tab value="11">
-                  <UserIcon stroke-width="1.5" width="20" class="v-icon--start" /> Individual
+                  <UserIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  Individual
                 </v-tab>
                 <v-tab value="12">
-                  <BriefcaseIcon stroke-width="1.5" width="20" class="v-icon--start" /> Business
+                  <BriefcaseIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  Business
                 </v-tab>
 
               </v-tabs>
 
               <v-window v-model="tab2">
                 <v-window-item value="11">
-                  <v-tabs class="mb-4" v-model="tab4" color="primary">
-                    <v-tab value="leads">
-                      <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start" /> Leads
-                    </v-tab>
-                    <v-tab value="prospects">
-                      <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start" /> Prospects
-                    </v-tab>
-                    <v-tab value="clients">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start" /> Clients
-                    </v-tab>
-                    <v-tab value="lost">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start" /> Lost
-                    </v-tab>
+                  <div style="align-items:center; justify-content:space-between;" class="d-flex" >
+                    <div>
+                      <v-tabs class="mb-4" v-model="tab4" color="primary">
+                        <v-tab value="leads">
+                          <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Leads
+                        </v-tab>
+                        <v-tab value="prospects">
+                          <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Prospects
+                        </v-tab>
+                        <v-tab value="clients">
+                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Clients
+                        </v-tab>
+                        <v-tab value="lost">
+                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Lost
+                        </v-tab>
 
-                  </v-tabs>
+                      </v-tabs>
+                    </div>
+                    <div class="w-25" >
+
+                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
+                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
+                                    prepend-inner-icon="mdi-magnify"/>
+                    </div>
+                  </div>
+
 
                   <v-window v-model="tab4">
                     <v-window-item value="leads">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                        placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                        prepend-inner-icon="mdi-magnify" />
+
                       <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                        :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                        :rows-per-page="5" v-model:items-selected="itemsSelected">
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
                         <template #item-action="item">
                           <RouterLink to="/admin/accountView">
                             <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
+                              <EyeIcon size="20"/>
                             </v-btn>
                           </RouterLink>
                           <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
+                            <TrashIcon size="20"/>
                           </v-btn>
                         </template>
                       </EasyDataTable>
                     </v-window-item>
                     <v-window-item value="prospects">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                        placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                        prepend-inner-icon="mdi-magnify" />
+
                       <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                        :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                        :rows-per-page="5" v-model:items-selected="itemsSelected">
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
                         <template #item-action="item">
                           <RouterLink to="/admin/accountView">
                             <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
+                              <EyeIcon size="20"/>
                             </v-btn>
                           </RouterLink>
                           <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
+                            <TrashIcon size="20"/>
                           </v-btn>
                         </template>
                       </EasyDataTable>
                     </v-window-item>
                     <v-window-item value="clients">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                        placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                        prepend-inner-icon="mdi-magnify" />
+
 
                       <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                        :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                        :rows-per-page="5" v-model:items-selected="itemsSelected">
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
                         <template #item-action="item">
                           <RouterLink to="/admin/accountView">
                             <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
+                              <EyeIcon size="20"/>
                             </v-btn>
                           </RouterLink>
                           <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
+                            <TrashIcon size="20"/>
                           </v-btn>
                         </template>
                       </EasyDataTable>
                     </v-window-item>
 
                     <v-window-item value="lost">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                        placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                        prepend-inner-icon="mdi-magnify" />
 
                       <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                        :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                        :rows-per-page="5" v-model:items-selected="itemsSelected">
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
                         <template #item-action="item">
                           <RouterLink to="/admin/accountView">
                             <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
+                              <EyeIcon size="20"/>
                             </v-btn>
                           </RouterLink>
                           <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
+                            <TrashIcon size="20"/>
                           </v-btn>
                         </template>
                       </EasyDataTable>
@@ -454,63 +459,26 @@ const tab7 = ref(null);
                 <v-window-item value="12">
                   <v-tabs class="mb-4" v-model="tab5" color="primary">
                     <v-tab value="leads">
-                      <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start" /> Leads
+                      <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      Leads
                     </v-tab>
                     <v-tab value="prospects">
-                      <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start" /> Prospects
+                      <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      Prospects
                     </v-tab>
                     <v-tab value="clients">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start" /> Clients
+                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      Clients
                     </v-tab>
                     <v-tab value="lost">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start" /> Lost
+                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      Lost
                     </v-tab>
 
                   </v-tabs>
 
                   <v-window v-model="tab5">
                     <v-window-item value="leads">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                                    prepend-inner-icon="mdi-magnify" />
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-                    <v-window-item value="prospects">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                                    prepend-inner-icon="mdi-magnify" />
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-                    <v-window-item value="clients">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                                    prepend-inner-icon="mdi-magnify" />
 
                       <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                      :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
@@ -518,20 +486,52 @@ const tab7 = ref(null);
                         <template #item-action="item">
                           <RouterLink to="/admin/accountView">
                             <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
+                              <EyeIcon size="20"/>
                             </v-btn>
                           </RouterLink>
                           <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
+                            <TrashIcon size="20"/>
+                          </v-btn>
+                        </template>
+                      </EasyDataTable>
+                    </v-window-item>
+                    <v-window-item value="prospects">
+
+                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
+                        <template #item-action="item">
+                          <RouterLink to="/admin/accountView">
+                            <v-btn icon color="secondary" v-bind="props" variant="text">
+                              <EyeIcon size="20"/>
+                            </v-btn>
+                          </RouterLink>
+                          <v-btn icon color="primary" variant="text">
+                            <TrashIcon size="20"/>
+                          </v-btn>
+                        </template>
+                      </EasyDataTable>
+                    </v-window-item>
+                    <v-window-item value="clients">
+
+
+                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
+                        <template #item-action="item">
+                          <RouterLink to="/admin/accountView">
+                            <v-btn icon color="secondary" v-bind="props" variant="text">
+                              <EyeIcon size="20"/>
+                            </v-btn>
+                          </RouterLink>
+                          <v-btn icon color="primary" variant="text">
+                            <TrashIcon size="20"/>
                           </v-btn>
                         </template>
                       </EasyDataTable>
                     </v-window-item>
 
                     <v-window-item value="lost">
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                                    prepend-inner-icon="mdi-magnify" />
 
                       <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                      :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
@@ -539,11 +539,11 @@ const tab7 = ref(null);
                         <template #item-action="item">
                           <RouterLink to="/admin/accountView">
                             <v-btn icon color="secondary" v-bind="props" variant="text">
-                              <EyeIcon size="20" />
+                              <EyeIcon size="20"/>
                             </v-btn>
                           </RouterLink>
                           <v-btn icon color="primary" variant="text">
-                            <TrashIcon size="20" />
+                            <TrashIcon size="20"/>
                           </v-btn>
                         </template>
                       </EasyDataTable>

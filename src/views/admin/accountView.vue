@@ -1,11 +1,13 @@
 <script >
+import NotesCard from '../../components/shared/notesCard.vue'
+
 export default {
   name: 'Account-View',
   data() {
     return {
       contactTab: null,
       children: ['Henry Clark'],
-
+      notesDialog: null,
       radios: 'one',
       martialStatus: 'married',
       employment: 'employed',
@@ -36,9 +38,18 @@ export default {
       companyCity: 'Pasadena' ,
       companyState: 'California',
       companyZipCode: 'CA 91030',
-      companyAddress: '1445 Huntington Dr #325, S Pasadena, CA 91030, United States'
+      companyAddress: '1445 Huntington Dr #325, S Pasadena, CA 91030, United States',
 
-
+      notesList: [
+        {
+          id: 1, date: '10-05-2023', time: '05:35pm', editText: 'Edit' ,deleteText: 'Delete' ,  note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+              '\n'
+        },
+        {
+          id: 2, date: '15-05-2023', time: '05:35pm', editText: 'Edit' ,deleteText: 'Delete' , note: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem dolor vel nisi est mollitia excepturi debitis suscipit dicta. Voluptatibus saepe incidunt nihil dignissimos eveniet molestiae sit, magni tenetur ea.\n' +
+              '\n'
+        }
+      ],
 
   }
   },
@@ -50,6 +61,9 @@ export default {
       return `Child ${index + 1} - Full Name`;
     },
   },
+  components: {
+    NotesCard: NotesCard
+  }
 }
 
 
@@ -63,7 +77,45 @@ export default {
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Account Overview</h3>
+    <div>
+      <v-dialog width="600" v-model="notesDialog">
+        <template v-slot:activator="{ props }">
+          <v-btn v-if="contactTab === 'notes' " v-bind="props" color="primary" class="mx-1">Add Note +</v-btn>
+        </template>
+        <v-card class="overflow-auto w-100">
+          <div class="d-flex border w-100">
+            <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+              Add Note
+            </v-card-title>
 
+          </div>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
+                </v-col>
+                <v-col md="6" cols="12">
+                  <v-text-field type="time" label="Note Time" variant="outlined"
+                                class="text-input"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
+                              variant="outlined"></v-textarea>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="error" text @click="notesDialog = false"> Close
+            </v-btn>
+            <v-btn color="success" text @click="notesDialog = false"> Save </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+    </div>
           </div>
         </v-card-item>
         <v-divider></v-divider>
@@ -88,7 +140,16 @@ export default {
                   <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Company
                 </v-tab>
+                <v-tab value="notes">
+                  <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  Notes
+                </v-tab>
+                <v-tab value="pipeline">
+                  <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  Pipeline
+                </v-tab>
               </v-tabs>
+
 
               <v-window v-model="contactTab">
                 <v-window-item value="basic">
@@ -269,8 +330,129 @@ export default {
                   </v-row>
                 </v-window-item>
 
+                <v-window-item value="pipeline" >
+
+
+                  <v-row class="mt-1" >
+
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Opportunity Name" variant="outlined"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Product"
+                                      :items="product"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Select Pipeline Stage" v-model="pipelineStage"
+                                      :items="pipelineStages" color="primary" variant="outlined"
+                                      hide-details></v-autocomplete>
+
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <div @click="followUpDate = true" v-if="!followUpDate">
+                        <v-text-field type="text" label="Next Follow up" variant="outlined"
+                        ></v-text-field>
+
+                      </div>
+                      <div v-else>
+                        <v-text-field type="date" label="Next Follow up" variant="outlined"
+                        ></v-text-field>
+                      </div>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <div @click="closingTarget = true" v-if="!closingTarget">
+                        <v-text-field type="text" label="Est Closing Target" variant="outlined"
+                        ></v-text-field>
+
+                      </div>
+                      <div v-else>
+                        <v-text-field type="date" label="Est Closing Target" variant="outlined"
+                        ></v-text-field>
+                      </div>
+                    </v-col>
+
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Tempera" v-model="tempVal"
+                                      :items="Temprature" color="primary" variant="outlined"
+                                      hide-details></v-autocomplete>
+
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Existing Source of Opportunity" v-model="opportunitySourceVal"
+                                      :items="opportunitySources"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Writing Agent" variant="outlined"
+                      ></v-text-field>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Writing Agent Split"
+                                      :items="writingAgentSplit"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Agent 2 Split"
+                                      :items="agent2Split"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Service Type"
+                                      :items="serviceType"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-autocomplete label="Carrier"
+                                      :items="carrier"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Est Annual Premium" color="primary" variant="outlined"></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="select" :items="agent2Split" label="Opportunity Income" color="primary" variant="outlined"></v-text-field>
+                    </v-col>
+
+
+
+                  </v-row>
+
+
+
+                </v-window-item>
+
+                <v-window-item value="notes" >
+                  <v-row class="mt-1">
+                    <v-col v-for="item in notesList" class="p-0" :key="item.id" cols="12 ">
+                      <NotesCard :editText="item.editText"  :deleteText="item.deleteText" :time="item.time" :edit-note="editNote" :date="item.date"
+                                 :note-description="item.note" />
+                    </v-col>
+                  </v-row>
+                </v-window-item>
+
                 <v-col style="padding: 0px;" class=" mt-2" cols="12" md="6">
-                  <v-btn  color="primary">Update Settings
+                  <v-btn  v-if="contactTab === 'family' || contactTab === 'basic' || contactTab === 'details' || contactTab === 'company' ||contactTab === 'pipeline' "  color="primary">Update Settings
                   </v-btn>
                 </v-col>
               </v-window>

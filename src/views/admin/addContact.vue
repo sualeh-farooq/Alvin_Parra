@@ -149,6 +149,12 @@ export default {
         { id: 1, name: 'None' },
         { id: 2, name: 'Tea' },
         { id: 3, name: 'Coffee' }
+      ],
+      contactCategory: [
+          'Main Contacts',
+          'Google Contact',
+          'Lead Bucket',
+          'Refferal Partner'
       ]
 
     }
@@ -173,104 +179,70 @@ const opportunitySourceVal = ref(['Existing'])
         <v-card-text>
           <Form>
 
-            <v-row class="mb-3" >
-              <v-col cols="12" md="6">
-                <v-autocomplete label="Find Existing from CRM"  :items="existingContacts"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-                <v-btn class="mt-3" color="primary" >Use / Edit this Contact  <ArrowUpIcon size="20" class="mx-2" /> </v-btn>
 
-              </v-col>
-              <v-col cols="12" md="6">
-                <v-autocomplete label="Search Google Contacts"  :items="googleContacts"
-                                color="primary" variant="outlined" hide-details></v-autocomplete>
-                <v-btn class="mt-3" color="primary" >Import this Google Contact  <ArrowUpIcon size="20" class="mx-2" /> </v-btn>
 
-              </v-col>
-
-            </v-row>
-
-            <v-divider></v-divider>
 
             <v-row>
-              <v-col cols="12">
-                <div class="mt-3">
-                  <h2 class="text-h3 text-disabled">Contact Details</h2>
-                </div>
-              </v-col>
 
 
 
-              <v-col cols="12" >
-                <div>
-                  <v-radio-group inline>
-                    <v-radio label="Individual" value="individual"></v-radio>
-                    <v-radio label="Business" value="business"></v-radio>
-                  </v-radio-group>
-                  <!-- <p class="mt-3">Selected: {{ selectedRadioValues }}</p> -->
-                </div>
-
-              </v-col>
 
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="text" label="First Name" variant="outlined"
-                              class="mb-3"></v-text-field>
+                              ></v-text-field>
               </v-col>
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="text" label="Last Name" variant="outlined"
-                              class="mb-3"></v-text-field>
+                              ></v-text-field>
               </v-col>
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="email" label="Email" variant="outlined"
-                              class="mb-3"></v-text-field>
+                             ></v-text-field>
               </v-col>
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="number" label="Phone Number" variant="outlined"
-                              class="mb-3"></v-text-field>
+                             ></v-text-field>
               </v-col>
 
               <v-col cols="12" md="6" lg="4">
                 <div @click="followUpDate = true" v-if="!followUpDate">
                   <v-text-field type="text" label="Next Follow up" variant="outlined"
-                                class="mb-3"></v-text-field>
+                                ></v-text-field>
 
                 </div>
                 <div v-else>
                   <v-text-field type="date" label="Next Follow up" variant="outlined"
-                                class="mb-3"></v-text-field>
+                                ></v-text-field>
                 </div>
               </v-col>
               <v-col cols="12" md="6" lg="4">
                 <div @click="dobDate = true" v-if="!dobDate">
                   <v-text-field type="text" label="Date of Birth" variant="outlined"
-                                class="mb-3"></v-text-field>
+                                ></v-text-field>
 
                 </div>
                 <div v-else>
                   <v-text-field type="date" label="Date of Birth" variant="outlined"
-                                class="mb-3"></v-text-field>
+                               ></v-text-field>
                 </div>
               </v-col>
 
-              <v-col cols="12">
-                <v-textarea  filled auto-grow label="Street Address" rows="2"
-                            row-height="20" color="primary" variant="outlined"></v-textarea>
-              </v-col>
 
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="text" label="City" variant="outlined"
-                              class="mb-3"></v-text-field>
+                           ></v-text-field>
               </v-col>
 
 
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="text" label="State" variant="outlined"
-                              class="mb-3"></v-text-field>
+                             ></v-text-field>
               </v-col>
 
 
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="text" label="Zipcode" variant="outlined"
-                              class="mb-3"></v-text-field>
+                              ></v-text-field>
               </v-col>
 
               <v-col cols="12" md="6" lg="4">
@@ -281,9 +253,17 @@ const opportunitySourceVal = ref(['Existing'])
 
               <v-col cols="12" md="6" lg="4">
                 <v-text-field type="text" label="Reffered By" variant="outlined"
-                              class="mb-3"></v-text-field>
+                            ></v-text-field>
               </v-col>
-
+              <v-col cols="12" md="6" lg="4">
+                <v-autocomplete label="Contact Category" v-model="opportunitySourceVal"
+                                :items="contactCategory"
+                                color="primary" variant="outlined" hide-details></v-autocomplete>
+              </v-col>
+              <v-col cols="12">
+                <v-textarea  filled auto-grow label="Street Address" rows="2"
+                             row-height="20" color="primary" variant="outlined"></v-textarea>
+              </v-col>
 
 
 
@@ -295,10 +275,9 @@ const opportunitySourceVal = ref(['Existing'])
             </v-row>
 
 
-            <v-col style="padding: 0px" cols="12" >
+            <v-col class="mt-4" style="padding: 0px" cols="12" >
 <div class="d-flex gap-2" >
-              <v-btn  color="primary">Save & Close
-              </v-btn>
+
               <v-btn  color="primary">Save & Add Contact
               </v-btn>
 </div>

@@ -507,13 +507,22 @@ const MainRoutes = {
       path: '/admin/campaigns',
       component: () =>import('@/views/admin/campaigns.vue')
     },
+    {
+      name: 'Opportunity View Page' ,
+      path: '/admin/opportunityView',
+      component: () =>import('@/views/admin/opportunityView.vue')
+    },
 
     {
       name: 'Forms Page' ,
       path: '/admin/forms',
       component: () =>import('@/views/admin/forms.vue')
     },
-
+    {
+      name: 'Accounts View Admin' ,
+      path: '/admin/addAccount',
+      component: ()=>import('@/views/admin/addAccount.vue')
+    },
     {
       name: 'Templates Page' ,
       path: '/admin/template',
@@ -529,6 +538,12 @@ const MainRoutes = {
       path: '/admin/email',
       component: () =>import('@/views/admin/email.vue')
     },
+    {
+      name: 'Contact Admin Page' ,
+      path: '/admin/contacts',
+      component: () =>import('@/views/admin/contacts.vue')
+    },
+
 
     /// Agency App Routes
     {
@@ -588,6 +603,11 @@ const MainRoutes = {
       path: '/agency/settings',
       component: () =>import('@/views/agency/settings.vue')
     },
+    {
+      name: 'Agent Opp View',
+      path:'/agency/opportunityView',
+      component: ()=>import('@/views/agency/opportunityView.vue')
+    },
 
 
     /// Agent App Routes
@@ -633,7 +653,11 @@ const MainRoutes = {
       path: '/agent/settings',
       component: () =>import('@/views/agent/settings.vue')
     },
-
+    {
+      name: 'Agent Opportunity View',
+      path: '/agent/opportunityView',
+      component: ()=>import('@/views/agent/opportunityView.vue')
+    }
 
 
 

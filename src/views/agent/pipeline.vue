@@ -400,9 +400,12 @@ export default {
                                         <template #item-action="item">
                                             <div class="operation-wrapper">
 
-                                                <v-btn @click.stop="drawer = !drawer" icon color="primary" variant="text">
-                                                    <EyeIcon size="20" />
+
+                                              <RouterLink to="/agent/opportunityView" >
+                                                <v-btn icon color="primary" variant="text">
+                                                  <EyeIcon size="20" />
                                                 </v-btn>
+                                              </RouterLink>
                                                 <v-btn @click.stop="drawer = !drawer" icon color="error" variant="text">
                                                     <TrashIcon size="20" />
                                                 </v-btn>

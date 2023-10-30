@@ -59,7 +59,7 @@ export default {
       <v-card variant="outlined" elevation="0" class="withbg">
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
-            <h3 class="text-h3">Notes & Tasks</h3>
+            <h3 class="text-h3">Tasks</h3>
             <div class="d-flex  justify-end ">
 
 
@@ -83,7 +83,7 @@ export default {
                         <v-row>
                           <v-col cols="12">
                             <v-text-field v-model="taskTitle" label="Task Title" variant="outlined"
-                              class="mb-3"></v-text-field>
+                              ></v-text-field>
                           </v-col>
 
                           <v-col cols="12">
@@ -117,42 +117,6 @@ export default {
 
 
 
-              <v-dialog width="600" v-model="notesDialog">
-                <template v-slot:activator="{ props }">
-                  <v-btn v-bind="props" color="primary" class="mx-1">Add Note +</v-btn>
-                </template>
-                <v-card class="overflow-auto w-100">
-                  <div class="d-flex border w-100">
-                    <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-                      Add Note
-                    </v-card-title>
-
-                  </div>
-                  <v-card-text>
-                    <v-container>
-                      <v-row>
-                        <v-col cols="12" md="6">
-                          <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
-                        </v-col>
-                        <v-col md="6" cols="12">
-                          <v-text-field type="time" label="Note Time" variant="outlined"
-                            class="text-input"></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
-                            variant="outlined"></v-textarea>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="error" text @click="notesDialog = false"> Close
-                    </v-btn>
-                    <v-btn color="success" text @click="notesDialog = false"> Save </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
 
             </div>
           </div>
@@ -161,31 +125,15 @@ export default {
         <v-card-text>
           <v-row>
             <v-col>
-              <v-tabs v-model="tab" color="primary">
-                <v-tab value="notes">
-                  <NotesIcon stroke-width="1.5" width="20" class="v-icon--start" /> Notes
-                </v-tab>
-                <v-tab value="tasks">
-                  <ServerIcon stroke-width="1.5" width="20" class="v-icon--start" /> Tasks
-                </v-tab>
-              </v-tabs>
+
               <v-window v-model="tab">
-                <v-window-item value="notes">
-                  <v-row class="mt-1">
-                    <v-col v-for="item in notesList" class="p-0" :key="item.id" cols="12 ">
-                      <NotesCard :editText="item.editText"  :deleteText="item.deleteText" :time="item.time" :edit-note="editNote" :date="item.date"
-                        :note-description="item.note" />
-                    </v-col>
-                  </v-row>
-                </v-window-item>
+
                 <v-window-item value="tasks">
                   <v-row class="mt-1">
-                    <v-col>
                       <v-col v-for="item in taskList" class="p-0" :key="item.id" cols="12 ">
                         <TaskCard :editText="item.editText" :deleteText="item.deleteText" :assign-to="item.assignTo" :created-at="item.createdDate" :due-date="item.dueDate"
                           :task-title="item.taskTitle" :task-description="item.taskDescription" />
                       </v-col>
-                    </v-col>
                   </v-row>
                 </v-window-item>
               </v-window>

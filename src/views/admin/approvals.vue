@@ -225,7 +225,7 @@ const tab2 = ref(null)
             <v-card variant="outlined" elevation="0" class="withbg">
                 <v-card-item>
                     <div class="d-sm-flex align-center justify-space-between">
-                        <h3 class="text-h3">Accounts Approvals</h3>
+                        <h3 class="text-h3 w-100">Agents Approvals</h3>
 
                     </div>
                 </v-card-item>
@@ -234,25 +234,35 @@ const tab2 = ref(null)
 
                     <v-row>
                         <v-col>
-                            <v-tabs class="mb-4" v-model="tab" color="primary">
+
+                          <div style="display: flex; justify-content: space-between;" >
+                            <div>
+                              <v-tabs class="mb-4" v-model="tab" color="primary">
                                 <v-tab value="pending">
-                                    <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start" /> Pending Requests
+                                  <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start" /> Pending Requests
                                 </v-tab>
                                 <v-tab value="approved">
-                                    <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start" /> Approved
-                                    Requests
+                                  <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start" /> Approved
+                                  Requests
                                 </v-tab>
                                 <v-tab value="rejected">
-                                    <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start" /> Rejected Requests
+                                  <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start" /> Rejected Requests
                                 </v-tab>
 
-                            </v-tabs>
+                              </v-tabs>
+                            </div>
+                              <div class=" w-25" >
+                                <v-text-field class="my-2 w-100 " type="text" variant="outlined" persistent-placeholder
+                                              placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
+                                              prepend-inner-icon="mdi-magnify" />
+                              </div>
+
+                          </div>
+
 
                             <v-window v-model="tab">
                                 <v-window-item value="pending">
-                                    <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                        placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
-                                        prepend-inner-icon="mdi-magnify" />
+
                                     <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
@@ -367,9 +377,7 @@ const tab2 = ref(null)
 
 
                                 <v-window-item value="approved">
-                                    <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                        placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
-                                        prepend-inner-icon="mdi-magnify" />
+
                                     <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
@@ -492,9 +500,6 @@ const tab2 = ref(null)
 
 
                                 <v-window-item value="rejected">
-                                    <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                        placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
-                                        prepend-inner-icon="mdi-magnify" />
 
                                     <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"

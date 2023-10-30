@@ -251,39 +251,33 @@ export default {
                 <v-card-text>
                   <v-container>
                     <v-row>
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Pipeline Name" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                        <v-text-field  label="Product Name" variant="outlined"
+></v-text-field>
                       </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                          <v-text-field  label="Stage 1 - Lead" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                          <v-text-field  label="Stage 1 - Lead" variant="outlined" ></v-text-field>
                       </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Stage 2 - Prospect" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                        <v-text-field  label="Stage 2 - Prospect" variant="outlined" ></v-text-field>
                       </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Stage 3 - Prospect" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                        <v-text-field  label="Stage 3 - Prospect" variant="outlined" ></v-text-field>
                       </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field label="Stage 4 - Prospect" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                        <v-text-field label="Stage 4 - Prospect" variant="outlined"></v-text-field>
                       </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field  label="Stage 5 - Won" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                        <v-text-field  label="Stage 5 - Won" variant="outlined"></v-text-field>
                       </v-col>
 
-                      <v-col cols="12" md="6" lg="6" sm="12">
-                        <v-text-field label="Stage 6 - Lost" variant="outlined"
-                                      class="mb-3"></v-text-field>
+                      <v-col cols="12" md="6" lg="4" sm="12">
+                        <v-text-field label="Stage 6 - Lost" variant="outlined" ></v-text-field>
                       </v-col>
 
 
@@ -350,39 +344,39 @@ export default {
                       <v-card-text>
                         <v-container>
                           <v-row>
-                            <v-col cols="12" md="6" lg="6" sm="12">
-                              <v-text-field v-model="pipelineName"  label="Pipeline Name" variant="outlined"
-                                             class="mb-3"></v-text-field>
+                            <v-col cols="12" md="6" lg="4" sm="12">
+                              <v-text-field v-model="pipelineName"  label="Product Name" variant="outlined"
+                                             ></v-text-field>
                             </v-col>
 
-                            <v-col cols="12" md="6" lg="6" sm="12">
+                            <v-col cols="12" md="6" lg="4" sm="12">
                               <v-text-field  v-model="pipelineStage1" label="Stage 1 - Lead" variant="outlined"
-                                             class="mb-3"></v-text-field>
+                                             ></v-text-field>
                             </v-col>
 
-                            <v-col cols="12" md="6" lg="6" sm="12">
+                            <v-col cols="12" md="6" lg="4" sm="12">
                               <v-text-field v-model="pipelineStage2" label="Stage 2 - Prospect" variant="outlined"
-                                             class="mb-3"></v-text-field>
+                                             ></v-text-field>
                             </v-col>
 
-                            <v-col cols="12" md="6" lg="6" sm="12">
+                            <v-col cols="12" md="6" lg="4" sm="12">
                               <v-text-field v-model="pipelineStage3"  label="Stage 3 - Prospect" variant="outlined"
-                                             class="mb-3"></v-text-field>
+                                             ></v-text-field>
                             </v-col>
 
-                            <v-col cols="12" md="6" lg="6" sm="12">
+                            <v-col cols="12" md="6" lg="4" sm="12">
                               <v-text-field v-model="pipelineStage4" label="Stage 4 - Prospect" variant="outlined"
-                                            class="mb-3"></v-text-field>
+                                            ></v-text-field>
                             </v-col>
 
-                            <v-col cols="12" md="6" lg="6" sm="12">
+                            <v-col cols="12" md="6" lg="4" sm="12">
                               <v-text-field v-model="pipelineStage5" label="Stage 5 - Won" variant="outlined"
-                                             class="mb-3"></v-text-field>
+                                             ></v-text-field>
                             </v-col>
 
-                            <v-col cols="12" md="6" lg="6" sm="12">
+                            <v-col cols="12" md="6" lg="4" sm="12">
                               <v-text-field v-model="pipelineStage6" label="Stage 6 - Lost" variant="outlined"
-                                            class="mb-3"></v-text-field>
+                                            ></v-text-field>
                             </v-col>
 
 
@@ -390,7 +384,7 @@ export default {
 
                         </v-container>
                       </v-card-text>
-                      <v-card-actions>
+                      <v-card-actions class="m-0" >
                         <v-spacer></v-spacer>
                         <v-btn color="error" text @click="editPipelineDialog = false"> Close
                         </v-btn>

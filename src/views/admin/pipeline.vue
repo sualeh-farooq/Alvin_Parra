@@ -227,7 +227,10 @@ export default {
           notesDialog: null ,
           taskDialog: null,
           selectedFile: null ,
-
+          fav: true,
+          menu: false,
+          message: false,
+          hints: true,
           editType: 'Individual',
             drawer: false,
             followUpDate: false,
@@ -351,7 +354,12 @@ export default {
             },
           ],
           sortByPipeline: ['AUM' , 'Annuity' , 'Life' , 'Medicare' , 'Health', 'Trust' , 'LTC/DI' , 'Supplement' , 'Group Plans','Other'],
-          selectedPipeline: ['Annuity']
+          selectedPipeline: ['Annuity'],
+          openDays: ['Highest to lowest' , 'Lowest to highest'],
+          closingDate: ['Earliest to latest' , 'Latest to earliest'],
+          statuses: ['All' , 'Cold', 'Warm', 'Hot'],
+          agents: ['Laura' , 'Alvin' , 'John' , 'Henry'],
+          defaultAgent: 'Laura',
         };
     },
     components: {
@@ -388,17 +396,16 @@ export default {
                 <v-card-item>
                     <div class="d-sm-flex align-center justify-space-between">
                         <h3 class="text-h3">Pipelines</h3>
-                        <div class="d-flex  justify-end ">
+                        <div class="d-flex  justify-end  w-100 ">
+
                           <RouterLink to="/admin/addPipeline" >
                             <v-btn color="primary" class="mx-1">Add Pipeline +</v-btn>
 
                           </RouterLink>
-                            <RouterLink to="/admin/addOpportunity">
 
-                                <v-btn color="primary" class="mx-1">
+                                <v-btn  @click.stop="drawer = !drawer" color="primary" class="mx-1">
                                     Add Opportunity +
                                 </v-btn>
-                            </RouterLink>
                         </div>
                     </div>
                 </v-card-item>
@@ -419,11 +426,76 @@ export default {
                               </v-tabs>
 
                             </div>
-                            <div class="w-25" >
+                         <div style="justify-content:flex-end;" class="d-flex gap-2  w-100 " >
+                           <div class="w-25" >
+                             <v-text-field contact="text" variant="outlined" persistent-placeholder
+                                           placeholder="Search Opportunity" v-model="searchValue" density="compact"
+                                           hide-details prepend-inner-icon="mdi-magnify" />
+                           </div>
+                           <div class="w-25" >
+                             <v-select label="Select Agent" :items="agents" color="primary" variant="outlined" hide-details density="compact" v-model="defaultAgent"></v-select>
+                           </div>
+                           <div class="w-25" >
+                             <v-select label="Select Product" :items="sortByPipeline" color="primary" variant="outlined" hide-details density="compact" v-model="selectedPipeline"></v-select>
+                           </div>
 
-                              <v-select label="Select Pipeline" :items="sortByPipeline" color="primary" variant="outlined" hide-details density="compact" v-model="selectedPipeline"></v-select>
-                            </div>
+                           <div>
+                             <div class="text-center">
+                               <v-menu
+                                   v-model="menu"
+                                   :close-on-content-click="false"
+                                   location="end"
+                               >
+                                 <template v-slot:activator="{ props }">
+                                   <v-btn
+                                       color="primary"
+                                       v-bind="props"
+                                   >
+                                     <FilterIcon size="18" class="mx-1" />   Filters
+                                   </v-btn>
+                                 </template>
 
+                                 <v-card min-width="400">
+
+                                   <v-list >
+                                     <v-list-item >
+                                       <v-select class="mt-2"  label="Sort by days open" :items="openDays" color="primary" variant="outlined" hide-details density="compact" ></v-select>
+
+                                     </v-list-item>
+                                     <v-list-item >
+                                       <v-select class="mt-2"  label="Sort by follow up and est closing Date" :items="closingDate" color="primary" variant="outlined" hide-details density="compact" ></v-select>
+
+                                     </v-list-item>
+
+                                     <v-list-item >
+                                       <v-select class="mt-2"  label="Status" :items="statuses" color="primary" variant="outlined" hide-details density="compact" ></v-select>
+
+                                     </v-list-item>
+                                   </v-list>
+
+                                   <div class=" mx-3 my-3 border d-flex gap-2" >
+                                     <v-btn
+                                         color="primary"
+                                         class="w-50"
+                                     >
+                                       Apply Filters
+                                     </v-btn>
+
+                                     <v-btn
+                                         color="primary"
+                                         class="w-50"
+                                     >
+                                       Reset Filters
+                                     </v-btn>
+
+                                   </div>
+                                 </v-card>
+                               </v-menu>
+                             </div>
+                           </div>
+
+
+                         </div>
                           </div>
 
                             <v-window v-model="tab2">
@@ -432,19 +504,21 @@ export default {
                                 </v-window-item>
 
                                 <v-window-item value="22">
-                                    <v-text-field class="my-2 " contact="text" variant="outlined" persistent-placeholder
-                                        placeholder="Search Opportunity" v-model="searchValue" density="compact"
-                                        hide-details prepend-inner-icon="mdi-magnify" />
-                                    <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
+
+                                    <EasyDataTable class="mt-3" :headers="headers" :items="items" table-class-name="customize-table"
                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
                                         <template #item-action="item">
                                             <div class="operation-wrapper">
 
-                                                <v-btn @click.stop="drawer = !drawer" icon color="primary" variant="text">
+                                              <RouterLink to="/admin/opportunityView" >
+
+                                                <v-btn  icon color="primary" variant="text">
                                                     <EyeIcon size="20" />
                                                 </v-btn>
-                                                <v-btn @click.stop="drawer = !drawer" icon color="error" variant="text">
+                                              </RouterLink>
+
+                                                <v-btn  icon color="error" variant="text">
                                                     <TrashIcon size="20" />
                                                 </v-btn>
                                             </div>
@@ -462,342 +536,167 @@ export default {
 
 
     <!--- Opportunity View Drawer on Action Button Click in Table -->
-    <v-navigation-drawer color="surface" :width="700" location="right" v-model="drawer" temporary>
-        <div class="ma-3">
-
-            <div class="d-flex align-center justify-space-between ">
-                <h3>Opportunity Details</h3>
-                <div class="d-flex gap-2">
-                    <!-- <v-btn color="primary">
-                        <EditIcon size="20" /> Edit
-                    </v-btn> -->
+    <v-navigation-drawer color="surface" :width="750" location="right" v-model="drawer" temporary>
 
 
-                    <v-dialog width="600" v-model="rejectedDialog">
-                        <template v-slot:activator="{ props }">
-                            <v-btn color="primary" v-bind="props">
-                                <EditIcon size="20" /> Edit
-                            </v-btn>
-                        </template>
-                        <v-card class="overflow-auto w-100">
-                            <div class="d-flex border w-100">
-                                <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-                                    Edit Opportunity Details
-                                </v-card-title>
+      <v-row>
+        <v-col col="12" >
 
-                            </div>
+            <div class="d-flex align-center  border px-4 py-2 justify-space-between ">
+              <h3>Quick Add Opportunity</h3>
 
-                            <v-card-text>
-                                <v-container>
-                                    <v-row>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-text-field v-model="editName" type="text" label="Name" variant="outlined"
-                                                class="text-input"></v-text-field>
-                                        </v-col>
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-text-field v-model="editContact" type="text" label="Contact"
-                                                variant="outlined" class="text-input"></v-text-field>
-                                        </v-col>
+          </div>
+          <v-card  variant="outlined" style="border-radius: none; background: transparent; border: none;"  elevation="0" class="  ">
 
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-autocomplete label="Pipeline" v-model="editPipeline" :items="pipeline"
-                                                color="primary" variant="outlined" hide-details></v-autocomplete>
-                                        </v-col>
+            <v-card-text>
 
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-autocomplete label="Lead Status" :items="leadStatus" v-model="editLeadStatus"
-                                                color="primary" variant="outlined" hide-details></v-autocomplete>
-                                        </v-col>
+                <v-row>
+                  <v-col cols="12" md="4">
+                    <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
 
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-autocomplete label="Stage" :items="stage" v-model="editStage" color="primary"
-                                                variant="outlined" hide-details></v-autocomplete>
-                                        </v-col>
+                  </v-col>
 
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-autocomplete label="Level" :items="level" v-model="editTempLevel"
-                                                color="primary" variant="outlined" hide-details></v-autocomplete>
-                                        </v-col>
+                  <v-col cols="12" md="4">
+                    <div @click="opportunityDate = true" v-if="!opportunityDate">
+                      <v-text-field type="text" label="Opportunity Created Date" variant="outlined"
+                                   ></v-text-field>
 
-                                        <v-col md="6" sm="12" cols="12">
-                                            <v-autocomplete label="Type" :items="type" v-model="editType" color="primary"
-                                                variant="outlined" hide-details></v-autocomplete>
-                                        </v-col>
+                    </div>
+                    <div v-else>
+                      <v-text-field type="date" label="Opportunity Created Date" variant="outlined"
+                                   ></v-text-field>
+                    </div>
+                  </v-col>
+
+                  <v-col cols="12" md="4">
+                    <v-text-field type="text" label="Opportunity Name"
+                                  placeholder="<lastname> <pipeline> <date>" variant="outlined"
+                                  ></v-text-field>
+                  </v-col>
+                </v-row>
+
+                <v-row class="my-1" >
 
 
-                                    </v-row>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Select Pipeline Stage" v-model="pipelineStage"
+                                    :items="pipelineStages" color="primary" variant="outlined"
+                                    hide-details></v-autocomplete>
 
-                                </v-container>
-                            </v-card-text>
-                            <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <v-btn color="error" text @click="rejectedDialog = false"> Close
-                                </v-btn>
-                                <v-btn color="success" text @click="pendingDialog = false"> Update </v-btn>
-                            </v-card-actions>
-                        </v-card>
-                    </v-dialog>
-                    <v-btn color="error">
-                        <TrashIcon size="20" />Delete
-                    </v-btn>
-                </div>
-            </div>
-            <v-row class="mt-3">
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Name
-                    </v-label>
-                    <p>John Doe</p>
-                </v-col>
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Contact
-                    </v-label>
-                    <p>John Smith</p>
-                </v-col>
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Pipeline</v-label>
-                    <p>Life Insurance</p>
-                </v-col>
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Lead Status</v-label>
-                    <p>Lead One</p>
-                </v-col>
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Stage</v-label>
-                    <p>Prospect Quote</p>
-                </v-col>
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Temp Level</v-label>
-                    <p>Cold</p>
-                </v-col>
-                <v-col cols="12" lg="4" md="6" sm="12">
-                    <v-label class="font-weight-medium">Type</v-label>
-                    <p>Individual</p>
-                </v-col>
-            </v-row>
+                  </v-col>
 
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
 
-            <v-row>
-                <v-col cols="12" md="6" lg="4">
+                  <v-col cols="12" md="6" lg="4">
                     <div @click="followUpDate = true" v-if="!followUpDate">
-                        <v-text-field type="text" label="Next Follow up" variant="outlined"
-                            class="text-input"></v-text-field>
+                      <v-text-field type="text" label="Next Follow up" variant="outlined"
+                                    ></v-text-field>
 
                     </div>
                     <div v-else>
-                        <v-text-field type="date" label="Next Follow up" variant="outlined"
-                            class="text-input"></v-text-field>
+                      <v-text-field type="date" label="Next Follow up" variant="outlined"
+                                    ></v-text-field>
                     </div>
-                </v-col>
+                  </v-col>
 
-                <v-col cols="12" md="6" lg="4">
+                  <v-col cols="12" md="6" lg="4">
                     <div @click="closingTarget = true" v-if="!closingTarget">
-                        <v-text-field type="text" label="Est Closing Target" variant="outlined"
-                            class="text-input"></v-text-field>
+                      <v-text-field type="text" label="Est Closing Target" variant="outlined"
+                                   ></v-text-field>
 
                     </div>
                     <div v-else>
-                        <v-text-field type="date" label="Est Closing Target" variant="outlined"
-                            class="text-input"></v-text-field>
+                      <v-text-field type="date" label="Est Closing Target" variant="outlined"
+                                   ></v-text-field>
                     </div>
-                </v-col>
+                  </v-col>
 
 
-                <v-col cols="12" md="6" lg="4">
-                    <v-autocomplete label="Service Type" :items="serviceType" color="primary" variant="outlined"
-                        hide-details></v-autocomplete>
-                </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Tempera" v-model="tempVal"
+                                    :items="Temprature" color="primary" variant="outlined"
+                                    hide-details></v-autocomplete>
 
-                <v-col cols="12" md="6" lg="4">
-                    <v-autocomplete label="Carrier" :items="carrier" color="primary" variant="outlined"
-                        hide-details></v-autocomplete>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-autocomplete label="Product" :items="product" color="primary" variant="outlined"
-                        hide-details></v-autocomplete>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-text-field type="text" label="Est Annual Premium" color="primary" class="text-input"
-                        variant="outlined"></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-text-field type="select" :items="agent2Split" label="Opportunity Income" color="primary"
-                        variant="outlined"></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-text-field type="text" label="Writing Agent" variant="outlined" class="text-input"></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-autocomplete label="Writing Agent Split" :items="writingAgentSplit" color="primary"
-                        variant="outlined" hide-details></v-autocomplete>
-                </v-col>
-
-                <v-col cols="12" md="6" lg="4">
-                    <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"
-                        class="text-input"></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-autocomplete label="Agent 2 Split" :items="agent2Split" color="primary" variant="outlined"
-                        hide-details></v-autocomplete>
-                </v-col>
-                <v-col cols="12" md="6" lg="4">
-                    <v-autocomplete label="Exist Source of Opportunity" v-model="opportunitySourceVal"
-                        :items="opportunitySources" color="primary" variant="outlined" hide-details></v-autocomplete>
-                </v-col>
-
-                <v-col cols="12" md="6" lg="4">
-                    <v-text-field type="text" label="Reffered By" variant="outlined" class="text-input"></v-text-field>
-                </v-col>
-
-            </v-row>
+                  </v-col>
 
 
-            <v-row>
-                <v-col cols="12">
 
-                    <div class="d-flex align-center justify-space-between">
-                        <card-title>Notes</card-title>
-<!--                        <v-btn color="primary">Add Note</v-btn>-->
+                  <v-col cols="12" md="6" lg="4">
+                    <v-text-field type="text" label="Reffered By" variant="outlined"
+                                  ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Existing Source of Opportunity" v-model="opportunitySourceVal"
+                                    :items="opportunitySources"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
 
-                      <v-dialog width="600" v-model="notesDialog">
-                        <template v-slot:activator="{ props }">
-                          <v-btn v-bind="props" color="primary" class="mx-1">Add Note </v-btn>
-                        </template>
-                        <v-card class="overflow-auto w-100">
-                          <div class="d-flex border w-100">
-                            <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-                              Add Note
-                            </v-card-title>
+                </v-row>
 
-                          </div>
-                          <v-card-text>
-                            <v-container>
-                              <v-row>
-                                <v-col cols="12" md="6">
-                                  <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
-                                </v-col>
-                                <v-col md="6" cols="12">
-                                  <v-text-field type="time" label="Note Time" variant="outlined"
-                                                class="text-input"></v-text-field>
-                                </v-col>
-                                <v-col cols="12">
-                                  <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
-                                              variant="outlined"></v-textarea>
-                                </v-col>
-                              </v-row>
-                            </v-container>
-                          </v-card-text>
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="error" text @click="notesDialog = false"> Close
-                            </v-btn>
-                            <v-btn color="success" text @click="notesDialog = false"> Save </v-btn>
-                          </v-card-actions>
-                        </v-card>
-                      </v-dialog>
+                <v-divider></v-divider>
 
-                    </div>
+                <v-row class="my-1" >
 
-                    <div class=" my-2">
-                      <v-row class="mt-1">
-                        <v-col v-for="item in notesList" class="p-0" :key="item.id" cols="12 ">
-                          <NotesCard  :time="item.time" :edit-note="editNote" :date="item.date"
-                                     :note-description="item.note" />
-                        </v-col>
-                      </v-row>
-                    </div>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="12">
+                  <v-col cols="12" md="6" lg="4">
+                    <v-text-field type="text" label="Writing Agent" variant="outlined"
+                                  ></v-text-field>
+                  </v-col>
 
-                    <div class="d-flex align-center justify-space-between">
-                        <card-title>Tasks</card-title>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Writing Agent Split"
+                                    :items="writingAgentSplit"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
+
+                  <v-col cols="12" md="6" lg="4">
+                    <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Agent 2 Split"
+                                    :items="agent2Split"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Service Type"
+                                    :items="serviceType"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Carrier"
+                                    :items="carrier"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-autocomplete label="Product"
+                                    :items="product"
+                                    color="primary" variant="outlined" hide-details></v-autocomplete>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-text-field type="text" label="Est Annual Premium" color="primary" variant="outlined"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6" lg="4">
+                    <v-text-field type="select" :items="agent2Split" label="Opportunity Income" color="primary" variant="outlined"></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" md="12">
 
 
-                      <v-dialog width="600" v-model="taskDialog">
-                        <template v-slot:activator="{ props }">
-                          <v-btn v-bind="props" color="primary" class="mx-1">Add Task </v-btn>
-                        </template>
-                        <v-card class="overflow-auto w-100">
-                          <div class="d-flex border w-100">
-                            <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-                              Add Task
-                            </v-card-title>
 
-                          </div>
+                    <v-btn class="mx-1" color="primary">Save Opportunity
+                    </v-btn>
 
-                          <v-card-text>
-                            <v-container>
-                              <v-row>
-                                <v-col cols="12">
-                                  <v-text-field v-model="taskTitle" label="Task Title" variant="outlined"
-                                                class="mb-3"></v-text-field>
-                                </v-col>
+                  </v-col>
 
-                                <v-col cols="12">
-                                  <v-textarea v-model="taskDescription" filled auto-grow label="Task Description" rows="4"
-                                              row-height="20" color="primary" variant="outlined"></v-textarea>
-                                </v-col>
+                </v-row>
 
-                                <v-col cols="12" md="6">
-                                  <v-autocomplete label="Select Agent to Assign Task" v-model="agent" :items="agentsList"
-                                                  color="primary" variant="outlined" hide-details></v-autocomplete>
-                                </v-col>
-
-                                <v-col md="6" cols="12">
-                                  <v-text-field v-model="taskDueDate" type="date" label="Task Due Date" variant="outlined"
-                                                class="text-input"></v-text-field>
-                                </v-col>
-
-                              </v-row>
-
-                            </v-container>
-                          </v-card-text>
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="error" text @click="taskDialog = false"> Close
-                            </v-btn>
-                            <v-btn color="success" text @click="taskDialog = false"> Save </v-btn>
-                          </v-card-actions>
-                        </v-card>
-                      </v-dialog>
-
-
-                    </div>
-
-                    <div class=" my-2">
-                      <v-row class="mt-1">
-                        <v-col>
-                          <v-col v-for="item in taskList" class="p-0" :key="item.id" cols="12 ">
-                            <TaskCard :assign-to="item.assignTo" :created-at="item.createdDate" :due-date="item.dueDate"
-                                      :task-title="item.taskTitle" :task-description="item.taskDescription" />
-                          </v-col>
-                        </v-col>
-                      </v-row>
-                    </div>
-
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="12">
-
-                    <div class="d-flex align-center justify-space-between">
-                        <card-title>Files</card-title>
-                      <v-btn color="primary" @click="openFileInput">Add File</v-btn>
-                      <v-file-input
-                          ref="fileInput"
-                          v-model="selectedFile"
-                          accept="image/*"
-                      @change="handleFileChange"
-                      style="display: none"
-                      ></v-file-input>
-                    </div>
-
-
-                </v-col>
-            </v-row>
-
-        </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
 
     </v-navigation-drawer>
 </template>

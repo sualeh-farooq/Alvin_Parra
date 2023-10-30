@@ -43,9 +43,9 @@ const addTaskCard = (id: number, task: string) => {
   <div class="overflow-auto">
     <div  class="taskBoardBox ma-0 d-flex gap-2">
       <div  v-for="column in getTask" :key="column.title">
-        <div style="width: 350px" class="bg-lightprimary  rounded-lg ">
-        <div :style="{'background-color': column.color }" class=" text-white py-2 text-center rounded-lg" >
-          <h4 class="text-h4 ">{{ column.title }}</h4>
+        <div style="width: 220px" class="bg-lightprimary  rounded-lg ">
+        <div :style="{'background-color': column.color }" class=" text-white p-0 text-center rounded-lg" >
+          <h4 class="text-h6 ">{{ column.title }}</h4>
         </div>
           <draggable class="pa-2 " style="min-height: 150px" :list="column.tasks" :animation="200" ghost-class="ghost-card" group="tasks">
             <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->

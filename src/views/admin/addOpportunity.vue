@@ -160,23 +160,23 @@ const opportunitySourceVal = ref(['Existing'])
           <Form>
 
             <v-row>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="4">
                 <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
 
               </v-col>
-              <v-col cols="12" md="6">
-                <div class="mt-6">
-                                    <span>Contact not found ? <RouterLink to="/admin/addContact">Create New Contact
-                                        </RouterLink>
-                                    </span>
+<!--              <v-col cols="12" md="4">-->
+<!--                <div class="mt-6">-->
+<!--                                    <span>Contact not found ? <RouterLink to="/admin/addContact">Create New Contact-->
+<!--                                        </RouterLink>-->
+<!--                                    </span>-->
 
-                </div>
+<!--                </div>-->
 
-              </v-col>
+<!--              </v-col>-->
 
 
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="4">
                 <div @click="opportunityDate = true" v-if="!opportunityDate">
                   <v-text-field type="text" label="Opportunity Created Date" variant="outlined"
                                 class="mb-3"></v-text-field>
@@ -188,7 +188,7 @@ const opportunitySourceVal = ref(['Existing'])
                 </div>
               </v-col>
 
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="4">
                 <v-text-field type="text" label="Opportunity Name"
                               placeholder="<lastname> <pipeline> <date>" variant="outlined"
                               class="mb-3"></v-text-field>
@@ -199,23 +199,23 @@ const opportunitySourceVal = ref(['Existing'])
             <v-row>
               <v-col cols="12">
                 <div class="mt-3">
-                  <h2 class="text-h3 text-disabled">Pipeline Details</h2>
+                  <h2 class="text-h3 ">Pipeline Details</h2>
                 </div>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Select Pipeline Stage" v-model="pipelineStage"
                                 :items="pipelineStages" color="primary" variant="outlined"
                                 hide-details></v-autocomplete>
 
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <div @click="followUpDate = true" v-if="!followUpDate">
                   <v-text-field type="text" label="Next Follow up" variant="outlined"
                                 class="mb-3"></v-text-field>
@@ -227,7 +227,7 @@ const opportunitySourceVal = ref(['Existing'])
                 </div>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <div @click="closingTarget = true" v-if="!closingTarget">
                   <v-text-field type="text" label="Est Closing Target" variant="outlined"
                                 class="mb-3"></v-text-field>
@@ -240,20 +240,20 @@ const opportunitySourceVal = ref(['Existing'])
               </v-col>
 
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Tempera" v-model="tempVal"
                                 :items="Temprature" color="primary" variant="outlined"
                                 hide-details></v-autocomplete>
 
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Existing Source of Opportunity" v-model="opportunitySourceVal"
                                 :items="opportunitySources"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Reffered By" variant="outlined"
                               class="mb-3"></v-text-field>
               </v-col>
@@ -266,56 +266,55 @@ const opportunitySourceVal = ref(['Existing'])
             <v-row>
               <v-col cols="12">
                 <div class="mt-3">
-                  <h2 class="text-h3 text-disabled">Agent Details</h2>
+                  <h2 class="text-h3 ">Agent Details</h2>
                 </div>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Writing Agent" variant="outlined"
                               class="mb-3"></v-text-field>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Writing Agent Split"
                                 :items="writingAgentSplit"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"></v-text-field>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Agent 2 Split"
                                 :items="agent2Split"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Service Type"
                                 :items="serviceType"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Carrier"
                                 :items="carrier"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Product"
                                 :items="product"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Est Annual Premium" color="primary" variant="outlined"></v-text-field>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="select" :items="agent2Split" label="Opportunity Income" color="primary" variant="outlined"></v-text-field>
               </v-col>
 
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="12">
            
-                <v-btn class="mx-1" color="primary">Save & Close
-                </v-btn>
 
-                <v-btn class="mx-1" color="primary">Save + Add Opportunity
+
+                <v-btn class="mx-1" color="primary">Save Opportunity
                 </v-btn>
 
               </v-col>
