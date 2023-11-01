@@ -544,7 +544,9 @@ export default {
 
             <div class="d-flex align-center  border px-4 py-2 justify-space-between ">
               <h3>Quick Add Opportunity</h3>
-
+    <div>
+      <button @click="drawer = !drawer" > <XIcon /></button>
+    </div>
           </div>
           <v-card  variant="outlined" style="border-radius: none; background: transparent; border: none;"  elevation="0" class="  ">
 
@@ -552,7 +554,7 @@ export default {
 
                 <v-row>
                   <v-col cols="12" md="4">
-                    <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
+                    <v-autocomplete label="Select Contact" v-model="statusValue" :items="leadStatus"
                                     color="primary" variant="outlined" hide-details></v-autocomplete>
 
                   </v-col>

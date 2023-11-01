@@ -107,7 +107,7 @@ export default {
     </v-row>
 
     <div class="py-4   text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update Profile Settings</v-btn>
+      <v-btn color="primary"  size="large" class="text-subtitle-1 mt-2">Update Profile Settings</v-btn>
           </div>
   </div>
 </template>

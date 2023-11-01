@@ -216,6 +216,7 @@ const acceptedDialog = ref(false);
 const rejectedDialog = ref(false);
 const tab = ref(null)
 const tab2 = ref(null)
+const perLevel = ref(50)
 </script>
 
 
@@ -270,7 +271,7 @@ const tab2 = ref(null)
                                             <div class="operation-wrapper">
                                                 <v-dialog width="800" v-model="pendingDialog" persistent>
                                                     <template v-slot:activator="{ props }">
-                                                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                                                        <v-btn icon color="primary" v-bind="props" variant="text">
                                                             <EyeIcon size="20" />
                                                         </v-btn>
                                                     </template>
@@ -300,31 +301,15 @@ const tab2 = ref(null)
                                                                         <v-lable class="font-weight-bold">Email</v-lable>
                                                                         <p>johndoe@gmail.com</p>
                                                                     </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Social Security
-                                                                            Number</v-lable>
-                                                                        <p>HSDK-9201</p>
-                                                                    </v-col>
+
                                                                     <v-col lg="4" md="6" sm="12" cols="12">
                                                                         <v-lable class="font-weight-bold">License
                                                                             Number</v-lable>
                                                                         <p>LNUS-7920</p>
                                                                     </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable
-                                                                            class="font-weight-bold">Generation</v-lable>
-                                                                        <p>04</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Code
-                                                                            Number</v-lable>
-                                                                        <p>1201</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Base
-                                                                            Number</v-lable>
-                                                                        <p>09</p>
-                                                                    </v-col>
+
+
+
                                                                     <v-col lg="4" md="6" sm="12" cols="12">
                                                                         <v-lable class="font-weight-bold">Added by
                                                                             Agent</v-lable>
@@ -332,23 +317,13 @@ const tab2 = ref(null)
                                                                     </v-col>
                                                                     <v-col lg="4" md="6" sm="12" cols="12">
                                                                         <v-lable class="font-weight-bold">% Level</v-lable>
-                                                                        <p>Reg Dir (90%)</p>
+                                                                      <v-text-field v-model="perLevel" type="number"  variant="outlined"
+                                                                      ></v-text-field>
                                                                     </v-col>
 
                                                                 </v-row>
+
                                                                 <v-row class="mt-3">
-                                                                    <v-col cols="12">
-                                                                        <v-lable class="font-weight-bold">License
-                                                                            Image</v-lable>
-
-                                                                        <div class=" w-100 py-3 my-2">
-                                                                            <img src="../../assets/images/license.jpg"
-                                                                                class="w-25" alt="license_image" />
-
-                                                                        </div>
-                                                                    </v-col>
-                                                                </v-row>
-                                                                <v-row class="mt-1">
                                                                     <v-col cols="12">
                                                                         <div class=" d-flex justify-start gap-2">
                                                                             <v-btn color="error" text> Reject </v-btn>
@@ -366,7 +341,7 @@ const tab2 = ref(null)
                                                         </v-card-actions>
                                                     </v-card>
                                                 </v-dialog>
-                                                <v-btn icon color="primary" variant="text">
+                                                <v-btn icon color="error" variant="text">
                                                     <TrashIcon size="20" />
                                                 </v-btn>
                                             </div>
@@ -385,7 +360,7 @@ const tab2 = ref(null)
                                             <div class="operation-wrapper">
                                                 <v-dialog width="800" v-model="acceptedDialog">
                                                     <template v-slot:activator="{ props }">
-                                                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                                                        <v-btn icon color="primary" v-bind="props" variant="text">
                                                             <EyeIcon size="20" />
                                                         </v-btn>
                                                     </template>
@@ -490,7 +465,7 @@ const tab2 = ref(null)
                                                         </v-card-actions>
                                                     </v-card>
                                                 </v-dialog>
-                                                <v-btn icon color="primary" variant="text">
+                                                <v-btn icon color="error" variant="text">
                                                     <TrashIcon size="20" />
                                                 </v-btn>
                                             </div>
@@ -508,7 +483,7 @@ const tab2 = ref(null)
                                             <div class="operation-wrapper">
                                                 <v-dialog width="800" v-model="rejectedDialog">
                                                     <template v-slot:activator="{ props }">
-                                                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                                                        <v-btn icon color="primary" v-bind="props" variant="text">
                                                             <EyeIcon size="20" />
                                                         </v-btn>
                                                     </template>
@@ -613,7 +588,7 @@ const tab2 = ref(null)
                                                         </v-card-actions>
                                                     </v-card>
                                                 </v-dialog>
-                                                <v-btn icon color="primary" variant="text">
+                                                <v-btn icon color="error" variant="text">
                                                     <TrashIcon size="20" />
                                                 </v-btn>
                                             </div>

@@ -371,11 +371,11 @@ const tab7 = ref(null);
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
                       <RouterLink to="/agency/contactView">
-                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                        <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
                       </RouterLink>
-                      <v-btn icon color="primary" variant="text">
+                      <v-btn icon color="error" variant="text">
                         <TrashIcon size="20"/>
                       </v-btn>
                     </template>
@@ -389,11 +389,11 @@ const tab7 = ref(null);
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
                       <RouterLink to="/agency/contactView">
-                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                        <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
                       </RouterLink>
-                      <v-btn icon color="primary" variant="text">
+                      <v-btn icon color="error" variant="text">
                         <TrashIcon size="20"/>
                       </v-btn>
                     </template>
@@ -406,11 +406,11 @@ const tab7 = ref(null);
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
                       <RouterLink to="/agency/contactView">
-                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                        <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
                       </RouterLink>
-                      <v-btn icon color="primary" variant="text">
+                      <v-btn icon color="error" variant="text">
                         <TrashIcon size="20"/>
                       </v-btn>
                     </template>
@@ -423,11 +423,11 @@ const tab7 = ref(null);
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
                       <RouterLink to="/agency/contactView">
-                        <v-btn icon color="secondary" v-bind="props" variant="text">
+                        <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
                       </RouterLink>
-                      <v-btn icon color="primary" variant="text">
+                      <v-btn icon color="error" variant="text">
                         <TrashIcon size="20"/>
                       </v-btn>
                     </template>

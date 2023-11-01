@@ -1,5 +1,10 @@
 <script  lang="ts">
 export default  {
+  methods : {
+      goBack(){
+        window.history.back(-1)
+      }
+  },
   data(){
     return {
       tab2: null,
@@ -86,6 +91,7 @@ export default  {
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Agent Details</h3>
+            <v-btn  @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
 
 
           </div>

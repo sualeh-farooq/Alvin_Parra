@@ -75,6 +75,11 @@ function isLast(index) {
 
 export default {
   name: 'Add Opportunity Page',
+  methods:{
+    goBack(){
+        window.history.back(-1)
+    }
+  },
   data() {
     return {
       opportunityDate: false,
@@ -173,6 +178,8 @@ const opportunitySourceVal = ref(['Existing'])
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Add Contact</h3>
+            <v-btn  @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
+
           </div>
         </v-card-item>
         <v-divider></v-divider>
@@ -187,24 +194,24 @@ const opportunitySourceVal = ref(['Existing'])
 
 
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="First Name" variant="outlined"
                               ></v-text-field>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Last Name" variant="outlined"
                               ></v-text-field>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="email" label="Email" variant="outlined"
                              ></v-text-field>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="number" label="Phone Number" variant="outlined"
                              ></v-text-field>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <div @click="followUpDate = true" v-if="!followUpDate">
                   <v-text-field type="text" label="Next Follow up" variant="outlined"
                                 ></v-text-field>
@@ -215,7 +222,7 @@ const opportunitySourceVal = ref(['Existing'])
                                 ></v-text-field>
                 </div>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <div @click="dobDate = true" v-if="!dobDate">
                   <v-text-field type="text" label="Date of Birth" variant="outlined"
                                 ></v-text-field>
@@ -228,34 +235,34 @@ const opportunitySourceVal = ref(['Existing'])
               </v-col>
 
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="City" variant="outlined"
                            ></v-text-field>
               </v-col>
 
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="State" variant="outlined"
                              ></v-text-field>
               </v-col>
 
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Zipcode" variant="outlined"
                               ></v-text-field>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Source for Contact" v-model="opportunitySourceVal"
                                 :items="opportunitySources"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
               </v-col>
 
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-text-field type="text" label="Reffered By" variant="outlined"
                             ></v-text-field>
               </v-col>
-              <v-col cols="12" md="6" lg="4">
+              <v-col cols="12" md="6" lg="3">
                 <v-autocomplete label="Contact Category" v-model="opportunitySourceVal"
                                 :items="contactCategory"
                                 color="primary" variant="outlined" hide-details></v-autocomplete>
@@ -294,7 +301,7 @@ const opportunitySourceVal = ref(['Existing'])
   <!-- <v-text-field label="Last Name" variant="outlined" class="mb-3"></v-text-field> -->
 
   <!-- <v-row>
-      <v-col cols="12" md="6" lg="4">
+      <v-col cols="12" md="6" lg="3">
           <UiParentCard title="On Type">
               <Form>
                   <v-text-field label="First Name" variant="outlined" class="mb-3"></v-text-field>

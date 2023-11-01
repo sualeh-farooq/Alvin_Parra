@@ -164,3 +164,16 @@
     }
   }
 }
+
+.vue3-easy-data-table__main{
+  table {
+    thead{
+      tr {
+        th {
+          background-color: #3054f0 !important;
+          color: white !important;
+        }
+      }
+    }
+  }
+}

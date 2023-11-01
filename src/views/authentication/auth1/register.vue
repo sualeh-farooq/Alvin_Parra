@@ -16,18 +16,7 @@ import TextSlider from './TextSlider.vue';
               <v-card elevation="0" class="registerBox">
                 <v-card variant="outlined">
                   <v-card-text>
-                    <!---Left Part Logo -->
-                    <v-row>
-                      <v-col cols="12" md="7" sm="7" order-sm="first" order="last" class="text-sm-start text-center">
-                        <h2 class="text-primary text-h2">Sign up</h2>
-                      </v-col>
-                      <!-- <v-col class="text-sm-end text-center" sm="5" cols="12"><Logo /></v-col> -->
-                    </v-row>
-                    <!---Left Part Logo -->
-
-                    <!---Left Part Form-->
                     <AuthRegister />
-                    <!---Left Part Form-->
                   </v-card-text>
                 </v-card>
               </v-card>

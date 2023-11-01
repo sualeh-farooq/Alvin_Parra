@@ -43,7 +43,7 @@ const addTaskCard = (id: number, task: string) => {
   <div class="overflow-auto">
     <div  class="taskBoardBox ma-0 d-flex gap-2">
       <div  v-for="column in getTask" :key="column.title">
-        <div style="width: 220px" class="bg-lightprimary  rounded-lg ">
+        <div style="width: 230px" class="bg-lightprimary  rounded-lg ">
         <div :style="{'background-color': column.color }" class=" text-white p-0 text-center rounded-lg" >
           <h4 class="text-h6 ">{{ column.title }}</h4>
         </div>

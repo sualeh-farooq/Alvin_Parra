@@ -195,6 +195,11 @@ export default {
     'a-switch': Switch,
     'a-button': Button
   },
+  methods: {
+    goBack(){
+      window.history.back(-1)
+    }
+  },
 
   data(){
     return {
@@ -229,6 +234,7 @@ export default {
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Add Pipeline</h3>
           <div class="d-flex gap-2 align-center" >
+            <v-btn @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
 
             <v-btn color="darkText" >Reset Pipelines - </v-btn>
 

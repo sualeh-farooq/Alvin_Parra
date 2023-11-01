@@ -60,6 +60,9 @@ export default {
     getChildLabel(index) {
       return `Child ${index + 1} - Full Name`;
     },
+    goBack(){
+      window.history.back(-1)
+    }
   },
   components: {
     NotesCard: NotesCard
@@ -80,6 +83,8 @@ export default {
     <div>
       <v-dialog width="600" v-model="notesDialog">
         <template v-slot:activator="{ props }">
+          <v-btn  @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
+
           <v-btn v-if="contactTab === 'notes' " v-bind="props" color="primary" class="mx-1">Add Note +</v-btn>
         </template>
         <v-card class="overflow-auto w-100">
@@ -93,7 +98,7 @@ export default {
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
+                  <v-text-field type="date" label=" Note Date" variant="outlined" ></v-text-field>
                 </v-col>
                 <v-col md="6" cols="12">
                   <v-text-field type="time" label="Note Time" variant="outlined"
@@ -158,59 +163,59 @@ export default {
                     <v-col cols="12">
                       <div>
                         <v-radio-group label="Account Type" v-model="radios" inline>
-                          <v-radio label="Individual" value="one"></v-radio>
-                          <v-radio label="Business" value="2"></v-radio>
+                          <v-radio  label="Individual" value="one"></v-radio>
+<!--                          <v-radio label="Business" value="2"></v-radio>-->
                         </v-radio-group>
                         <!-- <p class="mt-3">Selected: {{ selectedRadioValues }}</p> -->
                       </div>
 
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field v-model="fName" type="text" label="First Name" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" v-model="lName" label="Last Name" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="email" label="Email" v-model="email" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="email" label="Backup Email" v-model="backupEmail" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="number" label="Mobile Number" variant="outlined" v-model="mobile"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="number" label="Work Number" variant="outlined" v-model="workMobile"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="date" label="DOB" variant="outlined" v-model="dob"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field disabled type="text" label="Age" variant="outlined" v-model="age"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" label="City" variant="outlined" v-model="city"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" label="State" variant="outlined" v-model="state"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" label="Zip Code" variant="outlined" v-model="zipcode"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-textarea filled auto-grow label="Street Address" rows="4" v-model="address"
@@ -224,21 +229,21 @@ export default {
                 <v-window-item value="details">
                   <v-row class="mt-3">
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field v-model="ssn" type="text" label="SSN #" placeholder="###-##-####" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" v-model="medicareNo" label="Medicare #" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" v-model="medicarePartA" label="Medicare Part A" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text"  v-model="medicarePartB" label="Medicare Part B" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-window-item>
@@ -266,21 +271,21 @@ export default {
 
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" v-model="spouseName" label="Spouse Name" variant="outlined"
-                                    class="mb-3" ></v-text-field>
+                                     ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="date" label="Spouse DOB" v-model="spouseDob" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" v-model="child1" label="Child 1 - Full Name" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col v-for="(child, index) in children" :key="index" cols="12" md="6" lg="4">
-                      <v-text-field type="text" v-model="children[index]" :label="getChildLabel(index)" variant="outlined" class="mb-3"></v-text-field>
+                    <v-col v-for="(child, index) in children" :key="index" cols="12" md="6" lg="3">
+                      <v-text-field type="text" v-model="children[index]" :label="getChildLabel(index)" variant="outlined" ></v-text-field>
                     </v-col>
 
                     <v-col cols="12">
@@ -302,25 +307,25 @@ export default {
 
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field v-model="occupation" type="text" label="Occupation" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field v-model="companyName" type="text" label="Company Name" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text"  v-model="companyCity" label="Business City" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" label="Business State" v-model="companyState" variant="outlined"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="4">
+                    <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" label="Business Zip Code" variant="outlined" v-model="companyZipCode"
-                                    class="mb-3"></v-text-field>
+                                    ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-textarea filled auto-grow label="Business Street Address" rows="4" v-model="companyAddress"

@@ -123,6 +123,9 @@ export default {
     getChildLabel(index) {
       return `Child ${index + 1} - Full Name`;
     },
+    goBack(){
+      window.history.back(-1)
+    }
   },
   components: {
     NotesCard: NotesCard
@@ -138,12 +141,17 @@ export default {
     <v-col cols="12">
       <v-card variant="outlined" elevation="0" class="withbg">
         <v-card-item>
-          <div class="d-sm-flex align-center justify-space-between">
+          <div class="d-flex align-center justify-space-between ">
             <h3 class="text-h3">Add Account </h3>
+
             <div>
               <v-dialog width="600" v-model="notesDialog">
                 <template v-slot:activator="{ props }">
+                  <v-btn  @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
+
+
                   <v-btn v-if="contactTab === 'notes' " v-bind="props" color="primary" class="mx-1">Add Note +</v-btn>
+
                 </template>
                 <v-card class="overflow-auto w-100">
                   <div class="d-flex border w-100">
@@ -483,6 +491,8 @@ export default {
                           text="No Notes Yet"
                           variant="tonal"
                       ></v-alert>
+
+
 
                     </v-col>
                   </v-row>
