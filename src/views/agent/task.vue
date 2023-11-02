@@ -32,11 +32,11 @@ const taskList = ref( [
             <h3 class="text-h3 w-100">Tasks</h3>
             <v-dialog width="600" v-model="taskDialog">
               <template v-slot:activator="{ props }">
-                <v-btn v-bind="props" color="primary" class="mx-1">Add Task +</v-btn>
+                <v-btn  v-if="tab === 'approved'" v-bind="props" color="primary" class="mx-1">Add Task +</v-btn>
               </template>
               <v-card class="overflow-auto w-100">
                 <div class="d-flex border w-100">
-                  <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                  <v-card-title  class="pa-5 border w-100 d-flex align-center justify-space-between">
                     Add Task
                   </v-card-title>
 
