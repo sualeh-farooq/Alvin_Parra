@@ -68,21 +68,21 @@ export default {
 
     <v-row class="mt-1">
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete  v-model="levelAnn" :items="percentage"   label="Level-ANN" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete  v-model="levelAnn" :items="percentage"   label="Level-ANN" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="levelLife" :items="percentage"   label="Level-Life" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="levelLife" :items="percentage"   label="Level-Life" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="levelHealth" :items="percentage"   label="Level-Health" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="levelHealth" :items="percentage"   label="Level-Health" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="mediCare" :items="percentage"   label="Medicare" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="mediCare" :items="percentage"   label="Medicare" variant="outlined" ></v-autocomplete>
       </v-col>
     </v-row>
 
     <div class="py-4  text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update Commision Settings</v-btn>
+      <v-btn color="primary" size="large" class="text-subtitle-1 mt-2">Update Commision Settings</v-btn>
     </div>
   </div>
 </template>

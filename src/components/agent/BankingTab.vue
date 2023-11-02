@@ -124,36 +124,36 @@ export default {
 
     <v-row class="mt-1">
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="payToVal" :items="payTo"  label="Pay To" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="payToVal" :items="payTo"  label="Pay To" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field  v-model="companyNameVal" label="Company Name" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field  v-model="companyNameVal" label="Company Name" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="companyTypeVal" :items="companyType"  label="Company Type" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="companyTypeVal" :items="companyType"  label="Company Type" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="companyEN"  label="Company EN" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="companyEN"  label="Company EN" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field  v-model="bankName" label="Bank Name" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field  v-model="bankName" label="Bank Name" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="accountTypeVal" :items="accountType"  label="Account Type" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="accountTypeVal" :items="accountType"  label="Account Type" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="bankRoutingNum"  label="Bank Routing Number" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="bankRoutingNum"  label="Bank Routing Number" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field  v-model="bankAccountNum" label="Bank Account Number" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field  v-model="bankAccountNum" label="Bank Account Number" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="paymentCer" label="Payment Certification" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="paymentCer" label="Payment Certification" variant="outlined" ></v-text-field>
       </v-col>
     </v-row>
 
     <div class="py-4   text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2" >Update Bank Account Information</v-btn>
+      <v-btn color="primary" size="large" class="text-subtitle-1 mt-2" >Update Bank Account Information</v-btn>
     </div>
   </div>
 </template>

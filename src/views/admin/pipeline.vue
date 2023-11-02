@@ -20,7 +20,7 @@ export default {
             { text: 'Opportunity Name', value: 'oppName', sortable: true },
             { text: 'Contact', value: 'contact', sortable: true },
             { text: 'Contact Type', value: 'type', sortable: true },
-            { text: 'Pipeline', value: 'pipeline', sortable: true },
+            { text: 'Product', value: 'pipeline', sortable: true },
             { text: 'Status', value: 'status', sortable: true },
             { text: 'Stage', value: 'stage', sortable: true },
             { text: 'Est Income', value: 'estIncome', sortable: true },

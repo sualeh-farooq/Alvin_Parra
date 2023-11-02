@@ -13,7 +13,7 @@ export default  {
       licenseStatus: ['Active', 'About to expire', 'Expired', 'Inactive', 'Unlicensed'],
       lifeLicenseType: ['LH(52 Hrs)', 'Life Only (32 Hrs)', 'Health Only(32 Hrs)'],
       hourCE: ['Completed', 'Incomplete'],
-      limraReview: ['Expired (every Jan 16 and July 15)', 'Expired (every Jan 16 and July 15)'],
+      limraReview: ['Expired (Jan 16-July 15)', 'Expired (Aug 15-Dec 15)'],
       agencyManager: ['Agent Access Only', 'Agency Manager Only'],
       agencyTeam: ['Strategic Choices', 'Algeria Financial', 'Level 5 Wealth'],
       payTo: ['Company (EIN 1099)', 'Individual (SSN 1099)'],
@@ -48,7 +48,7 @@ export default  {
       schoolUser: 'Alex Fay',
       schoolPass: '17910282',
       hourCEVal: 'Completed',
-      limraAnnualRevVal: 'Expired (every Jan 16 and July 15)',
+      limraAnnualRevVal: 'Expired (Jan 16-July 15)',
       limraURL: 'https://www.limraUrl.com',
       limraUser: 'David Jone',
       limraPass: '729272',
@@ -294,7 +294,7 @@ export default  {
                       <v-text-field   label="Gen Agency" v-model="genAgency" variant="outlined" ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3" sm="12" >
-                      <v-autocomplete v-model="agencyManager" :items="agencyManager"   label="Agency Manager" variant="outlined" ></v-autocomplete>
+                      <v-autocomplete v-model="managerVal" :items="agencyManager"   label="Agency Manager" variant="outlined" ></v-autocomplete>
                     </v-col>
                     <v-col cols="12" md="6" lg="3" sm="12" >
                       <v-autocomplete  v-model="agencyTeamVal" :items="agencyTeam"   label="Agency Team" variant="outlined" ></v-autocomplete>
@@ -354,7 +354,13 @@ export default  {
                 </v-window-item>
               </v-window>
 
-
+  <v-row>
+    <v-col >
+      <v-btn color="primary" >
+        Update Agent Info
+      </v-btn>
+    </v-col>
+  </v-row>
             </v-col>
           </v-row>
         </v-card-text>

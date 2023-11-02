@@ -483,6 +483,12 @@ const MainRoutes = {
       component: () => import('@/views/admin/addContact.vue')
     },
     {
+      name: 'Admin Contact View' ,
+      path: '/admin/contactView',
+      component: () => import('@/views/admin/contactView.vue')
+    },
+
+    {
       name: 'Settings' , 
       path: '/admin/settings' ,
       component: () => import('@/views/admin/settings.vue')
@@ -642,11 +648,43 @@ const MainRoutes = {
       path: '/agent/agents',
       component: () =>import('@/views/agent/agents.vue')
     },
+    {
+      name: 'Agents Accounts',
+      path: '/agent/accounts',
+      component : ()=>import('@/views/agent/accounts.vue')
+    },
+    {
+      name: 'Agents Contacts',
+      path: '/agent/contacts',
+      component : ()=>import('@/views/agent/contacts.vue')
+    },
+    {
+      name: 'Agent Accounts Add' ,
+      path: '/agent/addAccount',
+      component: ()=>import('@/views/agent/addAccount.vue')
+    },
+    {
+      name: 'Agent Accounts View' ,
+      path: '/agent/accountView',
+      component: ()=>import('@/views/agent/accountView.vue')
+    },
 
     {
       name: 'Agents View',
       path: '/agent/agentView',
       component: () =>import('@/views/agent/agentView.vue')
+    },
+
+    {
+      name: 'Agents Contact View',
+      path: '/agent/contactView',
+      component: () =>import('@/views/agent/contactView.vue')
+    },
+
+    {
+      name: 'Agents Tasks',
+      path: '/agent/tasks',
+      component: () =>import('@/views/agent/task.vue')
     },
     {
       name: 'Agents Settings',

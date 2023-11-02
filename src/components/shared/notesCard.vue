@@ -64,19 +64,18 @@ export default {
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" md="6">
-                      <v-text-field v-model="editNoteDate" type="date" label="Edit Note Date" variant="outlined"
-                        class="mb-3"></v-text-field>
-                    </v-col>
-                    <v-col md="6" cols="12">
-                      <v-text-field v-model="editNoteTime" type="time" label="Time" variant="outlined"
-                        class="text-input"></v-text-field>
-                    </v-col>
+
 
 
                     <v-col cols="12">
                       <v-textarea filled v-model="editNoteDescription" auto-grow label="Edit Notes Description" rows="4"
                         row-height="20" color="primary" variant="outlined"></v-textarea>
+                    </v-col>
+                    <v-col cols="12" >
+                      <v-file-input
+                          multiple
+                          label="Upload Attachments"
+                      ></v-file-input>
                     </v-col>
 
                   </v-row>

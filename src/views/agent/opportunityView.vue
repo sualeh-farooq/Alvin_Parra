@@ -392,6 +392,9 @@ export default {
       // Do something with the selected file
       console.log("Selected file:", this.selectedFile);
       // You can perform any additional logic here, such as uploading the file to a server.
+    },
+    goBack(){
+      window.history.back(-1)
     }
   }
 };
@@ -410,6 +413,8 @@ export default {
 
               <v-dialog width="800" v-model="rejectedDialog">
                 <template v-slot:activator="{ props }">
+                  <v-btn  class="mx-1" @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
+
                   <v-btn v-if="tab==='details'" color="primary" v-bind="props">
                     <EditIcon size="20"/>
                     Edit Details
@@ -570,16 +575,16 @@ export default {
                   <v-card-text>
                     <v-container>
                       <v-row>
-                        <v-col cols="12" md="6">
-                          <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
-                        </v-col>
-                        <v-col md="6" cols="12">
-                          <v-text-field type="time" label="Note Time" variant="outlined"
-                                        class="text-input"></v-text-field>
-                        </v-col>
+
                         <v-col cols="12">
                           <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
                                       variant="outlined"></v-textarea>
+                        </v-col>
+                        <v-col cols="12" >
+                          <v-file-input
+                              multiple
+                              label="Upload Attachments"
+                          ></v-file-input>
                         </v-col>
                       </v-row>
                     </v-container>

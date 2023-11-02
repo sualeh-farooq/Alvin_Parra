@@ -15,7 +15,7 @@ import TextSlider from './TextSlider.vue';
         <div class="">
               <v-card elevation="0" class="registerBox">
                 <v-card variant="outlined">
-                  <v-card-text>
+                  <v-card-text style="min-height: 27rem;" class="register_main_card" >
                     <AuthRegister />
                   </v-card-text>
                 </v-card>

@@ -37,8 +37,8 @@ export default {
 </script>
 
 <template>
+  <div   >
   <div class="register_form" v-if="!confirmationMessage" >
-
     <h2 class="text-primary text-h2">Sign up</h2>
     <h5 class="text-h5 text-left mt-1 mb-8">Sign up with Email address</h5>
     <v-form ref="Regform" lazy-validation action="/dashboards/analytical" class="mt-7 loginForm">
@@ -83,7 +83,7 @@ export default {
         </v-col>
         <v-col cols="12" sm="12" md="6" lg="4">
           <v-autocomplete label="Industry Experience" :items="experience" color="primary" variant="outlined"
-                          hide-details></v-autocomplete>
+                          hide-de tails></v-autocomplete>
         </v-col>
         <v-col cols="12" sm="12" md="6" lg="4">
           <v-text-field density="comfortable" hide-details="auto" variant="outlined" color="primary"
@@ -96,7 +96,7 @@ export default {
       </v-row>
 
 
-      <v-btn color="primary" block class="mt-2" size="large" >Sign Up</v-btn>
+      <v-btn @click="toggleConfirmation" color="primary" block class="mt-2" size="large" >Sign Up</v-btn>
     </v-form>
     <div class="mt-1 text-right">
       <v-divider/>
@@ -108,10 +108,21 @@ export default {
   <div v-if="confirmationMessage" >
     <v-row>
       <v-col cols="12" sm="12" >
-        <CircleCheckIcon />
+        <div class="d-flex  justify-center " >
+        <CircleCheckIcon size="100" class="text-primary"/>
+        </div>
+        <div class="my-2 px-3 py-3 d-flex justify-center" >
+          <div class="w-75  " >
+            <p class="confirm_message" >Thank you for your application.Please allow for upto 24 hours for the team to review and approve your application. We will email you with the instructions to login and how to start using your Agent BackOffice and State of the Art Life and Health CRM.</p>
+          </div>
+        </div>
+        <div class="my-2 d-flex justify-center" >
+          <v-btn @click="toggleConfirmation" color="primary" >Back to Register</v-btn>
+        </div>
       </v-col>
     </v-row>
 
+  </div>
   </div>
 
 </template>
@@ -143,5 +154,12 @@ export default {
     position: absolute;
     right: 10px;
   }
+}
+
+.confirm_message {
+  line-height: 30px;
+  word-spacing: 5px;
+  text-align: center;
+  font-size: 18px;
 }
 </style>

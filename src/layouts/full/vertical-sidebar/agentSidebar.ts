@@ -77,12 +77,27 @@ const sidebarItem: menu[] = [
     to: '/agent/dashboard'
   },
   {
-    title: 'Pipleine',
+    title: 'My Pipleine',
     icon: FilterIcon,
     to: '/agent/pipeline'
   },
   {
-    title: 'My Ref Agents',
+    title: 'My Accounts',
+    icon: UsersIcon,
+    to: '/agent/accounts'
+  },
+  {
+    title: 'My Contacts',
+    icon: UsersIcon,
+    to: '/agent/contacts'
+  },
+  {
+    title: 'My Tasks',
+    icon: NotesIcon,
+    to: '/agent/tasks'
+  },
+  {
+    title: 'My Agents',
     icon: UsersIcon,
     to: '/agent/agents'
   },

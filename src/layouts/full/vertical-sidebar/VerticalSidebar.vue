@@ -30,7 +30,7 @@ const agentSidebarMenu = shallowRef(agentSidebar)
     <perfect-scrollbar class="scrollnavbar">
       <v-list class="pa-4">
         <!---Menu Loop -->
-        <template v-for="(item, i) in sidebarMenu">
+        <template v-for="(item, i) in agentSidebar">
           <!---Item Sub Header -->
           <NavGroup :item="item" v-if="item.header" :key="item.title" />
           <!---Item Divider -->

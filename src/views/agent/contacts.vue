@@ -320,7 +320,7 @@ const tab7 = ref(null);
           <div class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Contacts</h3>
 
-            <RouterLink to="/admin/addContact">
+            <RouterLink to="/agent/addContact">
               <v-btn color="primary">Add Contact +</v-btn>
 
             </RouterLink>
@@ -370,7 +370,7 @@ const tab7 = ref(null);
                                  :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
-                      <RouterLink to="/admin/contactView">
+                      <RouterLink to="/agent/contactView">
                         <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
@@ -388,7 +388,7 @@ const tab7 = ref(null);
                                  :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
-                      <RouterLink to="/admin/contactView">
+                      <RouterLink to="/agent/contactView">
                         <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
@@ -405,7 +405,7 @@ const tab7 = ref(null);
                                  :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
-                      <RouterLink to="/admin/contactView">
+                      <RouterLink to="/agent/contactView">
                         <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>
@@ -422,7 +422,7 @@ const tab7 = ref(null);
                                  :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
                                  :rows-per-page="5" v-model:items-selected="itemsSelected">
                     <template #item-action="item">
-                      <RouterLink to="/admin/contactView">
+                      <RouterLink to="/agent/contactView">
                         <v-btn icon color="primary" v-bind="props" variant="text">
                           <EyeIcon size="20"/>
                         </v-btn>

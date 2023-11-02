@@ -124,14 +124,14 @@ export default {
     <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" accept="image/*" />
     <v-row class="mt-1">
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="schoolUser"  label="Online School" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="schoolUser"  label="Online School" variant="outlined" ></v-text-field>
 
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="schoolUser" label=" School User" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="schoolUser" label=" School User" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="schoolPass" label=" School Password" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="schoolPass" label=" School Password" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
         <v-autocomplete v-model="hourCEVal" label="24 hr CE'ss"
@@ -139,10 +139,10 @@ export default {
                         color="primary" variant="outlined" hide-details></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field type="date"  label="Res License Start" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field type="date"  label="Res License Start" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field type="date"  label="License Term" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field type="date"  label="License Term" variant="outlined" ></v-text-field>
       </v-col>
 
       <v-col cols="12" md="6" lg="4" sm="12" >
@@ -151,25 +151,25 @@ export default {
                         color="primary" variant="outlined" hide-details></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="limraURL" label="LIMRA URL" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="limraURL" label="LIMRA URL" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field  v-model="limraUser" label="LIMRA User (NPN)" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field  v-model="limraUser" label="LIMRA User (NPN)" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="limraPass" label="LIMRA Password"  variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="limraPass" label="LIMRA Password"  variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="hoursRequired" label="Hours Required" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="hoursRequired" label="Hours Required" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="hoursApplied" label="Hours Applied" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="hoursApplied" label="Hours Applied" variant="outlined" ></v-text-field>
       </v-col>
 
     </v-row>
 
     <div class="py-4   text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update Education Settings</v-btn>
+      <v-btn color="primary"  size="large" class="text-subtitle-1 mt-2">Update Education Settings</v-btn>
           </div>
   </div>
 </template>

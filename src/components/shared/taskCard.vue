@@ -12,7 +12,8 @@ export default {
     deleteTask: Function,
     editText: String ,
     deleteText: String ,
-
+    statusColor: String,
+    status: String,
   },
   data() {
     return {
@@ -118,6 +119,13 @@ export default {
                 <v-btn @click="deleteTask" color="error">{{deleteText}}
                   <TrashIcon size="18" class="mx-1" />
                 </v-btn>
+              </div>
+              <div class="float-right mt-3" >
+                <v-chip
+                    class="ma-2"
+                    :color=statusColor
+                    text-color="white"
+                >{{ status }}</v-chip>
               </div>
             </v-col>
     </v-row>

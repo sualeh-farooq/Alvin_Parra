@@ -8,7 +8,7 @@ export default {
       contactTab: null,
       children: ['Henry Clark'],
       notesDialog: null,
-      radios: 'one',
+      radios: 'individual',
       martialStatus: 'married',
       employment: 'employed',
       spouseClient: 'yes' ,
@@ -16,6 +16,17 @@ export default {
       lName: 'Doe',
       email : 'johndoe2@mail.com' ,
       backupEmail : 'davidJohn@gmail.com',
+      existingContacts: [
+        'Jetnetix',
+        'Strategic',
+        'Algeria Office'
+      ],
+      opportunitySources: [
+        'Exisiting',
+        'Lead',
+        'Social'
+      ],
+      crmContacts: ['Contact One', 'Contact Two' , 'Contact Three'],
       mobile: 830927323 ,
       workMobile: 328329752,
       dob: '2002-02-10',
@@ -50,8 +61,60 @@ export default {
               '\n'
         }
       ],
+      leadStatus: [
+        'Lead Status One',
+        'Lead Status Two',
+        'Lead Status Three',
+        'Lead Status Four',
+        'Lead Status Five',
+      ],
+      Pipelines: [
+        'Pipeline One',
+        'Pipeline Two',
+        'Pipeline Three',
+        'Pipeline Four',
+        'Pipeline Five',
+      ],
+      pipelineStages: [
+        'Lead - Interested',
+        'Prospect - Quote',
+        'Prospect - App Signed',
+        'Prospect - Underwriting',
+        'Client Won - Won',
+        'Lost',
+      ],
+      Temprature: [
+        'Cold',
+        'Hot',
+      ],
 
-  }
+      writingAgentSplit: [
+        '100%',
+        '90%',
+        '80%'
+      ],
+      agent2Split: [
+        '100%',
+        '90%',
+        '80%'
+      ],
+      serviceType: [
+        'Service One',
+        'Service Two',
+        'Service Three',
+      ],
+      carrier: [
+        'Carrier One',
+        'Carrier Two',
+        'Carrier Three'
+      ],
+      product: [
+        'Lifecare',
+        'Medicare',
+        'AUM'
+      ]
+
+    }
   },
   methods: {
     addChild() {
@@ -78,49 +141,52 @@ export default {
     <v-col cols="12">
       <v-card variant="outlined" elevation="0" class="withbg">
         <v-card-item>
-          <div class="d-sm-flex align-center justify-space-between">
-            <h3 class="text-h3">Account Overview</h3>
-    <div>
-      <v-dialog width="600" v-model="notesDialog">
-        <template v-slot:activator="{ props }">
-          <v-btn  @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
+          <div class="d-flex align-center justify-space-between ">
+            <h3 class="text-h3">Add Account </h3>
 
-          <v-btn v-if="contactTab === 'notes' " v-bind="props" color="primary" class="mx-1">Add Note +</v-btn>
-        </template>
-        <v-card class="overflow-auto w-100">
-          <div class="d-flex border w-100">
-            <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
-              Add Note
-            </v-card-title>
+            <div>
+              <v-dialog width="600" v-model="notesDialog">
+                <template v-slot:activator="{ props }">
+                  <v-btn  @click="goBack" color="primary" ><ArrowNarrowLeftIcon /> Go Back </v-btn>
 
-          </div>
-          <v-card-text>
-            <v-container>
-              <v-row>
 
-                <v-col cols="12">
-                  <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
-                              variant="outlined"></v-textarea>
-                </v-col>
-                <v-col cols="12" >
-                  <v-file-input
-                      multiple
-                      label="Upload Attachments"
-                  ></v-file-input>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="error" text @click="notesDialog = false"> Close
-            </v-btn>
-            <v-btn color="success" text @click="notesDialog = false"> Save </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+                  <v-btn v-if="contactTab === 'notes' " v-bind="props" color="primary" class="mx-1">Add Note +</v-btn>
 
-    </div>
+                </template>
+                <v-card class="overflow-auto w-100">
+                  <div class="d-flex border w-100">
+                    <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                      Add Note
+                    </v-card-title>
+
+                  </div>
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col cols="12" md="6">
+                          <v-text-field type="date" label=" Note Date" variant="outlined" class="mb-3"></v-text-field>
+                        </v-col>
+                        <v-col md="6" cols="12">
+                          <v-text-field type="time" label="Note Time" variant="outlined"
+                                        class="text-input"></v-text-field>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-textarea filled auto-grow label="Notes Description" rows="4" row-height="20" color="primary"
+                                      variant="outlined"></v-textarea>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="error" text @click="notesDialog = false"> Close
+                    </v-btn>
+                    <v-btn color="success" text @click="notesDialog = false"> Save </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+
+            </div>
           </div>
         </v-card-item>
         <v-divider></v-divider>
@@ -137,90 +203,175 @@ export default {
                   <ListDetailsIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Details
                 </v-tab>
-                <v-tab value="family">
+                <v-tab v-if="radios === 'individual'" value="family">
                   <UsersIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Family
                 </v-tab>
-                <v-tab value="company">
+                <v-tab v-if="radios === 'individual'" value="company">
                   <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Company
-                </v-tab>
-                <v-tab value="notes">
-                  <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                  Notes
                 </v-tab>
                 <v-tab value="pipeline">
                   <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                   Pipeline
                 </v-tab>
-              </v-tabs>
+                <v-tab value="notes">
+                  <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                  Notes
+                </v-tab>
 
+
+
+
+
+
+              </v-tabs>
 
               <v-window v-model="contactTab">
                 <v-window-item value="basic">
-                  <v-row class="mt-3">
 
+
+
+                  <v-row class="my-1" >
+                    <v-col cols="12" md="6">
+                      <v-autocomplete label="Find Existing from CRM"  :items="crmContacts"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                      <v-btn class="mt-3" color="primary" >Use this Contact  <ArrowUpIcon size="20" class="mx-2" /> </v-btn>
+
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <v-autocomplete label="Search Google Contacts"  :items="googleContacts"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                      <v-btn class="mt-3" color="primary" >Import this Google Contact  <ArrowUpIcon size="20" class="mx-2" /> </v-btn>
+
+                    </v-col>
+
+                  </v-row>
+
+                  <v-row class="" >
                     <v-col cols="12">
                       <div>
                         <v-radio-group label="Account Type" v-model="radios" inline>
-                          <v-radio  label="Individual" value="one"></v-radio>
-<!--                          <v-radio label="Business" value="2"></v-radio>-->
+                          <v-radio label="Individual" value="individual"></v-radio>
+                          <v-radio label="Business" value="business"></v-radio>
                         </v-radio-group>
-                        <!-- <p class="mt-3">Selected: {{ selectedRadioValues }}</p> -->
                       </div>
 
                     </v-col>
+                  </v-row>
+                  <v-row v-if="radios === 'individual'"  class="mt-3">
 
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field v-model="fName" type="text" label="First Name" variant="outlined"
+                      <v-text-field  type="text" label="First Name" variant="outlined"
+                                   ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text"  label="Last Name" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="lName" label="Last Name" variant="outlined"
-                                    ></v-text-field>
+                      <v-text-field type="email" label="Email"  variant="outlined"
+                                  ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="email" label="Email" v-model="email" variant="outlined"
-                                    ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="email" label="Backup Email" v-model="backupEmail" variant="outlined"
-                                    ></v-text-field>
-                    </v-col>
-
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="number" label="Mobile Number" variant="outlined" v-model="mobile"
+                      <v-text-field type="email" label="Backup Email"  variant="outlined"
                                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="number" label="Work Number" variant="outlined" v-model="workMobile"
+                      <v-text-field type="number" label="Mobile Number" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="number" label="Work Number" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="date" label="DOB" variant="outlined" v-model="dob"
+                      <v-text-field type="date" label="DOB" variant="outlined"
+                               ></v-text-field>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="City" variant="outlined"
+                                  ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="State" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field disabled type="text" label="Age" variant="outlined" v-model="age"
+                      <v-text-field type="text" label="Zip Code" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="City" variant="outlined" v-model="city"
-                                    ></v-text-field>
+                      <v-autocomplete label="Source of Account" v-model="opportunitySourceVal"
+                                      :items="opportunitySources"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
                     </v-col>
+
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="State" variant="outlined" v-model="state"
-                                    ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="Zip Code" variant="outlined" v-model="zipcode"
+                      <v-text-field type="text" label="Reffered By" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-textarea filled auto-grow label="Street Address" rows="4" v-model="address"
+                      <v-textarea filled auto-grow label="Street Address" rows="4"
                                   row-height="20" color="primary" variant="outlined"></v-textarea>
                     </v-col>
+
+
+
+
+
+                  </v-row>
+
+
+                  <v-row v-if="radios === 'business'"  class="mt-3">
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field  type="text" label="Business Name" variant="outlined"
+                                     ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text"  label="Business City" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Business State"  variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Business Zip Code"  variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Business Street Address" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field  type="text" label="Business Website" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field  type="text" label="Business Phone" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label=" Contact Name" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="email" label="Contact Email" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+
+
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field  type="text" label="Contact Phone" variant="outlined"
+                                    ></v-text-field>
+                    </v-col>
+
 
                   </v-row>
 
@@ -228,22 +379,21 @@ export default {
 
                 <v-window-item value="details">
                   <v-row class="mt-3">
-
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field v-model="ssn" type="text" label="SSN #" placeholder="###-##-####" variant="outlined"
-                                    ></v-text-field>
+                      <v-text-field type="text" label="SSN #" placeholder="###-##-####" variant="outlined"
+                     class="mb-3"></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="medicareNo" label="Medicare #" variant="outlined"
-                                    ></v-text-field>
+                      <v-text-field type="text"  label="Medicare #" variant="outlined"
+                     class="mb-3"></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="medicarePartA" label="Medicare Part A" variant="outlined"
-                                    ></v-text-field>
+                      <v-text-field type="text"  label="Medicare Part A" variant="outlined"
+                      class="mb-3"></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text"  v-model="medicarePartB" label="Medicare Part B" variant="outlined"
-                                    ></v-text-field>
+                      <v-text-field type="text"   label="Medicare Part B" variant="outlined"
+                                    class="mb-3"></v-text-field>
                     </v-col>
                   </v-row>
                 </v-window-item>
@@ -252,8 +402,8 @@ export default {
                   <v-row class="mt-3">
 
 
-                    <v-col cols="12" md="6" lg="6">
-                      <v-radio-group label="Martial Status" v-model="martialStatus" inline>
+                    <v-col cols="12" md="6" lg="4">
+                      <v-radio-group label="Martial Status"  inline>
                         <v-radio label="Married" value="married"></v-radio>
                         <v-radio label="Single" value="single"></v-radio>
                         <v-radio label="Divorced" value="divorced"></v-radio>
@@ -262,8 +412,8 @@ export default {
 
                     </v-col>
 
-                    <v-col cols="12" md="6">
-                      <v-radio-group label="Is Spouse a Client too ?" v-model="spouseClient" inline>
+                    <v-col cols="12" md="6" lg="4" >
+                      <v-radio-group label="Is Spouse a Client too ?" inline>
                         <v-radio label="Yes" value="yes"></v-radio>
                         <v-radio label="No" value="no"></v-radio>
                       </v-radio-group>
@@ -271,21 +421,21 @@ export default {
 
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="spouseName" label="Spouse Name" variant="outlined"
-                                     ></v-text-field>
+                    <v-col cols="12" md="6" lg="4">
+                      <v-text-field type="text" label="Spouse Name" variant="outlined"
+                                    class="mb-3" ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="date" label="Spouse DOB" v-model="spouseDob" variant="outlined"
-                                    ></v-text-field>
+                    <v-col cols="12" md="6" lg="4">
+                      <v-text-field type="date" label="Spouse DOB"  variant="outlined"
+                                    class="mb-3"></v-text-field>
                     </v-col>
 
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="child1" label="Child 1 - Full Name" variant="outlined"
-                                    ></v-text-field>
+                    <v-col cols="12" md="6" lg="4">
+                      <v-text-field type="text" label="Child 1 - Full Name" variant="outlined"
+                                    class="mb-3"></v-text-field>
                     </v-col>
-                    <v-col v-for="(child, index) in children" :key="index" cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="children[index]" :label="getChildLabel(index)" variant="outlined" ></v-text-field>
+                    <v-col v-for="(child, index) in children" :key="index" cols="12" md="6" lg="4">
+                      <v-text-field type="text" v-model="children[index]" :label="getChildLabel(index)" variant="outlined" class="mb-3"></v-text-field>
                     </v-col>
 
                     <v-col cols="12">
@@ -308,30 +458,43 @@ export default {
                     </v-col>
 
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field v-model="occupation" type="text" label="Occupation" variant="outlined"
+                      <v-text-field  type="text" label="Occupation" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field v-model="companyName" type="text" label="Company Name" variant="outlined"
+                      <v-autocomplete label="Company Name"  :items="existingContacts"
+                                      color="primary" variant="outlined" hide-details></v-autocomplete>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text"  label="Business City" variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text"  v-model="companyCity" label="Business City" variant="outlined"
+                      <v-text-field type="text" label="Business State"  variant="outlined"
                                     ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="Business State" v-model="companyState" variant="outlined"
-                                    ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="Business Zip Code" variant="outlined" v-model="companyZipCode"
-                                    ></v-text-field>
+                      <v-text-field type="text" label="Business Zip Code" variant="outlined"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-textarea filled auto-grow label="Business Street Address" rows="4" v-model="companyAddress"
+                      <v-textarea filled auto-grow label="Business Street Address" rows="4"
                                   row-height="20" color="primary" variant="outlined"></v-textarea>
                     </v-col>
+                  </v-row>
+                </v-window-item>
+                <v-window-item value="notes" >
+                  <v-row class="mt-1">
+                    <v-col>
+                      <v-alert
+                          type="warning"
+                          text="No Notes Yet"
+                          variant="tonal"
+                      ></v-alert>
 
+
+
+                    </v-col>
                   </v-row>
                 </v-window-item>
 
@@ -366,24 +529,24 @@ export default {
                     <v-col cols="12" md="6" lg="3">
                       <div @click="followUpDate = true" v-if="!followUpDate">
                         <v-text-field type="text" label="Next Follow up" variant="outlined"
-                        ></v-text-field>
+                                     ></v-text-field>
 
                       </div>
                       <div v-else>
                         <v-text-field type="date" label="Next Follow up" variant="outlined"
-                        ></v-text-field>
+                                     ></v-text-field>
                       </div>
                     </v-col>
 
                     <v-col cols="12" md="6" lg="3">
                       <div @click="closingTarget = true" v-if="!closingTarget">
                         <v-text-field type="text" label="Est Closing Target" variant="outlined"
-                        ></v-text-field>
+                                      ></v-text-field>
 
                       </div>
                       <div v-else>
                         <v-text-field type="date" label="Est Closing Target" variant="outlined"
-                        ></v-text-field>
+                                      ></v-text-field>
                       </div>
                     </v-col>
 
@@ -404,7 +567,7 @@ export default {
 
                     <v-col cols="12" md="6" lg="3">
                       <v-text-field type="text" label="Writing Agent" variant="outlined"
-                      ></v-text-field>
+                                    ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6" lg="3">
@@ -447,17 +610,8 @@ export default {
 
                 </v-window-item>
 
-                <v-window-item value="notes" >
-                  <v-row class="mt-1">
-                    <v-col v-for="item in notesList" class="p-0" :key="item.id" cols="12 ">
-                      <NotesCard :editText="item.editText"  :deleteText="item.deleteText" :time="item.time" :edit-note="editNote" :date="item.date"
-                                 :note-description="item.note" />
-                    </v-col>
-                  </v-row>
-                </v-window-item>
-
                 <v-col style="padding: 0px;" class=" mt-2" cols="12" md="6">
-                  <v-btn  v-if="contactTab === 'family' || contactTab === 'basic' || contactTab === 'details' || contactTab === 'company' ||contactTab === 'pipeline' "  color="primary">Update Settings
+                  <v-btn   color="primary">Add Account
                   </v-btn>
                 </v-col>
               </v-window>
@@ -472,5 +626,8 @@ export default {
 </template>
 
 <style scoped lang="scss">
-
+.v-alert {
+  display: flex;
+  justify-content: center;
+}
 </style>

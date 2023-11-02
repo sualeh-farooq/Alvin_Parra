@@ -59,24 +59,24 @@ export default {
 
 <template>
   <div>
-    <div class="d-flex flex-row ">
-      <div style="height: 120px; width:200px" >
-        <img style="height: 100%" :src="imageUrl" class="w-100" alt="user-img" />
-      </div>
-      <div
-          class="ml-4 d-flex flex-column align-start justify-space-between text-subtitle-2 text-medium-emphasis font-weight-medium">
-        <div class="d-flex align-center">
-          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> License Image Limit should be 1.5mb Max.
-          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> The Proposed size is 512 * 512px.
-        </div>
-        <div class="d-flex flex-wrap gap-3">
-          <v-btn color="primary" @click="openFileInput">Change</v-btn>
-          <v-btn color="error" @click="removeImage">Remove</v-btn>
-        </div>
-      </div>
-    </div>
-    <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" accept="image/*" />
-    <v-row class="mt-6">
+<!--    <div class="d-flex flex-row ">-->
+<!--      <div style="height: 120px; width:200px" >-->
+<!--        <img style="height: 100%" :src="imageUrl" class="w-100" alt="user-img" />-->
+<!--      </div>-->
+<!--      <div-->
+<!--          class="ml-4 d-flex flex-column align-start justify-space-between text-subtitle-2 text-medium-emphasis font-weight-medium">-->
+<!--        <div class="d-flex align-center">-->
+<!--          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> License Image Limit should be 1.5mb Max.-->
+<!--          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> The Proposed size is 512 * 512px.-->
+<!--        </div>-->
+<!--        <div class="d-flex flex-wrap gap-3">-->
+<!--          <v-btn color="primary" @click="openFileInput">Change</v-btn>-->
+<!--          <v-btn color="error" @click="removeImage">Remove</v-btn>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" accept="image/*" />-->
+    <v-row class="mt-1">
       <v-col cols="12" lg="6">
         <v-text-field type="text" color="primary" v-model="fName" label="Agency Name" variant="outlined" hide-details>
         </v-text-field>
@@ -107,7 +107,7 @@ export default {
     </v-row>
 
     <div class="py-4   text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update License Settings</v-btn>
+      <v-btn color="primary"  size="large" class="text-subtitle-1 mt-2">Update License Settings</v-btn>
     </div>
   </div>
 </template>

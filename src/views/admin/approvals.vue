@@ -257,10 +257,7 @@ const perLevel = ref(50)
                                               placeholder="Search Requests" v-model="searchValue" density="compact" hide-details
                                               prepend-inner-icon="mdi-magnify" />
                               </div>
-
                           </div>
-
-
                             <v-window v-model="tab">
                                 <v-window-item value="pending">
 
@@ -399,62 +396,26 @@ const perLevel = ref(50)
                                                                         <v-lable class="font-weight-bold">Email</v-lable>
                                                                         <p>johndoe@gmail.com</p>
                                                                     </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Social Security
-                                                                            Number</v-lable>
-                                                                        <p>HSDK-9201</p>
-                                                                    </v-col>
+
                                                                     <v-col lg="4" md="6" sm="12" cols="12">
                                                                         <v-lable class="font-weight-bold">License
                                                                             Number</v-lable>
                                                                         <p>LNUS-7920</p>
                                                                     </v-col>
                                                                     <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable
-                                                                            class="font-weight-bold">Generation</v-lable>
-                                                                        <p>04</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Code
-                                                                            Number</v-lable>
-                                                                        <p>1201</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Base
-                                                                            Number</v-lable>
-                                                                        <p>09</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
                                                                         <v-lable class="font-weight-bold">Added by
                                                                             Agent</v-lable>
                                                                         <p>Flex Hawk</p>
                                                                     </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">% Level</v-lable>
-                                                                        <p>Reg Dir (90%)</p>
-                                                                    </v-col>
+
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">% Level
+                                                                      </v-lable>
+                                                                    <p>50%  </p>
+                                                                  </v-col>
 
                                                                 </v-row>
-                                                                <v-row class="mt-3">
-                                                                    <v-col cols="12">
-                                                                        <v-lable class="font-weight-bold">License
-                                                                            Image</v-lable>
 
-                                                                        <div class=" w-100 py-3 my-2">
-                                                                            <img src="../../assets/images/license.jpg"
-                                                                                class="w-25" alt="license_image" />
-
-                                                                        </div>
-                                                                    </v-col>
-                                                                </v-row>
-                                                                <v-row class="mt-1">
-                                                                    <v-col cols="12">
-                                                                        <!-- <div class=" d-flex justify-start gap-2">
-                                                                            <v-btn color="error" text> Reject </v-btn>
-                                                                            <v-btn color="success" text> Approved </v-btn>
-                                                                        </div> -->
-                                                                    </v-col>
-                                                                </v-row>
                                                             </v-container>
                                                         </v-card-text>
                                                         <v-card-actions>
@@ -500,86 +461,45 @@ const perLevel = ref(50)
 
                                                         </div>
 
-                                                        <v-card-text>
-                                                            <v-container>
-                                                                <v-row>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">First
-                                                                            Name</v-lable>
-                                                                        <p>John</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Last
-                                                                            Name</v-lable>
-                                                                        <p>Doe</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Phone
-                                                                            Number</v-lable>
-                                                                        <p>+1-42-4025-294</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Email</v-lable>
-                                                                        <p>johndoe@gmail.com</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Social Security
-                                                                            Number</v-lable>
-                                                                        <p>HSDK-9201</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">License
-                                                                            Number</v-lable>
-                                                                        <p>LNUS-7920</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable
-                                                                            class="font-weight-bold">Generation</v-lable>
-                                                                        <p>04</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Code
-                                                                            Number</v-lable>
-                                                                        <p>1201</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Base
-                                                                            Number</v-lable>
-                                                                        <p>09</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">Added by
-                                                                            Agent</v-lable>
-                                                                        <p>Flex Hawk</p>
-                                                                    </v-col>
-                                                                    <v-col lg="4" md="6" sm="12" cols="12">
-                                                                        <v-lable class="font-weight-bold">% Level</v-lable>
-                                                                        <p>Reg Dir (90%)</p>
-                                                                    </v-col>
+                                                      <v-card-text>
+                                                        <v-container>
+                                                          <v-row>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">First
+                                                                Name</v-lable>
+                                                              <p>John</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Last
+                                                                Name</v-lable>
+                                                              <p>Doe</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Phone
+                                                                Number</v-lable>
+                                                              <p>+1-42-4025-294</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Email</v-lable>
+                                                              <p>johndoe@gmail.com</p>
+                                                            </v-col>
 
-                                                                </v-row>
-                                                                <v-row class="mt-3">
-                                                                    <v-col cols="12">
-                                                                        <v-lable class="font-weight-bold">License
-                                                                            Image</v-lable>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">License
+                                                                Number</v-lable>
+                                                              <p>LNUS-7920</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Added by
+                                                                Agent</v-lable>
+                                                              <p>Flex Hawk</p>
+                                                            </v-col>
 
-                                                                        <div class=" w-100 py-3 my-2">
-                                                                            <img src="../../assets/images/license.jpg"
-                                                                                class="w-25" alt="license_image" />
 
-                                                                        </div>
-                                                                    </v-col>
-                                                                </v-row>
-                                                                <v-row class="mt-1">
-                                                                    <v-col cols="12">
-                                                                        <!-- <div class=" d-flex justify-start gap-2">
-                                                                            <v-btn color="error" text> Reject </v-btn>
-                                                                            <v-btn color="success" text> Approved </v-btn>
-                                                                        </div> -->
-                                                                    </v-col>
-                                                                </v-row>
-                                                            </v-container>
-                                                        </v-card-text>
+                                                          </v-row>
+
+                                                        </v-container>
+                                                      </v-card-text>
                                                         <v-card-actions>
                                                             <v-spacer></v-spacer>
                                                             <v-btn color="error" text @click="rejectedDialog = false"> Close

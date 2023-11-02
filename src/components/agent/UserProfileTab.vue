@@ -124,49 +124,49 @@ export default {
     <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" accept="image/*" />
     <v-row class="mt-1">
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="firstName" label="First Name" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="firstName" label="First Name" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="lastName" label="Last Name" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="lastName" label="Last Name" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="preferredName" label="Preffered Name" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="preferredName" label="Preffered Name" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
         <v-autocomplete v-model="agentStatusVal" label="Agent Status" :items="agentStatus"  color="primary" variant="outlined" hide-details></v-autocomplete>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="phoneNumber"  label="Phone Number" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="phoneNumber"  label="Phone Number" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="phoneNumber" label="2nd Phone Number" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="phoneNumber" label="2nd Phone Number" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field  v-model="email" label="Email" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field  v-model="email" label="Email" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="dob" type="date" label="Date of Birth" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="dob" type="date" label="Date of Birth" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="socialSecurity" label="Social Security " variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="socialSecurity" label="Social Security " variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="spouseName" label="Spouse Name" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="spouseName" label="Spouse Name" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field  v-model="spouseEmail" label="Spouse Email" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field  v-model="spouseEmail" label="Spouse Email" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="spousePhone" label="Spouse Phone " variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="spousePhone" label="Spouse Phone " variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="city"  label="City" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="city"  label="City" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="state" label="State" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="state" label="State" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" lg="4" md="6" sm="12" >
-        <v-text-field v-model="zipCode" label="Zipcode " variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="zipCode" label="Zipcode " variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" >
         <v-textarea v-model="streetAddress" filled auto-grow label="Street Address" rows="2" row-height="20" color="primary" variant="outlined"></v-textarea>
@@ -174,7 +174,7 @@ export default {
     </v-row>
 
     <div class="py-4   text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update Personal Info</v-btn>
+      <v-btn color="primary"  size="large" class="text-subtitle-1 mt-2">Update Personal Info</v-btn>
           </div>
   </div>
 </template>

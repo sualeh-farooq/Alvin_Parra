@@ -125,27 +125,27 @@ export default {
 
     <v-row class="mt-1">
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="agentCode"  label="Agent Code" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="agentCode"  label="Agent Code" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="uplineCode"  label="Upline Code" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="uplineCode"  label="Upline Code" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field v-model="recruiterCode"  label="Recruiter Code" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field v-model="recruiterCode"  label="Recruiter Code" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-text-field   label="Gen Agency" v-model="genAgency" variant="outlined" class="mb-3"></v-text-field>
+        <v-text-field   label="Gen Agency" v-model="genAgency" variant="outlined" ></v-text-field>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete v-model="managerVal" :items="agencyManager"   label="Agency Manager" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete v-model="managerVal" :items="agencyManager"   label="Agency Manager" variant="outlined" ></v-autocomplete>
       </v-col>
       <v-col cols="12" md="6" lg="4" sm="12" >
-        <v-autocomplete  v-model="agencyTeamVal" :items="agencyTeam"   label="Agency Team" variant="outlined" class="mb-3"></v-autocomplete>
+        <v-autocomplete  v-model="agencyTeamVal" :items="agencyTeam"   label="Agency Team" variant="outlined" ></v-autocomplete>
       </v-col>
     </v-row>
 
     <div class="py-4   text-left">
-      <v-btn color="primary" variant="outlined" size="large" class="text-subtitle-1 mt-2">Update Agent Code Settings</v-btn>
+      <v-btn color="primary"  size="large" class="text-subtitle-1 mt-2">Update Agent Code Settings</v-btn>
     </div>
   </div>
 </template>
