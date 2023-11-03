@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { shallowRef } from 'vue';
 import { useCustomizerStore } from '../../../stores/customizer';
 import sidebarItems from './sidebarItem';
@@ -10,10 +10,17 @@ import Logo from '../logo/Logo.vue';
 import agentSidebar from './agentSidebar';
 
 const customizer = useCustomizerStore();
-const sidebarMenu = shallowRef(sidebarItems);
+// const sidebarMenu = shallowRef(sidebarItems);
 const agencySidebarMenu = shallowRef(agencySidebar)
 const agentSidebarMenu = shallowRef(agentSidebar)
 
+
+
+const userData = JSON.parse(localStorage.getItem('user'))
+const sidebarMenu = userData.role === 'admin' ? shallowRef(sidebarItems) : userData.role === 'agent' ? shallowRef(agentSidebar) : shallowRef(agencySidebar)
+setInterval(()=>{
+    console.log(userData)
+},2000)
 </script>
 
 <template>
@@ -30,7 +37,7 @@ const agentSidebarMenu = shallowRef(agentSidebar)
     <perfect-scrollbar class="scrollnavbar">
       <v-list class="pa-4">
         <!---Menu Loop -->
-        <template v-for="(item, i) in agentSidebar">
+        <template v-for="(item, i) in sidebarMenu">
           <!---Item Sub Header -->
           <NavGroup :item="item" v-if="item.header" :key="item.title" />
           <!---Item Divider -->

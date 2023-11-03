@@ -3,7 +3,7 @@ import {ref} from 'vue';
 import 'vue3-easy-data-table/dist/style.css';
 
 
-const searchField = ref(['fName', 'email', 'source', 'phone', 'date']);
+const searchField = ref(['name', 'gen', 'code', 'base', 'upline' , 'license' , 'status' , 'team_count']);
 const searchValue = ref('');
 
 const headers = [
@@ -12,6 +12,7 @@ const headers = [
   {text: 'Generation', value: 'gen', sortable: true, colspan: 3},
   {text: 'Code Number', value: 'code', sortable: true},
   {text: 'Base No', value: 'base', sortable: true},
+  {text: 'Team Count', value: 'team_count', sortable: true},
   {text: 'Upline Code', value: 'upline', sortable: true},
   {text: 'License Number', value: 'license', sortable: true},
   {text: 'Status', value: 'status', sortable: true},
@@ -23,13 +24,24 @@ const itemsSelected = ref([]);
 
 const items = ref([
   {
+    name: 'Alvin Parra',
+    gen: '0',
+    code: '3000',
+    base: '4000',
+    upline: '0000',
+    license: 'KSH-2849',
+    status: 'Active',
+    team_count: 30,
+  },
+  {
     name: 'Joseph William',
     gen: '1',
     code: '3002',
     base: '4000',
     upline: '3000',
     license: 'LHK-2930',
-    status: 'Active'
+    status: 'Active',
+    team_count: 2,
   },
   {
     name: 'John Doe',
@@ -38,7 +50,8 @@ const items = ref([
     base: '4001',
     upline: '3002',
     license: 'LHK-3829',
-    status: 'Active'
+    status: 'Active',
+    team_count: 5,
   },
   {
     name: 'Anshan Henry',
@@ -47,7 +60,8 @@ const items = ref([
     base: '4002 ',
     upline: '3002',
     license: 'LHK-5830',
-    status: 'Active'
+    status: 'Active',
+    team_count: 2,
   },
   {
     name: 'Corina Carmen',
@@ -56,7 +70,9 @@ const items = ref([
     base: '4003',
     upline: '3004',
     license: 'LHK-3829',
-    status: 'Active'
+    status: 'Active',
+    team_count: 10,
+
   },
   {
     name: 'Sara Clark',
@@ -65,7 +81,9 @@ const items = ref([
     base: '4004',
     upline: '3002',
     license: 'LHK-4629',
-    status: 'Active'
+    status: 'Active',
+    team_count: 8,
+
   },
   {
     name: 'Sara Clark',
@@ -74,7 +92,9 @@ const items = ref([
     base: '4004',
     upline: '3002',
     license: 'LHK-4629',
-    status: 'Active'
+    status: 'Active',
+    team_count: 1,
+
   },
 
 ]);
@@ -103,8 +123,15 @@ const items = ref([
             <v-col>
 
 
+      <div class="d-flex justify-end" >
 
+              <div class="w-25" >
+                <v-text-field class="mb-3 " type="text" variant="outlined" persistent-placeholder
+                              placeholder="Search Agents" v-model="searchValue" density="compact" hide-details
+                              prepend-inner-icon="mdi-magnify"/>
+              </div>
 
+      </div>
 
                   <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
                                  :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"

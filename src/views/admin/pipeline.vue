@@ -403,9 +403,9 @@ export default {
 
                           </RouterLink>
 
-                                <v-btn  @click.stop="drawer = !drawer" color="primary" class="mx-1">
-                                    Add Opportunity +
-                                </v-btn>
+<!--                                <v-btn  @click.stop="drawer = !drawer" color="primary" class="mx-1">-->
+<!--                                    Add Opportunity +-->
+<!--                                </v-btn>-->
                         </div>
                     </div>
                 </v-card-item>

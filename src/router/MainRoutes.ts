@@ -549,6 +549,16 @@ const MainRoutes = {
       path: '/admin/contacts',
       component: () =>import('@/views/admin/contacts.vue')
     },
+    {
+      name: 'Admin Reports Page' ,
+      path: '/admin/reports',
+      component: () =>import('@/views/admin/reports.vue')
+    },
+    {
+      name: 'Admin Page Builder' ,
+      path: '/admin/page_builder',
+      component: () =>import('@/views/admin/page_builder.vue')
+    },
 
 
     /// Agency App Routes
@@ -614,6 +624,7 @@ const MainRoutes = {
       path:'/agency/opportunityView',
       component: ()=>import('@/views/agency/opportunityView.vue')
     },
+
 
 
     /// Agent App Routes

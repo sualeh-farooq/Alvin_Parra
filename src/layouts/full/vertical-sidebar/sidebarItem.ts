@@ -29,6 +29,7 @@ import {
   MailIcon,
   LayoutKanbanIcon,
   CalendarIcon,
+  FileReportIcon,
   DashboardIcon,
   DeviceAnalyticsIcon,
   ChartArcsIcon,
@@ -46,8 +47,9 @@ import {
   UsersIcon,
   NotesIcon , 
   CheckboxIcon,
-  WorldIcon
-  
+  WorldIcon,
+  AddressBookIcon
+
 } from 'vue-tabler-icons';
 
 export interface menu {
@@ -78,7 +80,7 @@ const sidebarItem: menu[] = [
     to: '/admin/dashboard'
   },
   {
-    title: 'Pipleine',
+    title: 'Agents Pipleine',
     icon: FilterIcon,
     to: '/admin/pipeline'
   },
@@ -89,7 +91,7 @@ const sidebarItem: menu[] = [
   },
   {
     title: 'Contacts',
-    icon: UsersIcon,
+    icon: AddressBookIcon,
     to: '/admin/contacts'
   },
   {
@@ -108,6 +110,11 @@ const sidebarItem: menu[] = [
       to : '/admin/approvals'
   },
 
+  {
+    title: 'Reports',
+    icon: FileReportIcon,
+    to: '/admin/reports'
+  },
   {
     title: 'Marketing',
     icon: WorldIcon,
@@ -142,6 +149,11 @@ const sidebarItem: menu[] = [
     title: 'Email',
     icon: MailIcon,
     to: '/admin/email'
+  },
+  {
+    title: 'Page Builder',
+    icon: SitemapIcon,
+    to: '/admin/page_builder'
   }
 
 

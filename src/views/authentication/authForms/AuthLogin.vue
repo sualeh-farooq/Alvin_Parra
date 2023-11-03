@@ -1,7 +1,5 @@
-<script setup lang="ts">
+<script setup >
 import { ref } from 'vue';
-import Google from '@/assets/images/auth/social-google.svg';
-import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
@@ -10,19 +8,19 @@ const checkbox = ref(false);
 const valid = ref(false);
 const show1 = ref(false);
 //const logform = ref();
-const password = ref('admin');
-const username = ref('admin');
+const password = ref(null);
+const username = ref(null);
 const passwordRules = ref([
-  (v: string) => !!v || 'Password is required',
-  (v: string) => (v && v.length <= 10) || 'Password must be less than 10 characters'
+  (v) => !!v || 'Password is required',
+  (v) => (v && v.length <= 10) || 'Password must be less than 10 characters'
 ]);
-const emailRules = ref([(v: string) => !!v || 'E-mail is required']);
-// const emailRules = ref([(v: string) => !!v || 'E-mail is required', (v: string) => /.+@.+\..+/.test(v) || 'E-mail must be valid']);
+const emailRules = ref([(v) => !!v || 'E-mail is required']);
 
-function validate(values: any, { setErrors }: any) {
+function validate(values, { setErrors }) {
   const authStore = useAuthStore();
   return authStore.login(username.value, password.value).catch((error) => setErrors({ apiError: error }));
 }
+
 </script>
 
 <template>
@@ -32,33 +30,36 @@ function validate(values: any, { setErrors }: any) {
   </v-row>
   <Form @submit="validate" class="mt-14 loginForm" v-slot="{ errors, isSubmitting }">
     <v-text-field
-      :rules="emailRules"
-      label="Email Address "
-      class="mt-4 mb-8"
-      required
-      density="comfortable"
-      hide-details="auto"
-      variant="outlined"
-      color="primary"
+        :rules="emailRules"
+        label="Email Address "
+        class="mt-4 mb-8"
+        required
+        density="comfortable"
+        hide-details="auto"
+        variant="outlined"
+        color="primary"
+        v-model="username"
     ></v-text-field>
     <v-text-field
-      :rules="passwordRules"
-      label="Password"
-      required
-      density="comfortable"
-      variant="outlined"
-      color="primary"
-      hide-details="auto"
-      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-      :type="show1 ? 'text' : 'password'"
-      @click:append="show1 = !show1"
-      class="pwdInput"
+        :rules="passwordRules"
+        label="Password"
+        required
+        density="comfortable"
+        variant="outlined"
+        color="primary"
+        hide-details="auto"
+        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show1 ? 'text' : 'password'"
+        @click:append="show1 = !show1"
+        class="pwdInput"
+        v-model="password"
     ></v-text-field>
+
 
     <div class="d-sm-flex align-center mt-2 mb-7 mb-sm-0">
       <v-checkbox
         v-model="checkbox"
-        :rules="[(v:any) => !!v || 'You must agree to continue!']"
+        :rules="[(v) => !!v || 'You must agree to continue!']"
         label="Remember me?"
         required
         color="primary"
@@ -70,8 +71,8 @@ function validate(values: any, { setErrors }: any) {
       </div>
     </div>
     <v-btn color="primary" :loading="isSubmitting" block class="mt-2" variant="flat" size="large" :disabled="valid" type="submit">
-      Sign In</v-btn
-    >
+      Sign In
+    </v-btn>
     <div v-if="errors.apiError" class="mt-2">
       <v-alert color="error">{{ errors.apiError }}</v-alert>
     </div>

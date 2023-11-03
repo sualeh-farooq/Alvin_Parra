@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { ref } from 'vue';
 import 'vue3-easy-data-table/dist/style.css';
 import TaskAssignedCard from "@/components/shared/taskAssignedCard.vue";

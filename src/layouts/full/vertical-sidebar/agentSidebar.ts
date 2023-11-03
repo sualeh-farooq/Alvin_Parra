@@ -24,6 +24,7 @@ import {
   ToolsIcon,
   BasketIcon,
   MessagesIcon,
+  AddressBookIcon,
   UserCheckIcon,
   NfcIcon,
   MailIcon,
@@ -40,13 +41,13 @@ import {
   ShieldLockIcon,
   BrandChromeIcon,
   HelpIcon,
-  SitemapIcon , 
+  SitemapIcon,
   FilterIcon,
   UsersIcon,
-  NotesIcon , 
+  NotesIcon,
   CheckboxIcon,
   WorldIcon
-  
+
 } from 'vue-tabler-icons';
 
 export interface menu {
@@ -88,7 +89,7 @@ const sidebarItem: menu[] = [
   },
   {
     title: 'My Contacts',
-    icon: UsersIcon,
+    icon: AddressBookIcon,
     to: '/agent/contacts'
   },
   {

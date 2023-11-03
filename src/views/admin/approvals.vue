@@ -236,6 +236,7 @@ const perLevel = ref(50)
                     <v-row>
                         <v-col>
 
+
                           <div style="display: flex; justify-content: space-between;" >
                             <div>
                               <v-tabs class="mb-4" v-model="tab" color="primary">
@@ -312,6 +313,23 @@ const perLevel = ref(50)
                                                                             Agent</v-lable>
                                                                         <p>Flex Hawk</p>
                                                                     </v-col>
+
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Primary License</v-lable>
+                                                                    <p>Securities License</p>
+                                                                  </v-col>
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Resident State</v-lable>
+                                                                    <p>Kentucky</p>
+                                                                  </v-col>
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Industry Experience</v-lable>
+                                                                    <p>0-1 Year</p>
+                                                                  </v-col>
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Registration Type</v-lable>
+                                                                    <p>I am a Personal Producer</p>
+                                                                  </v-col>
                                                                     <v-col lg="4" md="6" sm="12" cols="12">
                                                                         <v-lable class="font-weight-bold">% Level</v-lable>
                                                                       <v-text-field v-model="perLevel" type="number"  variant="outlined"
@@ -409,6 +427,23 @@ const perLevel = ref(50)
                                                                     </v-col>
 
                                                                   <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Primary License</v-lable>
+                                                                    <p>Securities License</p>
+                                                                  </v-col>
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Resident State</v-lable>
+                                                                    <p>Kentucky</p>
+                                                                  </v-col>
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Industry Experience</v-lable>
+                                                                    <p>0-1 Year</p>
+                                                                  </v-col>
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
+                                                                    <v-lable class="font-weight-bold">Registration Type</v-lable>
+                                                                    <p>I am a Personal Producer</p>
+                                                                  </v-col>
+
+                                                                  <v-col lg="4" md="6" sm="12" cols="12">
                                                                     <v-lable class="font-weight-bold">% Level
                                                                       </v-lable>
                                                                     <p>50%  </p>
@@ -495,6 +530,22 @@ const perLevel = ref(50)
                                                               <p>Flex Hawk</p>
                                                             </v-col>
 
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Primary License</v-lable>
+                                                              <p>Securities License</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Resident State</v-lable>
+                                                              <p>Kentucky</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Industry Experience</v-lable>
+                                                              <p>0-1 Year</p>
+                                                            </v-col>
+                                                            <v-col lg="4" md="6" sm="12" cols="12">
+                                                              <v-lable class="font-weight-bold">Registration Type</v-lable>
+                                                              <p>I am a Personal Producer</p>
+                                                            </v-col>
 
                                                           </v-row>
 

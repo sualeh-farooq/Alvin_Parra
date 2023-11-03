@@ -16,8 +16,7 @@ import TextSlider from './TextSlider.vue';
             <div elevation="0" class="loginBox  d-flex justify-center">
             <img src="../../../assets/images/logos/logo.png" class="w-75" />
              </div>
-            
-</v-col>
+          </v-col>
             <v-col cols="12" lg="10" md="7">
               <v-card elevation="0" class="loginBox">
                 <v-card variant="outlined">

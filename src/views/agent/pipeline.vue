@@ -358,8 +358,8 @@ export default {
       openDays: ['Highest to lowest' , 'Lowest to highest'],
       closingDate: ['Earliest to latest' , 'Latest to earliest'],
       statuses: ['All' , 'Cold', 'Warm', 'Hot'],
-      agents: ['Laura' , 'Alvin' , 'John' , 'Henry'],
-      defaultAgent: 'Laura',
+      agents: ['Laura ( Myself )' , 'Henry' , 'Alvin' , 'John' , 'Henry'],
+      defaultAgent: 'Laura ( Myself )',
     };
   },
   components: {
@@ -428,9 +428,9 @@ export default {
                                   placeholder="Search Opportunity" v-model="searchValue" density="compact"
                                   hide-details prepend-inner-icon="mdi-magnify" />
                   </div>
-<!--                  <div class="w-25" >-->
-<!--                    <v-select label="Select Agent" :items="agents" color="primary" variant="outlined" hide-details density="compact" v-model="defaultAgent"></v-select>-->
-<!--                  </div>-->
+                  <div class="w-25" >
+                    <v-select label="Select Agent" :items="agents" color="primary" variant="outlined" hide-details density="compact" v-model="defaultAgent"></v-select>
+                  </div>
                   <div class="w-25" >
                     <v-select label="Select Product" :items="sortByPipeline" color="primary" variant="outlined" hide-details density="compact" v-model="selectedPipeline"></v-select>
                   </div>

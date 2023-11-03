@@ -457,25 +457,35 @@ const tab7 = ref(null);
 
 
                 <v-window-item value="12">
-                  <v-tabs class="mb-4" v-model="tab5" color="primary">
-                    <v-tab value="leads">
-                      <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      Leads
-                    </v-tab>
-                    <v-tab value="prospects">
-                      <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      Prospects
-                    </v-tab>
-                    <v-tab value="clients">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      Clients
-                    </v-tab>
-                    <v-tab value="lost">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      Lost
-                    </v-tab>
+                  <div style="align-items:center; justify-content:space-between;" class="d-flex" >
+                    <div>
+                      <v-tabs class="mb-4" v-model="tab5" color="primary">
+                        <v-tab value="leads">
+                          <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Leads
+                        </v-tab>
+                        <v-tab value="prospects">
+                          <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Prospects
+                        </v-tab>
+                        <v-tab value="clients">
+                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Clients
+                        </v-tab>
+                        <v-tab value="lost">
+                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          Lost
+                        </v-tab>
 
-                  </v-tabs>
+                      </v-tabs>
+                    </div>
+                    <div class="w-25" >
+
+                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
+                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
+                                    prepend-inner-icon="mdi-magnify"/>
+                    </div>
+                  </div>
 
                   <v-window v-model="tab5">
                     <v-window-item value="leads">

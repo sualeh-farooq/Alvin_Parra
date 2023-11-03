@@ -120,8 +120,8 @@ watch(priority, (newPriority) => {
       <template v-slot:activator="{ props }">
         <v-btn
           icon
-          class="text-secondary mx-3"
-          color="lightsecondary"
+          class="text-darkText mx-3"
+          color="white"
           rounded="sm"
           size="small"
           variant="flat"

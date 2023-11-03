@@ -80,7 +80,7 @@ export default  {
   },
   methods: {
     goBack(){
-      window.history.back(-1)
+      window.history.back()
     }
   }
 }

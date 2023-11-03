@@ -1,4 +1,75 @@
 <script  lang="ts">
+import 'vue3-easy-data-table/dist/style.css';
+import {ref} from "vue";
+
+
+
+
+
+
+
+const itemsSelected = ref([]);
+const tab = ref(null)
+
+const items = ref([
+  {
+    name: 'Joseph William',
+    gen: '1',
+    code: '3002',
+    base: '4000',
+    upline: '3004',
+    license: 'LHK-2930',
+    status: 'Active'
+  },
+  {
+    name: 'John Doe',
+    gen: '1',
+    code: '3003',
+    base: '4001',
+    upline: '3006',
+    license: 'LHK-3829',
+    status: 'Active'
+  },
+  {
+    name: 'Anshan Henry',
+    gen: '2',
+    code: '3004',
+    base: '4002 ',
+    upline: '3001',
+    license: 'LHK-5830',
+    status: 'Active'
+  },
+  {
+    name: 'Corina Carmen',
+    gen: '2',
+    code: '3005',
+    base: '4003',
+    upline: '3003',
+    license: 'LHK-3829',
+    status: 'Active'
+  },
+  {
+    name: 'Sara Clark',
+    gen: '3',
+    code: '3004',
+    base: '4004',
+    upline: '3002',
+    license: 'LHK-4629',
+    status: 'Active'
+  },
+  {
+    name: 'Robart Hawl',
+    gen: '3',
+    code: '3004',
+    base: '4004',
+    upline: '3002',
+    license: 'LHK-4629',
+    status: 'Active'
+  },
+
+]);
+
+
 export default  {
 
   data(){
@@ -72,7 +143,86 @@ export default  {
       levelAnn: '90%',
       levelLife: '80%',
       levelHealth: '100%',
-      mediCare: '80%'
+      searchValue : '' ,
+
+      mediCare: '80%',
+       searchField : ['name', 'gen', 'code', 'base', 'upline' , 'license' , 'status' , 'team_count'],
+      headers : [
+
+        {text: 'Name', value: 'name', sortable: true},
+        {text: 'Generation', value: 'gen', sortable: true, colspan: 3},
+        {text: 'Code Number', value: 'code', sortable: true},
+        {text: 'Base No', value: 'base', sortable: true},
+        {text: 'Team Count', value: 'team_count', sortable: true},
+        {text: 'Upline Code', value: 'upline', sortable: true},
+        {text: 'License Number', value: 'license', sortable: true},
+        {text: 'Status', value: 'status', sortable: true},
+        {text: 'Action', value: 'action'}
+      ],
+     items: [
+       {
+         name: 'Joseph William',
+         gen: '1',
+         code: '3002',
+         base: '4000',
+         upline: '3000',
+         license: 'LHK-2930',
+         status: 'Active',
+         team_count: 2,
+       },
+       {
+         name: 'John Doe',
+         gen: '1',
+         code: '3003',
+         base: '4001',
+         upline: '3002',
+         license: 'LHK-3829',
+         status: 'Active',
+         team_count: 5,
+       },
+       {
+         name: 'Anshan Henry',
+         gen: '2',
+         code: '3004',
+         base: '4002 ',
+         upline: '3002',
+         license: 'LHK-5830',
+         status: 'Active',
+         team_count: 2,
+       },
+       {
+         name: 'Corina Carmen',
+         gen: '2',
+         code: '3005',
+         base: '4003',
+         upline: '3004',
+         license: 'LHK-3829',
+         status: 'Active',
+         team_count: 10,
+
+       },
+       {
+         name: 'Sara Clark',
+         gen: '3',
+         code: '3004',
+         base: '4004',
+         upline: '3002',
+         license: 'LHK-4629',
+         status: 'Active',
+         team_count: 8,
+
+       },
+       {
+         name: 'Sara Clark',
+         gen: '3',
+         code: '3004',
+         base: '4004',
+         upline: '3002',
+         license: 'LHK-4629',
+         status: 'Active',
+         team_count: 1,
+
+       }]
 
 
 
@@ -80,7 +230,7 @@ export default  {
   },
   methods: {
     goBack(){
-      window.history.back(-1)
+     window.history.back()
     }
   }
 }
@@ -116,12 +266,14 @@ export default  {
                 <v-tab value="agentCode">
                   <KeyIcon stroke-width="1.5" width="20" class="v-icon--start" /> Agent Code
                 </v-tab>
-
                 <v-tab value="banking">
                   <CreditCardIcon stroke-width="1.5" width="20" class="v-icon--start" /> Banking Info
                 </v-tab>
                 <v-tab value="commision">
                   <PercentageIcon stroke-width="1.5" width="20" class="v-icon--start" /> Commision Level
+                </v-tab>
+                <v-tab value="downline" >
+                  <PercentageIcon stroke-width="1.5" width="20" class="v-icon--start" /> Agents Downline
                 </v-tab>
               </v-tabs>
 
@@ -178,8 +330,6 @@ export default  {
                     </v-col>
                   </v-row>
                 </v-window-item>
-
-
                 <v-window-item value="licensing" >
                   <v-row class="my-2" >
                     <v-col cols="12" lg="3" md="6" sm="12" >
@@ -352,11 +502,39 @@ export default  {
 
                   </v-row>
                 </v-window-item>
+
+                <v-window-item value="downline" >
+                  <div class="mt-2" >
+                    <div class="d-flex justify-end" >
+                      <div class="w-25" >
+                        <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
+                                      placeholder="Search Agents" v-model="searchValue" density="compact" hide-details
+                                      prepend-inner-icon="mdi-magnify"/>
+                      </div>
+
+                    </div>
+
+                  <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
+                                 :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                 :rows-per-page="5" v-model:items-selected="itemsSelected">
+                    <template #item-action="items">
+
+                        <v-btn @click="tab2 = 'personal'" icon color="primary" v-bind="props" variant="text">
+                          <EyeIcon size="20"/>
+                        </v-btn>
+                      <v-btn icon color="error" variant="text">
+                        <TrashIcon size="20"/>
+                      </v-btn>
+                    </template>
+                  </EasyDataTable>
+                  </div>
+
+                </v-window-item>
               </v-window>
 
   <v-row>
     <v-col >
-      <v-btn color="primary" >
+      <v-btn v-if="tab2 !== 'downline'" color="primary" >
         Update Agent Info
       </v-btn>
     </v-col>

@@ -1,7 +1,11 @@
 export { fakeBackend };
 
 function fakeBackend() {
-  let users = [{ id: 1, username: 'admin', password: 'admin', firstName: 'Codedthemes', lastName: '.com' }];
+  let users = [
+    { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: '', role: 'admin' },
+    { id: 2, username: 'agent', password: 'agent', firstName: 'Agent', lastName: '', role: 'agent' },
+    { id: 3, username: 'agency', password: 'agency', firstName: 'Agency', lastName: '', role: 'agency' }
+  ];
   let realFetch = window.fetch;
   window.fetch = function (url: any, opts: any) {
     return new Promise((resolve: any, reject) => {
@@ -35,7 +39,7 @@ function fakeBackend() {
           username: user.username,
           firstName: user.firstName,
           lastName: user.lastName,
-          token: 'fake-jwt-token'
+          role: user.role
         });
       }
 
