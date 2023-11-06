@@ -97,7 +97,7 @@ const sidebarItem: menu[] = [
   {
     title: 'Tasks',
     icon: NotesIcon,
-    to: '/admin/notes'
+    to: '/admin/tasks'
   },
   {
     title: 'Agents',

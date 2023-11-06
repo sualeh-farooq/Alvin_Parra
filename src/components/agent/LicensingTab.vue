@@ -77,29 +77,29 @@ export default {
 <!--    </div>-->
 <!--    <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" accept="image/*" />-->
     <v-row class="mt-1">
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="4">
         <v-text-field type="text" color="primary" v-model="fName" label="Agency Name" variant="outlined" hide-details>
         </v-text-field>
       </v-col>
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="4">
         <v-text-field type="text" color="primary" v-model="lName" label="Contact Person" variant="outlined" hide-details>
         </v-text-field>
       </v-col>
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="4">
         <v-text-field type="email" color="primary" v-model="email" label="Email Address" variant="outlined"
                       hide-details>
         </v-text-field>
       </v-col>
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="4">
         <v-text-field type="number" color="primary" v-model="phone" label="Phone Number" variant="outlined"
                       hide-details> </v-text-field>
       </v-col>
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="4">
         <v-text-field type="text" color="primary" v-model="license" label="License Number" variant="outlined"
                       hide-details>
         </v-text-field>
       </v-col>
-      <v-col cols="12" lg="6">
+      <v-col cols="12" lg="4">
         <v-text-field type="url" color="primary" v-model="socialSecurity" label="Social Security" variant="outlined"
                       hide-details>
         </v-text-field>

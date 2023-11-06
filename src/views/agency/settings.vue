@@ -27,8 +27,8 @@ const tab = ref('tab-profile');
                     <v-tab value="tab-profile" rounded="md" class="text-left overflow-hidden" height="70">
                       <UserIcon stroke-width="1.5" width="20" class="v-icon--start" />
                       <div>
-                        <div>User Profile</div>
-                        <span class="text-subtitle-2 text-disabled font-weight-medium d-block">Profile Settings</span>
+                        <div>Agency Profile</div>
+                        <span class="text-subtitle-2 text-disabled font-weight-medium d-block">Agency Settings</span>
                       </div>
                     </v-tab>
 

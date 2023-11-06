@@ -458,7 +458,7 @@ const MainRoutes = {
     },
     {
       name: 'Notes',
-      path: '/admin/notes',
+      path: '/admin/tasks',
       component: () => import('@/views/admin/notes.vue')
     },
 
@@ -601,7 +601,7 @@ const MainRoutes = {
     },
     {
       name: 'Agency Notes ',
-      path: '/agency/notes',
+      path: '/agency/tasks',
       component: () =>import('@/views/agency/notes.vue')
     },
     {
@@ -624,6 +624,22 @@ const MainRoutes = {
       path:'/agency/opportunityView',
       component: ()=>import('@/views/agency/opportunityView.vue')
     },
+    {
+      name: 'Agency. Accounts',
+      path: '/agency/accounts',
+      component : ()=>import('@/views/agency/accounts.vue')
+    },
+    {
+      name: 'Agency Account View',
+      path: '/agency/accountView',
+      component: () => import('@/views/agency/accountView.vue')
+    },
+    {
+      name: 'Agency Add Accounts',
+      path: '/agency/addAccount' ,
+      component : ()=> import('@/views/agency/addAccount.vue')
+    },
+
 
 
 
@@ -669,6 +685,7 @@ const MainRoutes = {
       path: '/agent/contacts',
       component : ()=>import('@/views/agent/contacts.vue')
     },
+
     {
       name: 'Agent Accounts Add' ,
       path: '/agent/addAccount',

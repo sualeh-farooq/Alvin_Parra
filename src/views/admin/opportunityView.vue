@@ -3,7 +3,7 @@ import {ref} from 'vue';
 import KanbanListVue from '@/components/apps/kanban/KanbanList.vue';
 import NotesCard from "@/components/shared/notesCard.vue";
 import TaskCard from "@/components/shared/taskCard.vue";
-
+import Files from '@/components/shared/files.vue'
 export default {
   data() {
     const page = ref({title: 'Tabs'});
@@ -33,6 +33,7 @@ export default {
     const pendingDialog = ref(false);
     const acceptedDialog = ref(false);
     const rejectedDialog = ref(false);
+    const fileDialog = ref(false)
     const items = ref([
       {
         oppName: 'Opportunity 1-life-121212',
@@ -209,6 +210,7 @@ export default {
       tab3,
       tab4,
       tab5,
+      fileDialog,
       tab6,
       tab7,
       items,
@@ -379,9 +381,10 @@ export default {
     };
   },
   components: {
-    KanbanListVue,
+    // KanbanListVue,
     NotesCard,
-    TaskCard
+    TaskCard,
+    Files
   },
   methods: {
     openFileInput() {
@@ -648,6 +651,42 @@ export default {
             </v-card>
           </v-dialog>
 
+          <v-dialog width="800" v-model="fileDialog">
+            <template v-slot:activator="{ props }">
+              <v-btn v-if="tab === 'files'" v-bind="props" color="primary" class="mx-1">Add File +</v-btn>
+            </template>
+            <v-card class="overflow-auto w-100">
+              <div class="d-flex border w-100">
+                <v-card-title class="pa-5 border w-100 d-flex align-center justify-space-between">
+                  Add Files
+                </v-card-title>
+
+              </div>
+
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" >
+                      <v-file-input
+                          multiple
+                          label="Upload Files"
+                      ></v-file-input>
+                    </v-col>
+
+
+
+                  </v-row>
+
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="error" text @click="fileDialog = false"> Close
+                </v-btn>
+                <v-btn color="success" text @click="fileDialog = false"> Add </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
 
 
         </div>
@@ -663,19 +702,19 @@ export default {
                 <div>
                   <v-tabs class="mb-4" v-model="tab" color="primary">
                     <v-tab value="details">
-                      <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      <InfoSquareIcon stroke-width="1.5" width="25" class="v-icon--start"/>
                       Details
                     </v-tab>
                     <v-tab value="notes">
-                      <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      <NoteIcon stroke-width="1.5" width="25" class="v-icon--start"/>
                       Notes
                     </v-tab>
                     <v-tab value="tasks">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      <NotesIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                       Tasks
                     </v-tab>
                     <v-tab value="files">
-                      <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      <FilesIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                       Files
                     </v-tab>
                   </v-tabs>
@@ -792,8 +831,13 @@ export default {
                       <v-col cols="12" >
                         <div >
 
-                        <p class="text-center" >No Files Uploaded Yet</p>
+<!--                        <p class="text-center" >No Files Uploaded Yet</p>-->
+                        <Files />
                         </div>
+
+
+
+
 
                       </v-col>
                     </v-row>

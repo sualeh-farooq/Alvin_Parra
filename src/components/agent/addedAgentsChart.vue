@@ -42,10 +42,7 @@ const chartOptions1 = computed(() => {
     },
     xaxis: {
       type: 'category',
-      categories: ["January", "February", "March",
-        "April", "May", "June",
-        "July", "August", "September",
-        "October", "November", "December"]
+      categories: ['Annuity', 'Life', 'AUM', 'Medicare', 'Health', 'Trust', 'LTC/DI', 'Supplemental', 'Real Estate', 'Other', 'Other','Other']
     },
     legend: {
       show: true,
@@ -84,7 +81,7 @@ const chartOptions1 = computed(() => {
 const lineChart1 = {
   series: [
     {
-      name: 'Agents Added',
+      name: 'Total Opportunities',
       data: [35, 88, 56, 20, 80, 70, 52, 20, 35, 45,10,65]
     },
 
@@ -98,23 +95,23 @@ const lineChart1 = {
       <v-card-text>
         <v-row>
           <v-col cols="12" sm="9">
-            <h3 class="text-h3 font-weight-bold">Total Agents Added Statistics</h3>
+            <h3 class="text-h3 font-weight-bold">Total Opportunities by Pipeline</h3>
             <!-- <h3 class="text-h3 mt-1">$2,324.00</h3> -->
           </v-col>
           <v-col cols="12" sm="3">
-<!--            <v-select-->
-<!--                color="primary"-->
-<!--                variant="outlined"-->
-<!--                hide-details-->
-<!--                v-model="select"-->
-<!--                :items="items"-->
-<!--                item-title="state"-->
-<!--                item-value="abbr"-->
-<!--                label="Select"-->
-<!--                persistent-hint-->
-<!--                single-line-->
-<!--            >-->
-<!--            </v-select>-->
+            <v-select
+                color="primary"
+                variant="outlined"
+                hide-details
+                v-model="select"
+                :items="items"
+                item-title="state"
+                item-value="abbr"
+                label="Select"
+                persistent-hint
+                single-line
+            >
+            </v-select>
           </v-col>
         </v-row>
         <div class="mt-4">

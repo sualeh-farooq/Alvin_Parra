@@ -355,11 +355,11 @@ const tab7 = ref(null);
                           Leads
                         </v-tab>
                         <v-tab value="prospects">
-                          <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          <UsersIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                           Prospects
                         </v-tab>
                         <v-tab value="clients">
-                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          <BuildingArchIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                           Clients
                         </v-tab>
                         <v-tab value="lost">
@@ -465,11 +465,11 @@ const tab7 = ref(null);
                           Leads
                         </v-tab>
                         <v-tab value="prospects">
-                          <SquareCheckIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          <UsersIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                           Prospects
                         </v-tab>
                         <v-tab value="clients">
-                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                          <BuildingArchIcon stroke-width="1.5" width="20" class="v-icon--start"/>
                           Clients
                         </v-tab>
                         <v-tab value="lost">

@@ -17,13 +17,13 @@ const textsite = ref('www.company.com');
 export default {
   data() {
     return {
-      imageUrl: "/src/assets/images/license.jpg",
+      imageUrl: "/src/assets/images/profile/license.jpg",
     fName: 'Strategic Financial Algeria' ,
     lName: 'John Doe' ,
     email: 'strategicAlgeria@gmail.com',
     phone: 1432423232,
     license: 'HSDK-3628',
-    socialSecurity : 'US-E02-185'
+    socialSecurity : 'South Pasadena CA'
     };
   },
   methods: {
@@ -59,26 +59,31 @@ export default {
 
 <template>
   <div>
-<!--    <div class="d-flex flex-row ">-->
-<!--      <div style="height: 120px; width:200px" >-->
-<!--        <img style="height: 100%" :src="imageUrl" class="w-100" alt="user-img" />-->
-<!--      </div>-->
-<!--      <div-->
-<!--        class="ml-4 d-flex flex-column align-start justify-space-between text-subtitle-2 text-medium-emphasis font-weight-medium">-->
-<!--        <div class="d-flex align-center">-->
-<!--          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> License Image Limit should be 1.5mb Max.-->
-<!--          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> The Proposed size is 512 * 512px.-->
-<!--        </div>-->
-<!--        <div class="d-flex flex-wrap gap-3">-->
-<!--          <v-btn color="primary" @click="openFileInput">Change</v-btn>-->
-<!--          <v-btn color="error" @click="removeImage">Remove</v-btn>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="d-flex flex-row ">
+      <div style="height: 120px; width:200px" >
+        <img style="height: 100%" :src="imageUrl" class="w-100" alt="user-img" />
+      </div>
+      <div
+        class="ml-4 d-flex flex-column align-start justify-space-between text-subtitle-2 text-medium-emphasis font-weight-medium">
+        <div class="d-flex align-center">
+          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> Logo image limit should be 1.5mb Max.
+          <AlertCircleIcon width="20" stroke-width="1.5" class="mx-2" /> The Proposed size is 512 * 512px.
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+          <v-btn color="primary" @click="openFileInput">Change</v-btn>
+          <v-btn color="error" @click="removeImage">Remove</v-btn>
+        </div>
+      </div>
+    </div>
     <input type="file" ref="fileInput" style="display: none" @change="handleFileChange" accept="image/*" />
     <v-row class="mt-1">
       <v-col cols="12" lg="6">
         <v-text-field type="text" color="primary" v-model="fName" label="Agency Name" variant="outlined" hide-details>
+        </v-text-field>
+      </v-col>
+      <v-col cols="12" lg="6">
+        <v-text-field type="url" color="primary" v-model="socialSecurity" label="Agency Address" variant="outlined"
+                      hide-details>
         </v-text-field>
       </v-col>
       <v-col cols="12" lg="6">
@@ -92,15 +97,10 @@ export default {
       </v-col>
       <v-col cols="12" lg="6">
         <v-text-field type="number" color="primary" v-model="phone" label="Phone Number" variant="outlined"
-          hide-details> </v-text-field>
+        hide-details> </v-text-field>
       </v-col>
       <v-col cols="12" lg="6">
         <v-text-field type="text" color="primary" v-model="license" label="License Number" variant="outlined"
-          hide-details>
-        </v-text-field>
-      </v-col>
-      <v-col cols="12" lg="6">
-        <v-text-field type="url" color="primary" v-model="socialSecurity" label="Social Security" variant="outlined"
           hide-details>
         </v-text-field>
       </v-col>

@@ -92,11 +92,11 @@ const lineChart1 = {
     <v-card variant="outlined">
       <v-card-text>
         <v-row>
-          <v-col cols="12" sm="9">
+          <v-col cols="12" md="9">
             <h3 class="text-h3 font-weight-bold">Total Opportunities By Pipeline</h3>
             <!-- <h3 class="text-h3 mt-1">$2,324.00</h3> -->
           </v-col>
-          <v-col cols="12" sm="3">
+          <v-col cols="12" md="3">
             <v-select
                 color="primary"
                 variant="outlined"
