@@ -3,6 +3,7 @@ import {
   BrandGravatarIcon,
   MenuIcon,
   CircleIcon,
+  CurrencyDollarIcon,
   ShapeIcon,
   CircleOffIcon,
   BoxMultipleIcon,
@@ -41,14 +42,14 @@ import {
   ShieldLockIcon,
   BrandChromeIcon,
   HelpIcon,
-  SitemapIcon , 
+  SitemapIcon,
   FilterIcon,
   BrandGmailIcon,
   UsersIcon,
-  NotesIcon , 
+  NotesIcon,
   CheckboxIcon,
   WorldIcon,
-  AddressBookIcon
+  AddressBookIcon, PigMoneyIcon, BrandProducthuntIcon, BrandXboxIcon, BoxIcon, SettingsIcon, MessageIcon
 
 } from 'vue-tabler-icons';
 
@@ -80,15 +81,15 @@ const sidebarItem: menu[] = [
     to: '/admin/dashboard'
   },
   {
-    title: 'Agents Pipleine',
+    title: ' Pipeline',
     icon: FilterIcon,
     to: '/admin/pipeline'
   },
-  {
-    title: 'Accounts',
-    icon: UsersIcon,
-    to: '/admin/accounts'
-  },
+  // {
+  //   title: 'Accounts',
+  //   icon: UsersIcon,
+  //   to: '/admin/accounts'
+  // },
   {
     title: 'Contacts',
     icon: AddressBookIcon,
@@ -145,16 +146,56 @@ const sidebarItem: menu[] = [
     ],
 
   },
-  {
-    title: 'Email',
-    icon: MailIcon,
-    to: '/admin/email'
-  },
+
   {
     title: 'Page Builder',
     icon: SitemapIcon,
     to: '/admin/page_builder'
-  }
+  },
+  {
+    title: 'Commisions',
+    icon: CurrencyDollarIcon,
+    to: '/admin/commision'
+  },
+  {
+    title: 'Products',
+    icon: BoxIcon,
+    to: '/admin/products'
+  },
+  {
+    title: 'Agent Tools',
+    icon: ToolsIcon,
+    to: '/admin/agentTools'
+  },
+  {
+    title: 'Settings',
+    icon: SettingsIcon,
+    to: '/admin/settings'
+  },
+  {
+    title: 'Communicate',
+    icon: MessageIcon,
+    to: '/admin/marketing',
+    children: [
+      {
+        title: 'Email',
+        icon: MailIcon,
+        to: '/admin/email'
+      },
+      {
+        title: 'SMS',
+        icon: CircleIcon,
+        to: '/admin/sms'
+      },
+      {
+        title: 'Task',
+        icon: CircleIcon,
+        to: '/admin/task'
+      },
+
+    ],
+
+  },
 
 
 

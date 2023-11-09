@@ -60,6 +60,84 @@ export default {
               '\n'
         }
       ],
+      items: [
+        {
+          fName: 'John Smith',
+          email: ' john@gmai.com',
+          mobile: '+1-224-2095',
+          state: 'Texas',
+          zipcode: '28393',
+          designation: 'Account Manager',
+        },
+        {
+          fName: 'Corina Carmen',
+          email: ' corina@gmail.com',
+          mobile: '+1-910-2729',
+          state: 'Alaska',
+          zipcode: '27292',
+          designation: 'Regional Director',
+        },
+        {
+          fName: 'Methew Karl',
+          email: ' methew@gmai.com',
+          mobile: '+1-032-0129',
+          state: 'Albama',
+          zipcode: '192729',
+          designation: 'Director Executive',
+        },
+        {
+          fName: 'Rohat Emre',
+          email: ' rohat@gmai.com',
+          mobile: '+1-728-2829',
+          state: 'Kentucky',
+          zipcode: '272873',
+          designation: 'Sales Manager',
+        },
+        {
+          fName: 'John Smith',
+          email: ' john@gmai.com',
+          mobile: '+1-224-2095',
+          state: 'Texas',
+          zipcode: '28393',
+          designation: 'Account Manager',
+        },
+        {
+          fName: 'Corina Carmen',
+          email: ' corina@gmail.com',
+          mobile: '+1-910-2729',
+          state: 'Alaska',
+          zipcode: '27292',
+          designation: 'Regional Director',
+        },
+        {
+          fName: 'Methew Karl',
+          email: ' methew@gmai.com',
+          mobile: '+1-032-0129',
+          state: 'Albama',
+          zipcode: '192729',
+          designation: 'Director Executive',
+        },
+        {
+          fName: 'Rohat Emre',
+          email: ' rohat@gmai.com',
+          mobile: '+1-728-2829',
+          state: 'Kentucky',
+          zipcode: '272873',
+          designation: 'Sales Manager',
+        },
+
+      ],
+      headers: [{text: 'Full Name', value: 'fName', sortable: true, colspan: 3},
+        {text: 'Email', value: 'email', sortable: true},
+        {text: 'Mobile Number', value: 'mobile', sortable: true},
+        {text: 'State', value: 'state', sortable: true},
+        {text: 'Zipcode', value: 'zipcode', sortable: true},
+        {text: 'Designation', value: 'designation'},
+      ],
+      searchField: ['fName', 'email', 'mobile', 'state', 'zipcode', 'designation'],
+      searchValue: [''],
+      itemsSelected: [''],
+      themeColor: 'rgb(var(--v-theme-primary))'
 
     }
   },
@@ -153,11 +231,7 @@ export default {
                 </v-tab>
                 <v-tab value="family">
                   <UsersIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                  Family
-                </v-tab>
-                <v-tab value="company">
-                  <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                  Company
+                  Employees
                 </v-tab>
                 <v-tab value="notes">
                   <BuildingIcon stroke-width="1.5" width="20" class="v-icon--start"/>
@@ -177,7 +251,7 @@ export default {
                     <v-col cols="12">
                       <div>
                         <v-radio-group label="Account Type" v-model="radios" inline>
-                          <v-radio label="Individual" value="one"></v-radio>
+                          <v-radio label="Business" value="one"></v-radio>
                           <!--                          <v-radio label="Business" value="2"></v-radio>-->
                         </v-radio-group>
                         <!-- <p class="mt-3">Selected: {{ selectedRadioValues }}</p> -->
@@ -186,55 +260,49 @@ export default {
                     </v-col>
 
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field v-model="fName" type="text" label="First Name" variant="outlined"
+                      <v-text-field type="text" label="Business Name" variant="outlined"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="lName" label="Last Name" variant="outlined"
+                      <v-text-field type="text" label="Business City" variant="outlined"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="email" label="Email" v-model="email" variant="outlined"
+                      <v-text-field type="text" label="Business State" variant="outlined"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="email" label="Backup Email" v-model="backupEmail" variant="outlined"
+                      <v-text-field type="text" label="Business Zip Code" variant="outlined"
                       ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="number" label="Mobile Number" variant="outlined" v-model="mobile"
+                      <v-text-field type="text" label="Business Street Address" variant="outlined"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Business Website" variant="outlined"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label="Business Phone" variant="outlined"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="text" label=" Contact Name" variant="outlined"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" lg="3">
+                      <v-text-field type="email" label="Contact Email" variant="outlined"
                       ></v-text-field>
                     </v-col>
 
+
                     <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="number" label="Work Number" variant="outlined" v-model="workMobile"
+                      <v-text-field type="text" label="Contact Phone" variant="outlined"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="date" label="DOB" variant="outlined" v-model="dob"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field disabled type="text" label="Age" variant="outlined" v-model="age"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="City" variant="outlined" v-model="city"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="State" variant="outlined" v-model="state"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" label="Zip Code" variant="outlined" v-model="zipcode"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                      <v-textarea filled auto-grow label="Street Address" rows="4" v-model="address"
-                                  row-height="20" color="primary" variant="outlined"></v-textarea>
-                    </v-col>
+
 
                   </v-row>
 
@@ -263,48 +331,25 @@ export default {
                 </v-window-item>
 
                 <v-window-item value="family">
-                  <v-row class="mt-3">
-
-
-                    <v-col cols="12" md="6" lg="6">
-                      <v-radio-group label="Martial Status" v-model="martialStatus" inline>
-                        <v-radio label="Married" value="married"></v-radio>
-                        <v-radio label="Single" value="single"></v-radio>
-                        <v-radio label="Divorced" value="divorced"></v-radio>
-                        <v-radio label="Widow" value="widow"></v-radio>
-                      </v-radio-group>
-
-                    </v-col>
-
-                    <v-col cols="12" md="6">
-                      <v-radio-group label="Is Spouse a Client too ?" v-model="spouseClient" inline>
-                        <v-radio label="Yes" value="yes"></v-radio>
-                        <v-radio label="No" value="no"></v-radio>
-                      </v-radio-group>
-                      <!-- <p class="mt-3">Selected: {{ selectedRadioValues }}</p> -->
-
-                    </v-col>
-
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="spouseName" label="Spouse Name" variant="outlined"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="date" label="Spouse DOB" v-model="spouseDob" variant="outlined"
-                      ></v-text-field>
-                    </v-col>
-
-                    <v-col cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="child1" label="Child 1 - Full Name" variant="outlined"
-                      ></v-text-field>
-                    </v-col>
-                    <v-col v-for="(child, index) in children" :key="index" cols="12" md="6" lg="3">
-                      <v-text-field type="text" v-model="children[index]" :label="getChildLabel(index)"
-                                    variant="outlined"></v-text-field>
+                  <v-row>
+                    <v-col cols="12" class="p-0">
+                      <v-text-field class=" mt-3 float-right w-50 " type="text" variant="outlined"
+                                    placeholder="Search Employees" v-model="searchValue" density="compact" hide-details
+                                    prepend-inner-icon="mdi-magnify"/>
                     </v-col>
 
                     <v-col cols="12">
-                      <v-btn color="primary" variant="outlined" @click="addChild">Add Child +</v-btn>
+                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
+                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
+                        <template #item-action="item">
+                          <RouterLink to="/admin/accountView">
+                            <v-btn icon color="primary" v-bind="props" variant="text">
+                              <EyeIcon size="20"/>
+                        </v-btn>
+                          </RouterLink>
+                        </template>
+                      </EasyDataTable>
                     </v-col>
                   </v-row>
                 </v-window-item>

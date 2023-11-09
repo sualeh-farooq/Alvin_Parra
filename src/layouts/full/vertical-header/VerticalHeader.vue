@@ -8,7 +8,7 @@ import {
   SettingsIcon,
   LanguageIcon,
   SearchIcon,
-  Menu2Icon,
+  Menu2Icon, XIcon,
 } from "vue-tabler-icons";
 
 // dropdown imports
@@ -54,6 +54,15 @@ watch(priority, (newPriority) => {
     >
       <Menu2Icon size="20" stroke-width="1.5" />
     </v-btn>
+
+    <v-sheet style="border-radius: 15px "  class="universal_search w-25 ml-3 d-none d-lg-block " >
+      <v-text-field  persistent-placeholder placeholder="Search" class="rounded-md p-0" color="primary" variant="outlined" hide-details>
+        <template v-slot:prepend-inner>
+          <SearchIcon stroke-width="1.5" size="17" class="text-lightText SearchIcon" />
+        </template>
+      </v-text-field>
+    </v-sheet>
+
 
     <!-- search mobile -->
     <v-btn
@@ -116,6 +125,11 @@ watch(priority, (newPriority) => {
     <!-- ---------------------------------------------- -->
     <!-- Notification -->
     <!-- ---------------------------------------------- -->
+
+    <v-btn class="bg-darkText mx-1 d-none d-lg-block"  >Quotes +</v-btn>
+    <v-btn class="bg-darkText mx-1 d-none d-lg-block" >Add +</v-btn>
+    <v-btn class="bg-darkText mx-1 d-none d-lg-block" >Products +</v-btn>
+    <v-btn class="bg-darkText mx-1 d-none d-lg-block" >University +</v-btn>
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
         <v-btn

@@ -39,8 +39,8 @@ export default {
 <template>
   <div   >
   <div class="register_form" v-if="!confirmationMessage" >
-    <h2 class="text-primary text-h2">Sign up</h2>
-    <h5 class="text-h5 text-left mt-1 mb-8">Sign up with Email address</h5>
+    <h2 class="text-primary text-h2">Join our General Agency Today</h2>
+    <h5 class="text-h5 text-left mt-1 mb-8">Get ready to be captivated by our amazing CRM and Agent Management Office</h5>
     <v-form ref="Regform" lazy-validation action="/dashboards/analytical" class="mt-7 loginForm">
       <v-row>
         <v-col cols="12" sm="12" md="6" lg="4">

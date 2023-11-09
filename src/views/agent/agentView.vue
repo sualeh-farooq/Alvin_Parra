@@ -1,4 +1,4 @@
-<script  lang="ts">
+<script  >
 import 'vue3-easy-data-table/dist/style.css';
 import {ref} from "vue";
 

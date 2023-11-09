@@ -234,11 +234,7 @@ export default {
       drawer: false,
       followUpDate: false,
       closingTarget: false, rejectedDialog,
-      opportunitySources: [
-        'Exisiting',
-        'Lead',
-        'Social'
-      ],
+
       writingAgentSplit: [
         '100%',
         '90%',
@@ -334,48 +330,7 @@ export default {
               '\n'
         },
       ],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-        },
-      ],
+
       sortByPipeline: ['AUM', 'Annuity', 'Life', 'Medicare', 'Health', 'Trust', 'LTC/DI', 'Supplement', 'Group Plans', 'Other'],
       selectedPipeline: ['Annuity']
     };
@@ -433,120 +388,7 @@ export default {
 
                   <v-card-text>
                     <v-container>
-                      <v-row>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field v-model="editName" type="text" label="Name" variant="outlined"
-                                        class="text-input"></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field v-model="editContact" type="text" label="Contact"
-                                        variant="outlined" class="text-input"></v-text-field>
-                        </v-col>
 
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Pipeline" v-model="editPipeline" :items="pipeline"
-                                          color="primary" variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Lead Status" :items="leadStatus" v-model="editLeadStatus"
-                                          color="primary" variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Stage" :items="stage" v-model="editStage" color="primary"
-                                          variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Level" :items="level" v-model="editTempLevel"
-                                          color="primary" variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Type" :items="type" v-model="editType" color="primary"
-                                          variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
-
-
-                        <v-col cols="12" md="6" lg="4">
-                          <div @click="followUpDate = true" v-if="!followUpDate">
-                            <v-text-field type="text" label="Next Follow up" variant="outlined"
-                                          class="text-input"></v-text-field>
-
-                          </div>
-                          <div v-else>
-                            <v-text-field type="date" label="Next Follow up" variant="outlined"
-                                          class="text-input"></v-text-field>
-                          </div>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <div @click="closingTarget = true" v-if="!closingTarget">
-                            <v-text-field type="text" label="Est Closing Target" variant="outlined"
-                                          class="text-input"></v-text-field>
-
-                          </div>
-                          <div v-else>
-                            <v-text-field type="date" label="Est Closing Target" variant="outlined"
-                                          class="text-input"></v-text-field>
-                          </div>
-                        </v-col>
-
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Service Type" :items="serviceType" color="primary"
-                                          variant="outlined"
-                                          hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Carrier" :items="carrier" color="primary" variant="outlined"
-                                          hide-details></v-autocomplete>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Product" :items="product" color="primary" variant="outlined"
-                                          hide-details></v-autocomplete>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field type="text" label="Est Annual Premium" color="primary" class="text-input"
-                                        variant="outlined"></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field type="select" :items="agent2Split" label="Opportunity Income"
-                                        color="primary"
-                                        variant="outlined"></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field type="text" label="Writing Agent" variant="outlined"
-                                        class="text-input"></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Writing Agent Split" :items="writingAgentSplit" color="primary"
-                                          variant="outlined" hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"
-                                        class="text-input"></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Agent 2 Split" :items="agent2Split" color="primary"
-                                          variant="outlined"
-                                          hide-details></v-autocomplete>
-                        </v-col>
-                        <v-col cols="12" md="6" lg="4">
-                          <v-autocomplete label="Exist Source of Opportunity" v-model="opportunitySourceVal"
-                                          :items="opportunitySources" color="primary" variant="outlined"
-                                          hide-details></v-autocomplete>
-                        </v-col>
-
-                        <v-col cols="12" md="6" lg="4">
-                          <v-text-field type="text" label="Reffered By" variant="outlined"
-                                        class="text-input"></v-text-field>
-                        </v-col>
-
-                      </v-row>
 
 
                     </v-container>

@@ -442,6 +442,11 @@ const MainRoutes = {
       component: () => import('@/views/admin/index.vue')
     },
     {
+      name: 'Commission',
+      path: '/admin/commision',
+      component: () => import('@/views/admin/commision.vue')
+    },
+    {
       name: 'Agents ',
       path: '/admin/agents',
       component: () => import('@/views/admin/agents.vue')
@@ -455,6 +460,26 @@ const MainRoutes = {
       name: 'Accounts',
       path: '/admin/accounts',
       component: () => import('@/views/admin/accounts.vue')
+    },
+    {
+      name: 'Admin Settings',
+      path: '/admin/settings' ,
+      component: () =>import('@/views/admin/adminSettings.vue')
+    },
+    {
+      name: 'Admin Task Settings',
+      path: '/admin/task' ,
+      component: () =>import('@/views/admin/task.vue')
+    },
+    {
+      name: 'Products',
+      path: '/admin/products',
+      component: () => import('@/views/admin/products.vue')
+    },
+    {
+      name: 'Admin Agent Tools',
+      path: '/admin/agentTools',
+      component: () => import('@/views/admin/agentTools.vue')
     },
     {
       name: 'Notes',
@@ -488,11 +513,11 @@ const MainRoutes = {
       component: () => import('@/views/admin/contactView.vue')
     },
 
-    {
-      name: 'Settings' , 
-      path: '/admin/settings' ,
-      component: () => import('@/views/admin/settings.vue')
-    },
+    // {
+    //   name: 'Settings' ,
+    //   path: '/admin/settings' ,
+    //   component: () => import('@/views/admin/settings.vue')
+    // },
     {
       name: 'Accounts View' ,
       path: '/admin/accountView' ,
@@ -558,6 +583,11 @@ const MainRoutes = {
       name: 'Admin Page Builder' ,
       path: '/admin/page_builder',
       component: () =>import('@/views/admin/page_builder.vue')
+    },
+    {
+      name: 'Admin Business Opp',
+      path: '/admin/accountViewBusiness',
+      component: ()=>import('@/views/admin/accountViewBusiness.vue')
     },
 
 

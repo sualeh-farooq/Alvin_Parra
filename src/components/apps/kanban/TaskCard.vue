@@ -2,14 +2,94 @@
 import {ref} from 'vue';
 
 const props = defineProps({
-  task: Object
+  task: Object,
+  oppFunction: Function,
 });
+
+const opportunityView = () =>{
+  props.oppFunction()
+}
+
+
+
+const editDialog = ref(false)
+const editName = ref('John Doe')
+const editContact = ref('John Smith')
+const editPipeline = ref('Life Insurance')
+const editLeadStatus = ref('Lead One')
+const editStage = ref('Prospect - Quote')
+const editTempLevel = ref('Cold')
+const notesDialog = ref(null)
+const taskDialog = ref(null)
+const selectedFile = ref(null)
+const editType = ref('Individual')
+const drawer = ref(false)
+const followUpDate = ref(false,)
+const closingTarget = ref(false)
+const serviceType = ref( [
+  'Service One',
+  'Service Two',
+  'Service Three',
+])
+const opportunitySources = ref( [
+  'Exisiting',
+  'Lead',
+  'Social'
+])
+const writingAgentSplit =  ref ([
+      '100%',
+      '90%',
+      '80%'
+    ])
+    const agent2Split =ref ([
+      '100%',
+      '90%',
+      '80%'
+    ])
+
+const pipeline = ref( [
+  'Life Insurance',
+  'AUM',
+  'Medicare',
+])
+
+
+const leadStatus = ref( [
+  'Lead One',
+  'Lead Two',
+  'Lead Three',
+])
+
+const stage= ref( [
+  'Lead - Interested',
+  'Prospect - Quote',
+  'Prospect - Presentation',
+  'Prospect - Review',
+  'Client - Won',
+  'Lost',
+])
+const level = ref( [
+  'Cold',
+  'Hot'
+])
+ const    type = ref([
+  'Individual',
+  'Business'
+])
 
 </script>
 <template>
   <v-card variant="outlined" class="withbg cursor-move">
-    <div style="align-items:center;" class="px-2 d-flex align-items-center justify-space-between border w-100" >
-      <h4 class="mt-2"> {{ task?.name }} </h4>
+    <div style="align-items:center;" class="px-2 d-flex align-items-center justify-space-between border w-100">
+
+
+
+
+      <span @click="opportunityView" class="cursor-pointer d-flex gap-1" >
+      <h4 class="mt-2 text-primary"> {{ task?.name }} </h4>
+       <span class=" mt-2">   <PencilIcon class="text-primary" size="18"/></span>
+      </span>
+
 
       <div>
 
@@ -18,14 +98,14 @@ const props = defineProps({
        task?.temp
      }}</small>
             </span>
-    <span class="bg-hot d-flex align-center gap-2 p-1 px-2 rounded-md  text-white"
-          v-else-if="task?.temp === 'Hot'">  <SunIcon size="10" class="text-white "/><small> {{
-        task?.temp
-      }}</small></span>
-    <span class="bg-warm d-flex align-center gap-2 p-1 px-2 rounded-md   text-white"
-          v-else-if="task?.temp === 'Warm'">  <FlameIcon size="10" class="text-white "/> <small>{{
-        task?.temp
-      }}</small></span>
+        <span class="bg-hot d-flex align-center gap-2 p-1 px-2 rounded-md  text-white"
+              v-else-if="task?.temp === 'Hot'">  <SunIcon size="10" class="text-white "/><small> {{
+            task?.temp
+          }}</small></span>
+        <span class="bg-warm d-flex align-center gap-2 p-1 px-2 rounded-md   text-white"
+              v-else-if="task?.temp === 'Warm'">  <FlameIcon size="10" class="text-white "/> <small>{{
+            task?.temp
+          }}</small></span>
 
       </div>
     </div>
@@ -42,7 +122,6 @@ const props = defineProps({
                 <!--                  <h6 class="text-h4 cursor-pointer"><b>{{ task?.opportunityName }} </b></h6>-->
                 <!--                </div>-->
                 <div>
-
 
 
                 </div>
@@ -74,6 +153,7 @@ const props = defineProps({
                   <small><b>Est Income</b></small> <br/>
                   <small>{{ task?.estIncome }}</small>
                 </v-col>
+
               </v-row>
             </div>
 
@@ -86,7 +166,7 @@ const props = defineProps({
     </v-card-text>
   </v-card>
 </template>
-<style scoped  lang="scss">
+<style scoped lang="scss">
 .cursor-move {
   cursor: move;
 }

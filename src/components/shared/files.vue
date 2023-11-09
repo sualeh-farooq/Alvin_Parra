@@ -15,6 +15,7 @@ const searchValue = ref('');
 // dropdown data
 const actionDD = ref([
   { title: 'Download' },
+  { title: 'Rename File ' },
   { title: 'Delete' }
 ]);
 const page = ref({ title: 'Social Profile' });
@@ -43,22 +44,9 @@ const breadcrumbs = ref([
   <v-row class="justify-content-end ">
     <v-col cols="12">
 
-<!--      <div class="d-sm-flex align-center gap-3 my-3 my-sm-2">-->
-<!--        <v-text-field-->
-<!--            color="primary"-->
-<!--            hide-details-->
-<!--            width="200"-->
-<!--            variant="outlined"-->
-<!--            persistent-placeholder placeholder="Search"-->
-<!--            density="compact"-->
-<!--            prepend-inner-icon="mdi-magnify"-->
-<!--            v-model="searchValue"-->
-<!--        >-->
-<!--        </v-text-field>-->
-<!--      </div>-->
 
         <v-row>
-          <v-col cols="12" lg="3" md="4" sm="6" v-for="(card, i) in filteredCards" :key="i">
+          <v-col cols="12" lg="3"  xl="4" md="3" sm="12" v-for="(card, i) in filteredCards" :key="i">
             <v-card variant="outlined" class="card-hover-border bg-gray100">
               <img style="height: 150px" :src="card.image" alt="gallery" class="w-100" />
               <v-card-text class="pa-3">

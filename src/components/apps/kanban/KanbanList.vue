@@ -6,6 +6,10 @@ import { VueDraggableNext } from 'vue-draggable-next';
 import { sub } from 'date-fns';
 import { Chance } from 'chance';
 
+const props = defineProps({
+  opportunityDrawerOpen: Function,
+})
+
 const store = useKanbanStore();
 const chance = new Chance();
 onMounted(() => {
@@ -38,19 +42,33 @@ const addTaskCard = (id: number, task: string) => {
   msg.value = '';
   showTaskform.value = null;
 };
+
+const opportunityView = () =>{
+  props.opportunityDrawerOpen()
+}
 </script>
 <template>
   <div class="overflow-auto">
     <div  class="taskBoardBox ma-0 d-flex gap-2">
       <div  v-for="column in getTask" :key="column.title">
-        <div style="width: 230px" class="bg-lightprimary  rounded-lg ">
+        <div style="width: 300px" class="bg-lightprimary  rounded-lg ">
         <div :style="{'background-color': column.color }" class=" text-white p-0 text-center rounded-lg" >
           <h4 class="text-h6 ">{{ column.title }}</h4>
         </div>
-          <draggable class="pa-2 " style="min-height: 150px" :list="column.tasks" :animation="200" ghost-class="ghost-card" group="tasks">
+          <draggable class="pa-2 mb-3 " style="min-height: 150px" :list="column.tasks" :animation="200" ghost-class="ghost-card" group="tasks">
             <!-- Each element from here will be draggable and animated. Note :key is very important here to be unique both for draggable and animations to be smooth & consistent. -->
-            <TaskCard v-for="task in column.tasks" :key="task.id" :task="task" class="mt-3 cursor-move"></TaskCard>
+            <TaskCard :opp-function="opportunityView" v-for="task in column.tasks" :key="task.id" :task="task" class="mt-3 cursor-move"></TaskCard>
             <!-- </transition-group> -->
+
+            <div class="d-flex  justify-space-between pa-1 mt-6" >
+              <p>
+                <b>Cases</b>: {{ column.cases }}
+              </p>
+              <p>
+                <b>Income</b>: ${{column.income}}
+              </p>
+
+            </div>
           </draggable>
 <!--          <v-btn variant="text" @click="handleToggle(column.id)" class="mt-4" color="primary" block size="small">-->
 <!--            Add Task {{ column.id }}-->

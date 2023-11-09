@@ -19,6 +19,7 @@ type taskType = {
   split: String,
   estIncome: String;
   temp: String;
+
  };
 
 type KanbanItem = {
@@ -26,12 +27,16 @@ type KanbanItem = {
   id: Number;
   color: String,
   tasks: taskType[];
+  cases: Number;
+  income:Number;
 };
 
 const KanbanData: KanbanItem[] = [
   {
     title: 'Lead In - Interested',
     color: '#158CCF ',
+    cases: 3,
+    income: 100,
     id: 1,
     tasks: [
       {
@@ -45,6 +50,7 @@ const KanbanData: KanbanItem[] = [
         split: '90%',
         estIncome: '$1850',
         temp: 'Cold',
+
       },
       {
         id: 2 ,
@@ -76,6 +82,8 @@ const KanbanData: KanbanItem[] = [
     title: 'Prospect - Quote',
     id: 2,
     color: '#eb7d35 ',
+    cases: 5,
+    income: 200,
     tasks: [
       {
         id: 4,
@@ -119,6 +127,8 @@ const KanbanData: KanbanItem[] = [
     title: 'Prospect - App Signed',
     id: 3,
     color: '#eb7d35 ',
+    cases: 1,
+    income: 150,
     tasks: [
       {
         id: 7,
@@ -138,6 +148,8 @@ const KanbanData: KanbanItem[] = [
     title: 'Prospect - Underwriting',
     id: 4,
     color: '#eb7d35 ',
+    cases: 4,
+    income: 350,
     tasks: [
       {
         id: 8,
@@ -182,6 +194,8 @@ const KanbanData: KanbanItem[] = [
     title: 'Client Won - In Force' ,
     id: 5,
     color:'#70ad47 ',
+    cases: 2,
+    income: 420,
     tasks: [
       {
         id: 11,
@@ -200,6 +214,8 @@ const KanbanData: KanbanItem[] = [
   {
     title: 'Lost' ,
     id:6 ,
+    cases: 2,
+    income: 100,
     color:'#dc3545',
     tasks: [
       {

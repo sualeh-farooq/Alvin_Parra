@@ -7,237 +7,172 @@ const searchField = ref(['fName', 'email', 'source', 'phone', 'date']);
 const searchValue = ref('');
 
 const headers = [
-  {text: 'Name', value: 'fName', sortable: true, colspan: 3},
-  {text: 'Email', value: 'email', sortable: true},
-  {text: 'Source', value: 'source', sortable: true},
-  {text: 'Phone', value: 'phone', sortable: true},
-  {text: 'DOB', value: 'date', sortable: true},
+  {text: 'Full Name', value: 'fName', sortable: true, colspan: 3},
+  {text: 'Agent', value: 'agent', sortable: true},
+  {text: 'Opportunity', value: 'opp', sortable: true},
+  {text: 'Service', value: 'service', sortable: true},
+  {text: 'Carrier', value: 'carrier', sortable: true},
+  {text: 'Policy #', value: 'policy'},
+  {text: 'Stage', value: 'stage', sortable: true},
+  {text: 'Temp', value: 'temp', sortable: true},
+  {text: 'Premium', value: 'premium', sortable: true},
   {text: 'Action', value: 'action'}
+
+];
+const headersBusiness = [
+  {text: 'Business Name', value: 'business', sortable: true, colspan: 3},
+  {text: 'Agent', value: 'agent', sortable: true},
+  {text: 'Opportunity', value: 'opp', sortable: true},
+  {text: 'Service', value: 'service', sortable: true},
+  {text: 'Carrier', value: 'carrier', sortable: true},
+  {text: 'Policy #', value: 'policy'},
+  {text: 'Stage', value: 'stage', sortable: true},
+  {text: 'Temp', value: 'temp', sortable: true},
+  {text: 'Premium', value: 'premium', sortable: true},
+  {text: 'Action', value: 'action'}
+
 ];
 
+const leadsCheck= ref (false)
+const prospectCheck = ref(false)
+const clientCheck = ref(false)
+const lostCheck = ref(false)
+const allCheck = ref(false)
+// const checked = ref(false)
 const themeColor = ref('rgb(var(--v-theme-secondary))');
 const itemsSelected = ref([]);
 
 const items = ref([
   {
-    fName: 'Joseph',
-    lName: ' William 1',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    date: '12.07.2018',
-    source: 'Exsiting',
-    status: 3
+    fName: 'Joseph Henry',
+    agent: ' John Smith',
+    opp: 'Opportunity 1-life-121212',
+    service: 'Service One',
+    carrier: 'Carrier one',
+    policy: 'Life-AHK-294',
+    stage: 'Leads',
+    temp: 'Warm',
+    premium: '10-5-2023',
+    business: 'Jetnetix'
   },
   {
-    fName: 'Joseph',
-    lName: ' William 1',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Referral',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 3
+    fName: 'Henry Clark',
+    agent: ' Laura John',
+    opp: 'Opportunity 1-Medicare-726299',
+    service: 'Service Two',
+    business: 'Dtone Fire & Security',
+    carrier: 'Carrier One',
+    policy: 'Medicare-GDY-294',
+    stage: 'Prospects',
+    temp: 'Hot',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Anshan',
-    lName: ' Handgun 2',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Exsiting',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
-  },
-  {
-    fName: 'Larry',
-    lName: ' Doe 3',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    source: 'Others',
-    date: '12.07.2018',
-    status: 1
-  },
-  {
-    fName: 'Sara',
-    lName: ' Soudan 4',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    source: 'Others',
-    date: '12.07.2018',
-    status: 1
-  },
-  {
-    fName: 'Joseph',
-    lName: ' William 5',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Referral',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
-  },
-  {
-    fName: 'Anshan',
-    lName: ' Handgun 6',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    source: 'Other',
+    fName: 'Jordan Howard',
+    agent: ' Peter Smith',
+    opp: 'Opportunity 3-AUM-628372',
+    service: 'Service Three',
+    business: 'US Trading',
 
-    date: '12.07.2018',
-    status: 3
+    carrier: 'Carrier Three',
+    policy: 'AUM-GDY-294',
+    stage: 'Leads',
+    temp: 'Hot',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Larry',
-    lName: ' Doe 7',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Existing',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 3
-  },
-  {
-    fName: 'Sara',
-    lName: ' Soudan 8',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Existing',
+    fName: 'Tim John',
+    agent: ' Corina Carmen',
+    opp: 'Opportunity 4-Health-76282',
+    business: 'TradeX',
 
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
+    service: 'Service Four',
+    carrier: 'Carrier Four',
+    policy: 'HEALTH-HSJ-621',
+    stage: 'Client',
+    temp: 'Cold',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Sara',
-    lName: ' Soudan 20',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Other',
+    fName: 'Rohat Emre',
+    agent: ' Mateusz Henry',
+    business: 'Barbary Company',
 
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 1
+    opp: 'Opportunity 5-Supplement-76282',
+    service: 'Service Two',
+    carrier: 'Carrier One',
+    policy: 'Supplement-GDY-294',
+    stage: 'Client',
+    temp: 'Hot',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Joseph',
-    lName: ' William 9',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Referral',
+    fName: 'Joseph Henry',
+    agent: ' John Smith',
+    opp: 'Opportunity 1-life-121212',
+    service: 'Service One',
+    business: 'Finance Up',
 
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 1
+    carrier: 'Carrier one',
+    policy: 'Life-AHK-294',
+    stage: 'Leads',
+    temp: 'Warm',
+    premium: '10-5-2023'
   },
   {
-    fName: 'Anshan',
-    lName: ' Handgun 10',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    source: 'Referral',
+    fName: 'Henry Clark',
+    business: 'Prime Trading',
 
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 1
+    agent: ' Laura John',
+    opp: 'Opportunity 1-Medicare-726299',
+    service: 'Service Two',
+    carrier: 'Carrier One',
+    policy: 'Medicare-GDY-294',
+    stage: 'Prospects',
+    temp: 'Hot',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Larry',
-    lName: ' Doe 11',
-    email: 'user@mail.com',
-    source: 'Existing',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
+    fName: 'HQ Sports',
+    agent: ' Peter Smith',
+    opp: 'Opportunity 3-AUM-628372',
+    service: 'Service Three',
+    carrier: 'Carrier Three',
+    policy: 'AUM-GDY-294',
+    stage: 'Leads',
+    temp: 'Hot',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Sara',
-    lName: ' Soudan 12',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    source: 'Referral',
-    date: '12.07.2018',
-    status: 3
+    fName: 'KnowFinance',
+    agent: ' Corina Carmen',
+    opp: 'Opportunity 4-Health-76282',
+    service: 'Service Four',
+    carrier: 'Carrier Four',
+    policy: 'HEALTH-HSJ-621',
+    stage: 'Client',
+    temp: 'Cold',
+    premium: '15-2-2023'
   },
   {
-    fName: 'Joseph',
-    lName: ' William 13',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    source: 'Referral',
-    date: '12.07.2018',
-    status: 3
-  },
-  {
-    fName: 'Anshan',
-    lName: ' Handgun 14',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    source: 'Existing',
-    date: '12.07.2018',
-    status: 2
-  },
-  {
-    fName: 'Larry',
-    lName: ' Doe 15',
-    email: 'user@mail.com',
-    source: 'Existing',
+    fName: 'Rohat Emre',
+    business: 'Chicago Dutch Service',
 
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
+    agent: ' Mateusz Henry',
+    opp: 'Opportunity 5-Supplement-76282',
+    service: 'Service Two',
+    carrier: 'Carrier One',
+    policy: 'Supplement-GDY-294',
+    stage: 'Client',
+    temp: 'Hot',
+    premium: '15-2-2023'
   },
-  {
-    fName: 'Sara',
-    lName: ' Soudan 16',
-    email: 'user@mail.com',
-    source: 'Existing',
 
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 1
-  },
-  {
-    fName: 'Joseph',
-    lName: ' William 17',
-    email: 'user@mail.com',
-    source: 'Referral',
-
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
-  },
-  {
-    fName: 'Anshan',
-    lName: ' Handgun 18',
-    source: 'Others',
-    email: 'user@mail.com',
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 3
-  },
-  {
-    fName: 'Larry',
-    lName: ' Doe 19',
-    email: 'user@mail.com',
-    source: 'Existing',
-
-    phone: '+44 20 1234 5678',
-    addedBy: 'John Doe',
-    date: '12.07.2018',
-    status: 2
-  }
 ]);
+
+
+
+
 const pendingDialog = ref(false);
 const acceptedDialog = ref(false);
 const rejectedDialog = ref(false);
@@ -317,13 +252,21 @@ const tab7 = ref(null);
     <v-col col="12">
       <v-card variant="outlined" elevation="0" class="withbg">
         <v-card-item>
-          <div class="d-sm-flex align-center justify-space-between">
+          <div style="align-items: center" class="d-sm-flex align-center justify-space-between">
             <h3 class="text-h3">Accounts</h3>
 
+
+            <div class="d-flex w-50 gap-2" >
+
+
+              <v-text-field class=" float-right w-100 " type="text" variant="outlined" persistent-placeholder
+                            placeholder="Search Account" v-model="searchValue" density="compact" hide-details
+                            prepend-inner-icon="mdi-magnify"/>
             <RouterLink to="/admin/addAccount">
               <v-btn color="primary">Add Account +</v-btn>
-
             </RouterLink>
+
+            </div>
 
           </div>
         </v-card-item>
@@ -343,229 +286,73 @@ const tab7 = ref(null);
                   Business
                 </v-tab>
 
-              </v-tabs>
+                <div  >
+                  <v-checkbox-btn  class="pt-1" color="primary" hide-details v-model="allCheck" label="All (32)"></v-checkbox-btn>
+                  <v-checkbox-btn color="primary" hide-details v-model="leadsCheck" label="Leads (1)"></v-checkbox-btn>
+                  <v-checkbox-btn color="primary" hide-details v-model="prospectCheck" label="Prospects (20)"></v-checkbox-btn>
+                  <v-checkbox-btn color="primary" hide-details v-model="clientCheck" label="Clients (8)"></v-checkbox-btn>
+                  <v-checkbox-btn color="primary" hide-details v-model="lostCheck" label="Lost (3)"></v-checkbox-btn>
+                </div>
 
+              </v-tabs>
               <v-window v-model="tab2">
                 <v-window-item value="11">
-                  <div style="align-items:center; justify-content:space-between;" class="d-flex" >
-                    <div>
-                      <v-tabs class="mb-4" v-model="tab4" color="primary">
-                        <v-tab value="leads">
-                          <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Leads
-                        </v-tab>
-                        <v-tab value="prospects">
-                          <UsersIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Prospects
-                        </v-tab>
-                        <v-tab value="clients">
-                          <BuildingArchIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Clients
-                        </v-tab>
-                        <v-tab value="lost">
-                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Lost
-                        </v-tab>
+                  <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table my-3"
+                                 :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                 :rows-per-page="5" v-model:items-selected="itemsSelected">
 
-                      </v-tabs>
-                    </div>
-                    <div class="w-25" >
+                    <template #item-fName="item">
+                      <div class="operation-wrapper">
+                        <RouterLink class="text-primary text-decoration-none font-weight-bold " to="/admin/accountView" >
+                          <span  class="text-primary " >    {{ item.fName }}</span>
+                        </RouterLink>
 
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                                    prepend-inner-icon="mdi-magnify"/>
-                    </div>
-                  </div>
+                      </div>
+                    </template>
 
 
-                  <v-window v-model="tab4">
-                    <v-window-item value="leads">
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-                    <v-window-item value="prospects">
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-                    <v-window-item value="clients">
-
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-
-                    <v-window-item value="lost">
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-
-
-                  </v-window>
-
+                    <template #item-action="item">
+                      <RouterLink to="/admin/accountView">
+                        <v-btn icon color="primary" v-bind="props" variant="text">
+                          <EyeIcon size="20"/>
+                        </v-btn>
+                      </RouterLink>
+<!--                      <v-btn icon color="error" variant="text">-->
+<!--                        <TrashIcon size="20"/>-->
+<!--                      </v-btn>-->
+                    </template>
+                  </EasyDataTable>
                 </v-window-item>
-
-
                 <v-window-item value="12">
-                  <div style="align-items:center; justify-content:space-between;" class="d-flex" >
-                    <div>
-                      <v-tabs class="mb-4" v-model="tab5" color="primary">
-                        <v-tab value="leads">
-                          <HourglassIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Leads
-                        </v-tab>
-                        <v-tab value="prospects">
-                          <UsersIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Prospects
-                        </v-tab>
-                        <v-tab value="clients">
-                          <BuildingArchIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Clients
-                        </v-tab>
-                        <v-tab value="lost">
-                          <SquareXIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                          Lost
-                        </v-tab>
 
-                      </v-tabs>
-                    </div>
-                    <div class="w-25" >
+                  <EasyDataTable :headers="headersBusiness" :items="items" table-class-name="customize-table my-3"
+                                 :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                 :rows-per-page="5" v-model:items-selected="itemsSelected">
+                    <template #item-business="item">
+                      <div class="operation-wrapper">
+                        <RouterLink class="text-primary text-decoration-none font-weight-bold " to="/admin/accountViewBusiness" >
+                          <span  class="text-primary " >    {{ item.business }}</span>
+                        </RouterLink>
 
-                      <v-text-field class="my-2 " type="text" variant="outlined" persistent-placeholder
-                                    placeholder="Search Account" v-model="searchValue" density="compact" hide-details
-                                    prepend-inner-icon="mdi-magnify"/>
-                    </div>
-                  </div>
-
-                  <v-window v-model="tab5">
-                    <v-window-item value="leads">
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-                    <v-window-item value="prospects">
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-                    <v-window-item value="clients">
-
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-
-                    <v-window-item value="lost">
-
-                      <EasyDataTable :headers="headers" :items="items" table-class-name="customize-table"
-                                     :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                     :rows-per-page="5" v-model:items-selected="itemsSelected">
-                        <template #item-action="item">
-                          <RouterLink to="/admin/accountView">
-                            <v-btn icon color="primary" v-bind="props" variant="text">
-                              <EyeIcon size="20"/>
-                            </v-btn>
-                          </RouterLink>
-                          <v-btn icon color="error" variant="text">
-                            <TrashIcon size="20"/>
-                          </v-btn>
-                        </template>
-                      </EasyDataTable>
-                    </v-window-item>
-
-
-                  </v-window>
-
+                      </div>
+                    </template>
+                    <template #item-action="item">
+                      <RouterLink to="/admin/accountViewBusiness">
+                        <v-btn icon color="primary" v-bind="props" variant="text">
+                          <EyeIcon size="20"/>
+                        </v-btn>
+                      </RouterLink>
+<!--                      <v-btn icon color="error" variant="text">-->
+<!--                        <TrashIcon size="20"/>-->
+<!--                      </v-btn>-->
+                    </template>
+                  </EasyDataTable>
                 </v-window-item>
 
 
               </v-window>
+
+
             </v-col>
           </v-row>
 
@@ -575,3 +362,8 @@ const tab7 = ref(null);
 
   </v-row>
 </template>
+
+
+<style scoped lang="scss" >
+
+</style>

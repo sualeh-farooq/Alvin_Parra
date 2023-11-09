@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import Logo from '@/layouts/full/logo/Logo.vue';
-import AuthRegister from '../authForms/AuthRegister.vue';
-import TextSlider from './TextSlider.vue';
+import AuthRegister from '../../../components/shared/AuthRegister.vue'
 </script>
 
 <template>
@@ -16,6 +14,7 @@ import TextSlider from './TextSlider.vue';
               <v-card elevation="0" class="registerBox">
                 <v-card variant="outlined">
                   <v-card-text style="min-height: 27rem;" class="register_main_card" >
+
                     <AuthRegister />
                   </v-card-text>
                 </v-card>
