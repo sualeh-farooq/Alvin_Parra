@@ -5,7 +5,7 @@ import {MoodSmileIcon, ShoppingCartIcon , WalletIcon ,  FileDescriptionIcon, Use
 const fourcards = ref([
   { earn: '73', text: 'Total Opportunities', icon: UserCircleIcon, color: 'primary' },
   { earn: '27', text: 'Total Clients', icon: WalletIcon, color: 'primary' },
-  { earn: '29', text: 'Total Agents', icon: MoodSmileIcon, color: 'primary' },
+  { earn: '29', text: 'Total Prospects', icon: MoodSmileIcon, color: 'primary' },
 ]);
 </script>
 

@@ -64,6 +64,5 @@ const sorting = ref([{ title: 'Name' }, { title: 'Date' }, { title: 'Rating' }, 
   </div>
   <div class="py-3 d-flex gap-3">
     <v-btn color="primary" variant="outlined"><v-icon>mdi-reply</v-icon> Reply</v-btn>
-    <v-btn color="primary" variant="outlined"><v-icon>mdi-forward</v-icon> Forward</v-btn>
   </div>
 </template>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { ref } from 'vue';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
@@ -8,6 +8,11 @@ const editor = useEditor({
   extensions: [StarterKit],
   content: ``
 });
+
+const selectedFile = ref(null);
+
+
+
 </script>
 <template>
   <v-card elevation="0">
@@ -42,9 +47,24 @@ const editor = useEditor({
         </v-col>
         <v-col lg="12">
           <div class="d-flex">
-            <v-btn icon elevation="0"><UploadIcon size="16" /></v-btn>
-            <v-btn icon elevation="0"><v-icon>mdi-attachment</v-icon></v-btn>
-            <v-btn elevation="0" color="primary" class="ml-auto">Reply</v-btn>
+
+            <div>
+              <label for="file-upload" class="file-upload-label">
+                <v-btn icon elevation="0" @click="openFileInput">
+                  <v-icon>mdi-attachment</v-icon>
+                </v-btn>
+              </label>
+              <input
+                  id="file-upload"
+                  type="file"
+                  ref="s"
+                  style="display: none"
+                  accept=".png, .jpg, .pdf"
+                  @change="handleFileUpload"
+              >
+            </div>
+
+            <v-btn elevation="0" color="primary" class="ml-auto">Send</v-btn>
           </div>
         </v-col>
       </v-row>

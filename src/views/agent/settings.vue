@@ -35,45 +35,6 @@ const tab = ref('tab-profile');
                         <span class="text-subtitle-2 text-disabled font-weight-medium d-block">Profile Settings</span>
                       </div>
                     </v-tab>
-                    <v-tab value="tab-license" rounded="md" class="text-left overflow-hidden" height="70">
-                      <BrandMastercardIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      <div>
-                        <div> Licensing</div>
-                        <span class="text-subtitle-2 text-disabled font-weight-medium d-block">License Settings</span>
-                      </div>
-                    </v-tab>
-                    <v-tab value="tab-education" rounded="md" class="text-left overflow-hidden" height="70">
-                      <SchoolIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      <div>
-                        <div> Education</div>
-                        <span
-                            class="text-subtitle-2 text-disabled font-weight-medium d-block">Educational Settings</span>
-                      </div>
-                    </v-tab>
-                    <v-tab value="tab-agent-code" rounded="md" class="text-left overflow-hidden" height="70">
-                      <KeyIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      <div>
-                        <div> Agent Code</div>
-                        <span
-                            class="text-subtitle-2 text-disabled font-weight-medium d-block">Agent Code Settings</span>
-                      </div>
-                    </v-tab>
-                    <v-tab value="tab-banking" rounded="md" class="text-left overflow-hidden" height="70">
-                      <CreditCardIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      <div>
-                        <div> Banking Info</div>
-                        <span
-                            class="text-subtitle-2 text-disabled font-weight-medium d-block">Bank Account Settings</span>
-                      </div>
-                    </v-tab>
-                    <v-tab value="tab-commision" rounded="md" class="text-left overflow-hidden" height="70">
-                      <PercentageIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      <div>
-                        <div> Commision Level</div>
-                        <span
-                            class="text-subtitle-2 text-disabled font-weight-medium d-block">Commision Level Settings</span>
-                      </div>
-                    </v-tab>
 
                     <v-tab value="tab-change-password" rounded="md" class="mb-3 text-left overflow-hidden" height="70">
                       <KeyIcon stroke-width="1.5" width="20" class="v-icon--start"/>
@@ -81,6 +42,14 @@ const tab = ref('tab-profile');
                         <div>Change Password</div>
                         <span
                             class="text-subtitle-2 text-disabled font-weight-medium d-block">Update Profile Security</span>
+                      </div>
+                    </v-tab>
+                    <v-tab value="tab-subscription" rounded="md" class="mb-3 text-left overflow-hidden" height="70">
+                      <KeyIcon stroke-width="1.5" width="20" class="v-icon--start"/>
+                      <div>
+                        <div>Subscription</div>
+                        <span
+                            class="text-subtitle-2 text-disabled font-weight-medium d-block">Subscription Settings</span>
                       </div>
                     </v-tab>
                   </v-tabs>
@@ -95,21 +64,7 @@ const tab = ref('tab-profile');
                     <v-window-item value="tab-change-password">
                       <ChangePasswordTab/>
                     </v-window-item>
-                    <v-window-item value="tab-license">
-                      <LicensingTab/>
-                    </v-window-item>
-                    <v-window-item value="tab-education">
-                      <EducationTab/>
-                    </v-window-item>
-                    <v-window-item value="tab-agent-code">
-                      <AgentCodeTab/>
-                    </v-window-item>
-                    <v-window-item value="tab-banking">
-                      <BankingTab/>
-                    </v-window-item>
-                    <v-window-item value="tab-commision">
-                      <CommisionTab/>
-                    </v-window-item>
+
                   </v-window>
                 </v-card-text>
               </v-col>

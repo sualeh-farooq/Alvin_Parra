@@ -76,7 +76,7 @@ const dialog = ref(false);
           :value="item"
           :active="filter === item.slug"
           @click="handleFilter(`${item.slug}`)"
-          active-color="secondary"
+          active-color="primary"
           class="rounded-sm"
           v-else
         >
@@ -94,7 +94,7 @@ const dialog = ref(false);
         </v-list-item>
       </template>
     </v-list>
-    <v-dialog v-model="dialog" maxWidth="600" height="700">
+    <v-dialog v-model="dialog" maxWidth="800" height="700">
       <MailCompose @closeDialog="dialog = false" />
     </v-dialog>
   </div>

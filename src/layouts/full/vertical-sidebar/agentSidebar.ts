@@ -46,7 +46,7 @@ import {
   UsersIcon,
   NotesIcon,
   CheckboxIcon,
-  WorldIcon
+  WorldIcon, FileReportIcon, BriefcaseIcon, MailboxIcon
 
 } from 'vue-tabler-icons';
 
@@ -78,30 +78,137 @@ const sidebarItem: menu[] = [
     to: '/agent/dashboard'
   },
   {
-    title: 'My Pipleine',
+    title: 'Opportunities',
+    icon: FilterIcon,
+    to: '/agent/opportunities'
+  },
+
+  // {
+  //   title: 'Clients',
+  //   icon: FilterIcon,
+  //   to: '/agent/clients'
+  // },
+  {
+    title: 'Pipeline',
     icon: FilterIcon,
     to: '/agent/pipeline'
   },
+
   {
-    title: 'My Accounts',
-    icon: UsersIcon,
-    to: '/agent/accounts'
-  },
-  {
-    title: 'My Contacts',
+    title: 'Contacts',
     icon: AddressBookIcon,
     to: '/agent/contacts'
+  },
+
+
+  {
+    title: 'Reports',
+    icon: FileReportIcon,
+    to: '/agent/reports'
+  },
+
+  {
+    title: 'Calendar',
+    icon: CalendarIcon,
+    to: '/agent/calendar'
+  },
+  {
+    title: 'Mail',
+    icon: MailIcon,
+    to: '/agent/mail'
   },
   {
     title: 'My Tasks',
     icon: NotesIcon,
     to: '/agent/tasks'
   },
+
+
   {
-    title: 'My Agents',
-    icon: UsersIcon,
-    to: '/agent/agents'
+    title: 'Marketing',
+    icon: WorldIcon,
+    to: '/agent/marketing',
+    children: [
+      {
+        title: 'Client Marketing',
+        icon: CircleIcon,
+        to: '/agent/campaigns',
+        children: [
+          {
+            title: 'Campaigns',
+            icon: CircleIcon,
+            to: '/agent/campaigns'
+          },
+          {
+            title: 'Forms',
+            icon: CircleIcon,
+            to: '/agent/forms'
+          },
+          {
+            title: 'Templates',
+            icon: CircleIcon,
+            to: '/agent/template'
+          },
+          {
+            title: 'Send Sms',
+            icon: CircleIcon,
+            to: '/agent/sms'
+          },
+
+
+        ],
+      },
+      {
+        title: 'Materials',
+        icon: CircleIcon,
+        to: '/agent/materials'
+      },
+      {
+        title: 'Agent Tools',
+        icon: CircleIcon,
+        to: '/agent/tools'
+      },
+      {
+        title: 'Team Building',
+        icon: CircleIcon,
+        to: '/agent/team'
+      },
+
+
+    ],
+
   },
+
+
+
+  {
+    title: 'My Business',
+    icon: BriefcaseIcon,
+    to: '/agent/business',
+    // children: [
+    //   {
+    //     title: 'Pipeline',
+    //     icon: CircleIcon,
+    //     to: '/agent/campaigns'
+    //   },
+    //   {
+    //     title: 'Contacts',
+    //     icon: CircleIcon,
+    //     to: '/agent/forms'
+    //   },
+    //
+    //
+    // ],
+
+  },
+
+
+  // {
+  //   title: 'My Agents',
+  //   icon: UsersIcon,
+  //   to: '/agent/agents'
+  // },
+
 
   //
   //

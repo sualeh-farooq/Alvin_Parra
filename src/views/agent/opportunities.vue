@@ -19,6 +19,14 @@ export default {
     const oppView = ref(null)
     const searchField = ref(['oppName', 'contact', 'type', 'pipeline', 'status', 'stage', 'estIncome', 'wrtAgentSplit']);
     const searchValue = ref();
+
+
+    const themeColor = ref('rgb(var(--v-theme-primary))');
+    const pendingDialog = ref(false);
+    const acceptedDialog = ref(false);
+    const rejectedDialog = ref(false);
+
+
     const headers = [
       {text: 'Opportunity ', value: 'oppName', sortable: true},
       {text: 'Full Name', value: 'contact', sortable: true},
@@ -245,11 +253,6 @@ export default {
 
     ]);
 
-    const themeColor = ref('rgb(var(--v-theme-secondary))');
-    const pendingDialog = ref(false);
-    const acceptedDialog = ref(false);
-    const rejectedDialog = ref(false);
-
     return {
       page,
       tab,
@@ -392,17 +395,24 @@ export default {
       selectedPipeline: ['Annuity'],
       openDays: ['Highest to lowest', 'Lowest to highest'],
       closingDate: ['Earliest to latest', 'Latest to earliest'],
-      statuses: ['All', 'Cold', 'Warm', 'Hot'],
+      temp: ['All', 'Cold', 'Warm', 'Hot'],
+      tempVal: 'Cold',
+      statuses: ['Lead', 'Prospect' , 'Client', 'Won'],
+      statusVal: 'Client',
       agents: ['Laura', 'Alvin', 'John', 'Henry'],
       defaultAgent: 'Laura',
-      service: ['Service One' , 'Service Two' , 'Service Three'],
-      serviceSelected: 'Service One',
-      accountType: null
-    };
+      addOpp: false,
+      opportunityDate: false,
+      addContactDrawer: false,
+      pipelines: ['Pipeline 1' , 'Pipeline 2' , 'Pipeline 3'],
+      pipelineVal: 'Pipeline 1',
+      contactNames: ['Contact One' , 'Contact Two' , 'Contact Three'],
+      pipelineStages: ['Pipeline Stage 1' , 'Pipeline Stage 2' , 'Pipeline Stage 3' , 'Pipeline Stage 4'],
+      tempratureItems: ['Hot' , 'Cold' , 'Warm']
+    }
   },
   components: {
     Files,
-    KanbanListVue,
     NotesCard,
     TaskCard
   },
@@ -418,6 +428,10 @@ export default {
     },
     toggleDrawer() {
       this.drawer = !this.drawer
+    },
+    newContact(){
+      this.addContactDrawer = !this.addContactDrawer
+      this.addOpp = !this.addOpp
     }
   }
 };
@@ -432,7 +446,7 @@ export default {
       <v-card variant="outlined" elevation="0" class="withbg">
         <v-card-item>
           <div class="d-sm-flex align-center justify-space-between">
-            <h3 class="text-h3">Pipelines</h3>
+            <h3 class="text-h3">Opportunities</h3>
             <div class="d-flex  justify-end  w-100 ">
 
 
@@ -443,9 +457,8 @@ export default {
                                 hide-details prepend-inner-icon="mdi-magnify"/>
                 </div>
               </div>
-              <RouterLink to="/admin/addPipeline">
-                <v-btn color="primary" class="mx-1">Add Pipeline +</v-btn>
-              </RouterLink>
+                <v-btn @click="addOpp = !addOpp" color="primary" class="mx-1">Add Opportunity +</v-btn>
+
             </div>
           </div>
         </v-card-item>
@@ -454,194 +467,56 @@ export default {
         <v-card-text>
           <v-row>
 
-            <v-col cols="2">
-              <v-select label="Select Product" :items="sortByPipeline" color="primary" variant="outlined"
-                        hide-details density="compact" v-model="selectedPipeline"></v-select>
-            </v-col>
-            <v-col cols="2" xl="2">
-              <v-select label="Status" :items="statuses" color="primary" variant="outlined"
+            <v-col cols="12" xl="2" lg="3"  md="6" >
+              <v-select label="Temp" :items="temp" v-model="tempVal" color="primary" variant="outlined"
                         hide-details density="compact"></v-select>
             </v-col>
-            <v-col cols="3" xl="2">
-              <v-select label="Sort by days open" :items="openDays" color="primary"
+            <v-col cols="12" xl="2" lg="3" md="6" >
+              <v-select class="" label="Status" :items="statuses"  v-model="statusVal" color="primary"
                         variant="outlined" hide-details density="compact"></v-select>
             </v-col>
-            <v-col cols="3" xl="2">
-              <v-select class="" label="Sort by follow up and est closing Date" :items="closingDate"
-                        color="primary" variant="outlined" hide-details density="compact"></v-select>
-            </v-col>
-            <v-col cols="3" xl="2">
-              <v-select label="Select Agent" :items="agents" color="primary" variant="outlined" hide-details
-                        density="compact" v-model="defaultAgent"></v-select>
-            </v-col>
-            <v-col cols="3" xl="2">
-              <v-select v-model="serviceSelected" label="Select Service" :items="service" color="primary" variant="outlined" hide-details
-                        density="compact"></v-select>
-            </v-col>
+
 
           </v-row>
-
-
 
           <v-row>
             <v-col>
-              <div class="d-flex align-center w-100 justify-space-between">
-                <div>
-                  <v-tabs v-model="accountType" color="primary">
-                    <v-tab value="individual">
-                      <CardsIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      Individual
-                    </v-tab>
-                    <v-tab value="business">
-                      <ListIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                      Business
-                    </v-tab>
-                  </v-tabs>
-                </div>
-                <div>
-                  <v-col v-if="tab2 === '22' ">
 
-                    <v-checkbox-btn class="pt-1" color="primary" hide-details v-model="allCheck"
-                                    label="All (32)"></v-checkbox-btn>
-                    <v-checkbox-btn color="primary" hide-details v-model="leadsCheck" label="Leads (1)"></v-checkbox-btn>
-                    <v-checkbox-btn color="primary" hide-details v-model="prospectCheck"
-                                    label="Prospects (20)"></v-checkbox-btn>
-                    <v-checkbox-btn color="primary" hide-details v-model="clientCheck" label="Clients (8)"></v-checkbox-btn>
-                    <v-checkbox-btn color="primary" hide-details v-model="lostCheck" label="Lost (3)"></v-checkbox-btn>
-                  </v-col>
-                </div>
-              </div>
 
-              <v-window v-model="accountType">
-                <v-window-item value="individual">
-                  <v-row>
-                    <v-col>
-                      <div class="d-flex align-center w-100 justify-space-between">
-                        <div>
-                          <v-tabs v-model="tab2" color="primary">
-                            <v-tab value="11">
-                              <CardsIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                              Cards View
-                            </v-tab>
-                            <v-tab value="22">
-                              <ListIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                              List View
-                            </v-tab>
 
-                          </v-tabs>
+                  <EasyDataTable class="mt-3" :headers="headers" :items="items" table-class-name="customize-table"
+                                 :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
+                                 :rows-per-page="5" v-model:items-selected="itemsSelected">
 
-                        </div>
+
+                    <template #item-oppName="item">
+                      <div class="operation-wrapper">
+                        <p @click="drawer = !drawer"
+                           class="text-primary cursor-pointer text-decoration-none font-weight-bold ">
+                          <span class="text-primary ">    {{ item.oppName }}</span>
+                        </p>
 
                       </div>
-                      <v-window v-model="tab2">
-                        <v-window-item value="11">
-                          <KanbanListVue :opportunity-drawer-open="toggleDrawer" class="mt-2"/>
-                        </v-window-item>
-
-                        <v-window-item value="22">
-
-                          <EasyDataTable class="mt-3" :headers="headers" :items="items" table-class-name="customize-table"
-                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
+                    </template>
 
 
-                            <template #item-oppName="item">
-                              <div class="operation-wrapper">
-                                <p @click="drawer = !drawer"
-                                   class="text-primary cursor-pointer text-decoration-none font-weight-bold ">
-                                  <span class="text-primary ">    {{ item.oppName }}</span>
-                                </p>
+                    <template #item-action="item">
+                      <div class="operation-wrapper">
+                        <RouterLink to="/admin/opportunityView">
+                          <v-btn icon color="primary" variant="text">
+                            <EyeIcon size="20"/>
+                          </v-btn>
+                        </RouterLink>
 
-                              </div>
-                            </template>
-
-
-                            <template #item-action="item">
-                              <div class="operation-wrapper">
-                                <RouterLink to="/admin/opportunityView">
-                                  <v-btn icon color="primary" variant="text">
-                                    <EyeIcon size="20"/>
-                                  </v-btn>
-                                </RouterLink>
-
-                                <v-btn icon color="error" variant="text">
-                                  <TrashIcon size="20"/>
-                                </v-btn>
-                              </div>
-                            </template>
-                          </EasyDataTable>
-                        </v-window-item>
-                      </v-window>
-                    </v-col>
-                  </v-row>
-                </v-window-item>
-                <v-window-item value="business">
-                  <v-row>
-                    <v-col>
-                      <div class="d-flex align-center w-100 justify-space-between">
-                        <div>
-                          <v-tabs v-model="tab2" color="primary">
-                            <v-tab value="11">
-                              <CardsIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                              Cards View
-                            </v-tab>
-                            <v-tab value="22">
-                              <ListIcon stroke-width="1.5" width="20" class="v-icon--start"/>
-                              List View
-                            </v-tab>
-
-                          </v-tabs>
-
-                        </div>
-
+                        <v-btn icon color="error" variant="text">
+                          <TrashIcon size="20"/>
+                        </v-btn>
                       </div>
-                      <v-window v-model="tab2">
-                        <v-window-item value="11">
-                          <KanbanListVue :opportunity-drawer-open="toggleDrawer" class="mt-2"/>
-                        </v-window-item>
+                    </template>
+                  </EasyDataTable>
 
-                        <v-window-item value="22">
-
-                          <EasyDataTable class="mt-3" :headers="headers" :items="items" table-class-name="customize-table"
-                                         :theme-color="themeColor" :search-field="searchField" :search-value="searchValue"
-                                         :rows-per-page="5" v-model:items-selected="itemsSelected">
-
-
-                            <template #item-oppName="item">
-                              <div class="operation-wrapper">
-                                <p @click="drawer = !drawer"
-                                   class="text-primary cursor-pointer text-decoration-none font-weight-bold ">
-                                  <span class="text-primary ">    {{ item.oppName }}</span>
-                                </p>
-
-                              </div>
-                            </template>
-
-
-                            <template #item-action="item">
-                              <div class="operation-wrapper">
-                                <RouterLink to="/admin/opportunityView">
-                                  <v-btn icon color="primary" variant="text">
-                                    <EyeIcon size="20"/>
-                                  </v-btn>
-                                </RouterLink>
-
-                                <v-btn icon color="error" variant="text">
-                                  <TrashIcon size="20"/>
-                                </v-btn>
-                              </div>
-                            </template>
-                          </EasyDataTable>
-                        </v-window-item>
-                      </v-window>
-                    </v-col>
-                  </v-row>
-                </v-window-item>
-              </v-window>
             </v-col>
           </v-row>
-
-
 
         </v-card-text>
       </v-card>
@@ -931,18 +806,6 @@ export default {
               <v-window-item value="details">
                 <v-row class="mt-2">
 
-                  <!--                    <v-col cols="12" md="6" lg="4">-->
-                  <!--                      <v-autocomplete label="Select Pipeline Stage" v-model="pipelineStage"-->
-                  <!--                                      :items="pipelineStages" color="primary" variant="outlined"-->
-                  <!--                                      hide-details></v-autocomplete>-->
-
-                  <!--                    </v-col>-->
-
-                  <!--                    <v-col cols="12" md="6" lg="4">-->
-                  <!--                      <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"-->
-                  <!--                                      color="primary" variant="outlined" hide-details></v-autocomplete>-->
-                  <!--                    </v-col>-->
-
                   <v-col cols="12" md="6" lg="4">
                     <div @click="followUpDate = true" v-if="!followUpDate">
                       <v-text-field type="text" label="Next Follow up" variant="outlined"
@@ -992,22 +855,6 @@ export default {
                   </v-col>
 
 
-                  <!--                    <v-col cols="12" md="6" lg="4">-->
-                  <!--                      <v-autocomplete label="Tempera" v-model="tempVal"-->
-                  <!--                                      :items="Temprature" color="primary" variant="outlined"-->
-                  <!--                                      hide-details></v-autocomplete>-->
-
-                  <!--                    </v-col>-->
-                  <!--                    <v-col cols="12" md="6" lg="4">-->
-                  <!--                      <v-text-field type="text" label="Reffered By" variant="outlined"-->
-                  <!--                      ></v-text-field>-->
-                  <!--                    </v-col>-->
-                  <!--                    <v-col cols="12" md="6" lg="4">-->
-                  <!--                      <v-autocomplete label="Existing Source of Opportunity" v-model="opportunitySourceVal"-->
-                  <!--                                      :items="opportunitySources"-->
-                  <!--                                      color="primary" variant="outlined" hide-details></v-autocomplete>-->
-                  <!--                    </v-col>-->
-
 
                 </v-row>
 
@@ -1047,15 +894,13 @@ export default {
                                     :items="opportunitySources"
                                     color="primary" variant="outlined" hide-details></v-autocomplete>
                   </v-col>
-                    <v-col class="mt-4"  cols="12" >
-                      <div class="d-flex gap-2" >
+                  <v-col class="mt-4"  cols="12" >
+                    <div class="d-flex gap-2" >
 
-                        <v-btn  color="primary">Update Opportunity Details
-                        </v-btn>
-                      </div>
-                    </v-col>
-
-
+                      <v-btn  color="primary">Update Opportunity Details
+                      </v-btn>
+                    </div>
+                  </v-col>
 
                   <v-col cols="12" md="12">
 
@@ -1115,6 +960,340 @@ export default {
     </v-row>
 
   </v-navigation-drawer>
+
+
+
+
+
+  <!--- Opportunity View Drawer on Action Button Click in Table -->
+  <v-navigation-drawer color="surface" :width="850" location="right" v-model="addOpp" temporary>
+
+
+    <v-row>
+      <v-col col="12">
+
+        <div class="d-flex align-center  border px-4 py-2 justify-space-between ">
+          <h2>Quick Add Opportunity</h2>
+          <div>
+            <button @click="addOpp = !addOpp">
+              <XIcon/>
+            </button>
+          </div>
+        </div>
+        <v-card variant="outlined" style="border-radius: none; background: transparent; border: none;" elevation="0">
+
+          <v-card-text>
+            <Form>
+
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-autocomplete label="Contact Name"  :items="contactNames"
+                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+
+                </v-col>
+                <v-col cols="12" md="6">
+                  <div class="mt-6">
+                                    <span>Contact not found ? <span class="cursor-pointer font-weight-medium text-decoration-underline text-primary" @click="newContact"  > Create New Contact
+                                        </span>
+                                    </span>
+
+                  </div>
+
+                </v-col>
+
+                <v-col cols="12" md="6" >
+                  <v-autocomplete label="Select Pipeline "
+                                  :items="pipelines" color="primary" variant="outlined"
+                                  hide-details></v-autocomplete>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <div @click="opportunityDate = true" v-if="!opportunityDate">
+                    <v-text-field type="text" label="Opportunity Created Date" variant="outlined"
+                                  ></v-text-field>
+
+                  </div>
+                  <div v-else>
+                    <v-text-field type="date" label="Opportunity Created Date" variant="outlined"
+                                  ></v-text-field>
+                  </div>
+                </v-col>
+
+                <v-col cols="12" >
+                 <div class="d-flex gap-3 align-center " >
+
+                   <v-btn color="primary" >Create Opportunity Name <ArrowRightIcon size="20" />  </v-btn>
+                   <v-text-field type="text" label="Opportunity Name"
+                                 placeholder="<lastname> <pipeline> <date>" variant="outlined"
+                   ></v-text-field>
+                 </div>
+                </v-col>
+              </v-row>
+              <v-divider class="my-4" ></v-divider>
+
+              <v-row>
+<!--                <v-col cols="12">-->
+<!--                  <div>-->
+<!--                    <h2 class="text-h3 ">Pipeline Details</h2>-->
+<!--                  </div>-->
+<!--                </v-col>-->
+
+                <v-col cols="12" md="6" lg="6">
+                  <v-autocomplete label="Select Pipeline Stage"
+                                  :items="pipelineStages" color="primary" variant="outlined"
+                                  hide-details></v-autocomplete>
+
+                </v-col>
+
+                <v-col cols="12" md="6" lg="6">
+                  <v-autocomplete label="Lead Status" v-model="statusValue" :items="leadStatus"
+                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+                </v-col>
+
+                <v-col cols="12" md="6" lg="4">
+                  <div @click="followUpDate = true" v-if="!followUpDate">
+                    <v-text-field type="text" label="Next Follow up" variant="outlined"
+                                  ></v-text-field>
+
+                  </div>
+                  <div v-else>
+                    <v-text-field type="date" label="Next Follow up" variant="outlined"
+                                  ></v-text-field>
+                  </div>
+                </v-col>
+
+                <v-col cols="12" md="6" lg="4">
+                  <div @click="closingTarget = true" v-if="!closingTarget">
+                    <v-text-field type="text" label="Est Closing Target" variant="outlined"
+                                  ></v-text-field>
+
+                  </div>
+                  <div v-else>
+                    <v-text-field type="date" label="Est Closing Target" variant="outlined"
+                                  ></v-text-field>
+                  </div>
+                </v-col>
+
+
+                <v-col cols="12" md="6" lg="4">
+                  <v-autocomplete label="Temperature"
+                                  :items="tempratureItems" color="primary" variant="outlined"
+                                  hide-details></v-autocomplete>
+
+                </v-col>
+
+                <v-col cols="12" md="6" lg="6">
+                  <v-autocomplete label="Existing Source of Opportunity" v-model="opportunitySourceVal"
+                                  :items="opportunitySources"
+                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+                </v-col>
+
+                <v-col cols="12" md="6" lg="6">
+                  <v-text-field type="text" label="Reffered By" variant="outlined"
+                                ></v-text-field>
+                </v-col>
+
+
+              </v-row>
+
+              <v-divider class="my-4" ></v-divider>
+
+              <v-row>
+<!--                <v-col cols="12">-->
+<!--                  <div class="">-->
+<!--                    <h2 class="text-h3 ">Agent Details</h2>-->
+<!--                  </div>-->
+<!--                </v-col>-->
+                <v-col cols="12" md="6" lg="3">
+                  <v-text-field type="text" label="Writing Agent" variant="outlined"
+                                ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="6" lg="3">
+                  <v-text-field label=" Split"
+                                  color="primary" suffix="%"   variant="outlined" type="number"   hide-details></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="6" lg="3">
+                  <v-text-field type="text" label="Agent 2" color="primary" variant="outlined"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6" lg="3">
+                  <v-text-field type="number" suffix="%" label="Split 2"
+                                  :items="agent2Split"
+                                  color="primary" variant="outlined" hide-details></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6" lg="4">
+                  <v-autocomplete label="Service Type"
+                                  :items="serviceType"
+                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+                </v-col>
+                <v-col cols="12" md="6" lg="4">
+                  <v-autocomplete label="Carrier"
+                                  :items="carrier"
+                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+                </v-col>
+                <v-col cols="12" md="6" lg="4">
+                  <v-autocomplete label="Product"
+                                  :items="product"
+                                  color="primary" variant="outlined" hide-details></v-autocomplete>
+                </v-col>
+                <v-col cols="12" md="6" lg="6">
+                  <v-text-field type="text" label="Est Annual Premium" color="primary" variant="outlined"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6" lg="6">
+                  <v-text-field type="select" :items="agent2Split" label="Opportunity Income" color="primary" variant="outlined"></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="6">
+
+
+
+                  <v-btn class="mx-1" color="primary">Save + Add Opportunity
+                  </v-btn>
+
+                </v-col>
+
+              </v-row>
+            </Form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-navigation-drawer>
+  <v-navigation-drawer color="surface" :width="800"  location="right" v-model="addContactDrawer" temporary >
+
+    <v-row>
+      <v-col col="12">
+
+        <div class="d-flex align-center  border px-4 py-2 justify-space-between ">
+          <h2>Quick Add Contact</h2>
+          <div>
+            <button @click="addContactDrawer = !addContactDrawer">
+              <XIcon/>
+            </button>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+
+
+
+    <v-card-text>
+      <Form>
+        <v-row>
+          <v-col cols="12" md="6" >
+            <v-autocomplete label="Find Exisiting from CRM" v-model="opportunitySourceVal"
+                            :items="opportunitySources"
+                            color="primary" variant="outlined" hide-details></v-autocomplete>
+          </v-col>
+          <v-col cols="12" md="6" >
+            <v-autocomplete label="Search Google Contacts" v-model="opportunitySourceVal"
+                            :items="opportunitySources"
+                            color="primary" variant="outlined" hide-details></v-autocomplete>
+          </v-col>
+        </v-row>
+        <v-divider class="my-3" ></v-divider>
+
+
+        <v-row>
+
+
+          <v-col cols="12">
+            <div>
+              <v-radio-group label="Contact Type" v-model="contactType" inline>
+                <v-radio label="Individual" value="ind"></v-radio>
+                <v-radio label="Business" value="business"></v-radio>
+              </v-radio-group>
+            </div>
+          </v-col>
+
+          <v-col cols="12" md="6" lg="4" xl="4">
+            <v-text-field type="text" label="First Name" variant="outlined"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6"  lg="4" xl="4">
+            <v-text-field type="text" label="Last Name" variant="outlined"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6"  lg="4" xl="4">
+            <v-text-field type="email" label="Email" variant="outlined"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6"  lg="4" xl="4">
+            <v-text-field type="number" label="Phone Number" variant="outlined"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6"  lg="4" xl="4">
+            <div @click="dobDate = true" v-if="!dobDate">
+              <v-text-field type="text" label="Date of Birth" variant="outlined"
+              ></v-text-field>
+
+            </div>
+            <div v-else>
+              <v-text-field type="date" label="Date of Birth" variant="outlined"
+              ></v-text-field>
+            </div>
+          </v-col>
+          <v-divider></v-divider>
+
+          <v-col cols="12" >
+            <v-text-field type="text" label="Primary Address" variant="outlined"
+            ></v-text-field>
+          </v-col>
+
+
+          <v-col cols="12" md="6" lg="4" xl="4">
+            <v-text-field type="text" label="City" variant="outlined"
+            ></v-text-field>
+          </v-col>
+
+
+          <v-col cols="12" md="6" lg="4" xl="4">
+            <v-text-field type="text" label="State" variant="outlined"
+            ></v-text-field>
+          </v-col>
+
+
+          <v-col cols="12" md="6" lg="4" xl="4">
+            <v-text-field type="text" label="Zipcode" variant="outlined"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="6" >
+            <v-autocomplete label="Source for Contact" v-model="opportunitySourceVal"
+                            :items="opportunitySources"
+                            color="primary" variant="outlined" hide-details></v-autocomplete>
+          </v-col>
+
+          <v-col cols="12" md="6" >
+            <v-text-field type="text" label="Reffered By" variant="outlined"
+            ></v-text-field>
+          </v-col>
+
+
+
+
+
+
+
+
+
+        </v-row>
+
+
+        <v-col class="mt-4" style="padding: 0px" cols="12" >
+          <div class="d-flex gap-2" >
+
+            <v-btn  color="primary">Save & Add Contact
+            </v-btn>
+          </div>
+        </v-col>
+
+      </Form>
+
+    </v-card-text>
+  </v-navigation-drawer>
+
+
 </template>
 
 

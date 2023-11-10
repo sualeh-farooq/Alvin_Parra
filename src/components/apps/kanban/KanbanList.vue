@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { ref, onMounted, computed } from 'vue';
 import { useKanbanStore } from '@/stores/apps/kanban';
 import TaskCard from './TaskCard.vue';
@@ -16,21 +16,21 @@ onMounted(() => {
   store.fetchkanbanItems();
 });
 
-const getTask: any = computed(() => {
+const getTask = computed(() => {
   return store.kanbanItems;
 });
 const msg = ref('');
 const showTaskform = ref(null);
 const draggable = VueDraggableNext;
-const handleToggle = (id: any) => {
-  getTask.value.filter((task: any) => {
+const handleToggle = (id) => {
+  getTask.value.filter((task) => {
     if (id === task.id) {
       showTaskform.value = id;
     }
   });
 };
-const addTaskCard = (id: number, task: string) => {
-  const newTask: any = {
+const addTaskCard = (id, task) => {
+  const newTask = {
     description: '',
     userStory: `${chance.integer({ min: 1000, max: 9999 })}`,
     dueDate: sub(new Date(), { days: 12 }),
@@ -44,7 +44,7 @@ const addTaskCard = (id: number, task: string) => {
 };
 
 const opportunityView = () =>{
-  props.opportunityDrawerOpen()
+props.opportunityDrawerOpen()
 }
 </script>
 <template>

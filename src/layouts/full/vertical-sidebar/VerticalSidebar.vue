@@ -17,10 +17,8 @@ const agentSidebarMenu = shallowRef(agentSidebar)
 
 
 const userData = JSON.parse(localStorage.getItem('user'))
-const sidebarMenu = userData.role === 'admin' ? shallowRef(sidebarItems) : userData.role === 'agent' ? shallowRef(agentSidebar) : shallowRef(agencySidebar)
-setInterval(()=>{
-    console.log(userData)
-},2000)
+const   sidebarMenu = userData.role === 'admin' ? shallowRef(sidebarItems) : userData.role === 'agent' ? shallowRef(agentSidebar) : shallowRef(agencySidebar)
+
 </script>
 
 <template>

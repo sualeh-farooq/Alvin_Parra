@@ -1253,6 +1253,15 @@ const itemsEmp = ref([
 
         </v-col>
       </v-row>
+      <v-row>
+        <v-col class="mt-4" style="padding: 0px" cols="12" >
+          <div class="d-flex gap-2" >
+
+            <v-btn  color="primary">Update Contact Details
+            </v-btn>
+          </div>
+        </v-col>
+      </v-row>
     </v-card-text>
 
   </v-navigation-drawer>

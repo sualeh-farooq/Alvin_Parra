@@ -282,18 +282,4 @@ const opportunitySourceVal = ref(['Existing'])
   </v-row>
 
 
-  <!-- <v-text-field label="Last Name" variant="outlined" class="mb-3"></v-text-field> -->
-
-  <!-- <v-row>
-      <v-col cols="12" md="6" lg="4">
-          <UiParentCard title="On Type">
-              <Form>
-                  <v-text-field label="First Name" variant="outlined" class="mb-3"></v-text-field>
-                  <v-text-field label="Last Name" variant="outlined" class="mb-3"></v-text-field>
-                  <br />
-                  <v-btn color="primary" type="submit">Submit</v-btn>
-              </Form>
-          </UiParentCard>
-      </v-col>
-  </v-row> -->
 </template>

@@ -441,6 +441,7 @@ const MainRoutes = {
       path: '/admin/dashboard',
       component: () => import('@/views/admin/index.vue')
     },
+
     {
       name: 'Commission',
       path: '/admin/commision',
@@ -512,6 +513,11 @@ const MainRoutes = {
       path: '/admin/contactView',
       component: () => import('@/views/admin/contactView.vue')
     },
+    {
+      name: 'Admin Report View' ,
+      path: '/admin/reports',
+      component: () => import('@/views/admin/reports.vue')
+    },
 
     // {
     //   name: 'Settings' ,
@@ -533,11 +539,7 @@ const MainRoutes = {
       path: '/admin/agentView',
       component: () =>import('@/views/admin/agentView.vue')
     },
-    {
-      name: 'Campaigns Page' ,
-      path: '/admin/campaigns',
-      component: () =>import('@/views/admin/campaigns.vue')
-    },
+
     {
       name: 'Opportunity View Page' ,
       path: '/admin/opportunityView',
@@ -555,12 +557,17 @@ const MainRoutes = {
       component: ()=>import('@/views/admin/addAccount.vue')
     },
     {
-      name: 'Templates Page' ,
+      name: 'Admin Campaigns Page' ,
+      path: '/admin/campaigns',
+      component: () =>import('@/views/admin/campaigns.vue')
+    },
+    {
+      name: 'Admin Templates Page' ,
       path: '/admin/template',
       component: () =>import('@/views/admin/template.vue')
     },
     {
-      name: 'SMS Page' ,
+      name: 'Admin SMS Page' ,
       path: '/admin/sms',
       component: () =>import('@/views/admin/sms.vue')
     },
@@ -574,11 +581,7 @@ const MainRoutes = {
       path: '/admin/contacts',
       component: () =>import('@/views/admin/contacts.vue')
     },
-    {
-      name: 'Admin Reports Page' ,
-      path: '/admin/reports',
-      component: () =>import('@/views/admin/reports.vue')
-    },
+
     {
       name: 'Admin Page Builder' ,
       path: '/admin/page_builder',
@@ -753,7 +756,85 @@ const MainRoutes = {
       name: 'Agent Opportunity View',
       path: '/agent/opportunityView',
       component: ()=>import('@/views/agent/opportunityView.vue')
-    }
+    },
+    {
+      name: 'Agent Opportunities',
+      path: '/agent/opportunities',
+      component: () => import('@/views/agent/opportunities.vue')
+    },
+    {
+      name: 'Agent Clients',
+      path: '/agent/clients',
+      component: () => import('@/views/agent/clients.vue')
+    },
+
+    {
+      name: 'Agent   Reports Page' ,
+      path: '/agent/reports',
+      component: () =>import('@/views/agent/reports.vue')
+    },
+    {
+      name: 'Agent   Mail Page' ,
+      path: '/agent/mail',
+      component: () =>import('@/views/agent/mail.vue')
+    },
+    {
+      name: 'Agent   Calendar Page' ,
+      path: '/agent/calendar',
+      component: () =>import('@/views/agent/calendar.vue')
+    },
+    {
+      name: 'Agent Materials' ,
+      path: '/agent/materials',
+      component: () =>import('@/views/agent/materials.vue')
+    },
+    {
+      name: 'Agent Business' ,
+      path: '/agent/business',
+      component: () =>import('@/views/agent/business.vue')
+    },
+
+    {
+      name: 'Campaigns Page' ,
+      path: '/agent/campaigns',
+      component: () =>import('@/views/agent/campaigns.vue')
+    },
+    {
+      name: 'Templates Page' ,
+      path: '/agent/template',
+      component: () =>import('@/views/agent/template.vue')
+    },
+    {
+      name: 'SMS Page' ,
+      path: '/agent/sms',
+      component: () =>import('@/views/agent/sms.vue')
+    },
+
+
+    {
+      name: 'FORM Page' ,
+      path: '/agent/forms',
+      component: () =>import('@/views/agent/forms.vue')
+    },
+
+    {
+      name: 'materials' ,
+      path: '/agent/materials',
+      component: () =>import('@/views/agent/materials.vue')
+    },
+
+
+    {
+      name: 'agent tools' ,
+      path: '/agent/tools',
+      component: () =>import('@/views/agent/tools.vue')
+    },
+
+    {
+      name: 'team builtding' ,
+      path: '/agent/team',
+      component: () =>import('@/views/agent/team.vue')
+    },
 
 
 
